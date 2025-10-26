@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2SL Photography</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Landing Page */
+        #landing {
+            height: 100vh;
+            background: url('images/1C8A1846.jpg') center/cover no-repeat;
+            position: relative;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 0;
+            right: 0;
+            background: rgba(80, 80, 80, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav h1 {
+            color: white;
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        nav .tabs {
+            display: flex;
+            gap: 30px;
+            margin-left: auto;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: opacity 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        /* Home Button */
+        .home-btn {
+            position: fixed;
+            top: 110px;
+            right: 40px;
+            background: rgba(80, 80, 80, 0.85);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            z-index: 999;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+
+        .home-btn:hover {
+            background: rgba(60, 60, 60, 0.95);
+        }
+
+        /* Category Landing Pages (Adventures & Life) */
+        .category-landing {
+            display: none;
+            height: 100vh;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .category-landing.active {
+            display: block;
+        }
+
+        .category-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            padding: 120px 40px 40px;
+        }
+
+        .category-landing h2 {
+            color: white;
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .category-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            max-width: 800px;
+        }
+
+        .category-btn {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .category-btn:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Gallery View */
+        .gallery-section {
+            display: none;
+            padding: 120px 40px 40px;
+            min-height: 100vh;
+            background: #f5f5f5;
+        }
+
+        .gallery-section.active {
+            display: block;
+        }
+
+        .gallery-section h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #333;
+            font-weight: 300;
+        }
+
+        .mosaic {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+        }
+
+        .mosaic-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .mosaic-item:hover {
+            transform: scale(1.05);
+        }
+
+        .mosaic-item:hover .mosaic-title {
+            opacity: 1;
+        }
+
+        .mosaic-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.75);
+            color: white;
+            padding: 15px;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            text-align: center;
+        }
+
+        .mosaic-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            padding: 80px 20px 20px;
+        }
+
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content {
+            display: flex;
+            gap: 40px;
+            max-width: 1400px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .lightbox-image {
+            flex: 1;
+            max-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-image img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .lightbox-info {
+            width: 500px;
+            color: white;
+        }
+
+        .lightbox-info h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .lightbox-info p {
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            font-size: 36px;
+            padding: 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+            border-radius: 4px;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .lightbox-nav.prev {
+            left: 20px;
+        }
+
+        .lightbox-nav.next {
+            right: 20px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 36px;
+            cursor: pointer;
+            padding: 10px;
+            line-height: 1;
+        }
+
+        /* About Page */
+        #about {
+            display: none;
+            padding: 120px 40px 40px;
+            min-height: 100vh;
+            background: #f5f5f5;
+        }
+
+        #about.active {
+            display: block;
+        }
+
+        #about .content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        #about h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #333;
+            font-weight: 300;
+        }
+
+        #about p {
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 20px;
+                padding: 15px 20px;
+                top: 10px;
+            }
+
+            nav h1 {
+                font-size: 20px;
+            }
+
+            nav .tabs {
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-left: 0;
+                gap: 15px;
+            }
+
+            .mosaic {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 10px;
+            }
+
+            .lightbox-content {
+                flex-direction: column;
+            }
+
+            .lightbox-info {
+                width: 100%;
+            }
+
+            .home-btn {
+                top: auto;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .category-landing h2 {
+                font-size: 32px;
+            }
+
+            .category-buttons {
+                gap: 15px;
+            }
+
+            .category-btn {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <h1>Sven Lothar Schmitz-Leuffen // 2SL Photography</h1>
+        <div class="tabs">
+            <a onclick="showSection('adventures-landing')">Adventures</a>
+            <a onclick="showSection('window-seat')">Window Seat</a>
+            <a onclick="showSection('water')">Water</a>
+            <a onclick="showSection('orange')">Orange</a>
+            <a onclick="showSection('life-landing')">Life</a>
+            <a onclick="showSection('about')">About</a>
+        </div>
+    </nav>
+
+    <!-- Home Button -->
+    <a class="home-btn" onclick="showLanding()" style="display: none;">Home</a>
+
+    <!-- Landing Page -->
+    <div id="landing"></div>
+
+    <!-- Adventures Category Landing -->
+    <div id="adventures-landing" class="category-landing" style="background-image: url('images/Adventures/1C8A1039.jpg');">
+        <div class="category-overlay">
+            <h2>Adventures</h2>
+            <div class="category-buttons">
+                <button class="category-btn" onclick="showSection('adventures-bw')">Bulk Black and White</button>
+                <button class="category-btn" onclick="showSection('adventures-color')">Bulk Color</button>
+                <button class="category-btn" onclick="showSection('adventures-crisis')">Crisis</button>
+                <button class="category-btn" onclick="showSection('adventures-landscape')">Landscape</button>
+                <button class="category-btn" onclick="showSection('adventures-mountains')">Mountains</button>
+                <button class="category-btn" onclick="showSection('adventures-night')">Night</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Life Category Landing -->
+    <div id="life-landing" class="category-landing" style="background-image: url('images/Life/People/IMG_0023.jpg');">
+        <div class="category-overlay">
+            <h2>Life</h2>
+            <div class="category-buttons">
+                <button class="category-btn" onclick="showSection('life-fauna')">Fauna</button>
+                <button class="category-btn" onclick="showSection('life-flora')">Flora</button>
+                <button class="category-btn" onclick="showSection('life-people')">People</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adventures Gallery Sections -->
+    <div id="adventures-bw" class="gallery-section">
+        <h2>Adventures - Bulk Black and White</h2>
+        <div class="mosaic" id="adventures-bw-grid"></div>
+    </div>
+
+    <div id="adventures-color" class="gallery-section">
+        <h2>Adventures - Bulk Color</h2>
+        <div class="mosaic" id="adventures-color-grid"></div>
+    </div>
+
+    <div id="adventures-crisis" class="gallery-section">
+        <h2>Adventures - Crisis</h2>
+        <div class="mosaic" id="adventures-crisis-grid"></div>
+    </div>
+
+    <div id="adventures-landscape" class="gallery-section">
+        <h2>Adventures - Landscape</h2>
+        <div class="mosaic" id="adventures-landscape-grid"></div>
+    </div>
+
+    <div id="adventures-mountains" class="gallery-section">
+        <h2>Adventures - Mountains</h2>
+        <div class="mosaic" id="adventures-mountains-grid"></div>
+    </div>
+
+    <div id="adventures-night" class="gallery-section">
+        <h2>Adventures - Night</h2>
+        <div class="mosaic" id="adventures-night-grid"></div>
+    </div>
+
+    <!-- Life Gallery Sections -->
+    <div id="life-fauna" class="gallery-section">
+        <h2>Life - Fauna</h2>
+        <div class="mosaic" id="life-fauna-grid"></div>
+    </div>
+
+    <div id="life-flora" class="gallery-section">
+        <h2>Life - Flora</h2>
+        <div class="mosaic" id="life-flora-grid"></div>
+    </div>
+
+    <div id="life-people" class="gallery-section">
+        <h2>Life - People</h2>
+        <div class="mosaic" id="life-people-grid"></div>
+    </div>
+
+    <!-- Other Gallery Sections -->
+    <div id="window-seat" class="gallery-section">
+        <h2>Window Seat</h2>
+        <div class="mosaic" id="window-seat-grid"></div>
+    </div>
+
+    <div id="water" class="gallery-section">
+        <h2>Water</h2>
+        <div class="mosaic" id="water-grid"></div>
+    </div>
+
+    <div id="orange" class="gallery-section">
+        <h2>Orange</h2>
+        <div class="mosaic" id="orange-grid"></div>
+    </div>
+
+    <!-- About Section -->
+    <div id="about">
+        <div class="content">
+            <h2>About Me</h2>
+            <p>Welcome to my photography portfolio. I'm passionate about capturing moments that tell stories and evoke emotions.</p>
+            <p>Through my lens, I explore the world around us - from breathtaking adventures to quiet moments of everyday life. Each photograph is a window into a unique perspective, a frozen moment in time.</p>
+            <p>Feel free to explore my galleries and reach out if you'd like to connect or collaborate.</p>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">×</button>
+        <button class="lightbox-nav prev" onclick="navigateImage(-1)">‹</button>
+        <button class="lightbox-nav next" onclick="navigateImage(1)">›</button>
+        <div class="lightbox-content">
+            <div class="lightbox-image">
+                <img id="lightbox-img" src="" alt="">
+            </div>
+            <div class="lightbox-info">
+                <h3 id="lightbox-title"></h3>
+                <p id="lightbox-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Photo data structure
+        const photos = {
+            'adventures-bw': [
+                { src: 'images/Adventures/Bulk Black and White/1C8A0232.jpg', title: 'Title 1', description: 'Description' },
+                { src: 'images/Adventures/Bulk Black and White/1C8A0258.jpg', title: 'Title 2', description: 'Description' },
+                { src: 'images/Adventures/Bulk Black and White/1C8A0301.jpg', title: 'Title 3', description: 'Description' }
+            ],
+            'adventures-color': [
+                { src: 'images/Adventures/Bulk Color/1C8A0409.jpg', title: 'Color 1', description: 'Description' },
+                { src: 'images/Adventures/Bulk Color/1C8A0837.jpg', title: 'Color 2', description: 'Description' }
+            ],
+            'adventures-crisis': [
+                { src: 'images/Adventures/Crisis/1C8A0471.jpg', title: 'Crisis 1', description: 'Description' },
+                { src: 'images/Adventures/Crisis/1C8A0508.jpg', title: 'Crisis 2', description: 'Description' }
+            ],
+            'adventures-landscape': [
+                { src: 'images/Adventures/Landscapes/1C8A0796.jpg', title: 'Landscape 1', description: 'Description' },
+                { src: 'images/Adventures/Landscapes/1C8A1846.jpg', title: 'Landscape 2', description: 'Description' }
+            ],
+            'adventures-mountains': [
+                { src: 'images/Adventures/Mountains/1C8A0107.jpg', title: 'Mountain 1', description: 'Description' },
+                { src: 'images/Adventures/Mountains/1C8A0135.jpg', title: 'Mountain 2', description: 'Description' }
+            ],
+            'adventures-night': [
+                { src: 'images/Adventures/Night/1C8A1217.jpg', title: 'Night 1', description: 'Description' },
+                { src: 'images/Adventures/Night/1C8A1275.jpg', title: 'Night 2', description: 'Description' }
+            ],
+            'life-fauna': [
+                { src: 'images/Life/Fauna/1C8A0180.jpg', title: 'Fauna 1', description: 'Description' },
+                { src: 'images/Life/Fauna/1C8A0296.jpg', title: 'Fauna 2', description: 'Description' }
+            ],
+            'life-flora': [
+                { src: 'images/Life/Flora/1C8A0346.jpg', title: 'Flora 1', description: 'Description' },
+                { src: 'images/Life/Flora/1C8A0745.jpg', title: 'Flora 2', description: 'Description' }
+            ],
+            'life-people': [
+                { src: 'images/Life/People/1C8A0377.jpg', title: 'People 1', description: 'Description' },
+                { src: 'images/Life/People/1C8A0718.jpg', title: 'People 2', description: 'Description' }
+            ],
+            'window-seat': [
+                { src: 'images/Window Seat/1C8A0593.jpg', title: 'Window Seat 1', description: 'Description' },
+                { src: 'images/Window Seat/1C8A0690.jpg', title: 'Window Seat 2', description: 'Description' }
+            ],
+            'water': [
+                { src: 'images/Water/1C8A0299.jpg', title: 'Water 1', description: 'Description' },
+                { src: 'images/Water/1C8A1688.jpg', title: 'Water 2', description: 'Description' }
+            ],
+            'orange': [
+                { src: 'images/Orange/1C8A0438.jpg', title: 'Orange 1', description: 'Description' },
+                { src: 'images/Orange/1C8A1004.jpg', title: 'Ethiopia - 07/01/2016', description: 'The Danakil Salt Lake at Sunset at the beginning of Lake Karoum. Possibly one of the most enjoyable adventures in my life.Lorem ipsum is a dummy or placeholder text commonly used in graphic design, publishing, and web development. Its purpose is to permit a page layout to be designed, independently of the copy that will subsequently populate it, or to demonstrate various fonts of a typeface without meaningful text that could be distracting. Lorem ipsum is typically a corrupted version of De finibus bonorum et malorum, a 1st-century BC text by the Roman statesman and philosopher Cicero, with words altered, added, and removed to make it nonsensical and improper Latin.' }
+            ]
+        };
+
+        let currentCategory = '';
+        let currentIndex = 0;
+
+        // Initialize galleries
+        function initGalleries() {
+            for (const [category, images] of Object.entries(photos)) {
+                const grid = document.getElementById(`${category}-grid`);
+                if (grid) {
+                    images.forEach((photo, index) => {
+                        const item = document.createElement('div');
+                        item.className = 'mosaic-item';
+                        item.innerHTML = `
+                            <img src="${photo.src}" alt="${photo.title}">
+                            <div class="mosaic-title">${photo.title}</div>
+                        `;
+                        item.onclick = () => openLightbox(category, index);
+                        grid.appendChild(item);
+                    });
+                }
+            }
+        }
+
+        function showLanding() {
+            document.getElementById('landing').style.display = 'block';
+            document.querySelectorAll('.gallery-section, #about, .category-landing').forEach(s => s.classList.remove('active'));
+            document.querySelector('.home-btn').style.display = 'none';
+        }
+
+        function showSection(section) {
+            document.getElementById('landing').style.display = 'none';
+            document.querySelectorAll('.gallery-section, #about, .category-landing').forEach(s => s.classList.remove('active'));
+            const sectionElement = document.getElementById(section);
+            if (sectionElement) {
+                sectionElement.classList.add('active');
+                document.querySelector('.home-btn').style.display = 'block';
+            }
+        }
+
+        function openLightbox(category, index) {
+            currentCategory = category;
+            currentIndex = index;
+            updateLightbox();
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function navigateImage(direction) {
+            const images = photos[currentCategory];
+            currentIndex = (currentIndex + direction + images.length) % images.length;
+            updateLightbox();
+        }
+
+        function updateLightbox() {
+            const photo = photos[currentCategory][currentIndex];
+            document.getElementById('lightbox-img').src = photo.src;
+            document.getElementById('lightbox-title').textContent = photo.title;
+            document.getElementById('lightbox-description').textContent = photo.description;
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (document.getElementById('lightbox').classList.contains('active')) {
+                if (e.key === 'ArrowLeft') navigateImage(-1);
+                if (e.key === 'ArrowRight') navigateImage(1);
+                if (e.key === 'Escape') closeLightbox();
+            }
+        });
+
+        // Disable right-click on all images
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Prevent drag and drop of images
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Initialize
+        initGalleries();
+    </script>
+</body>
+</html>
