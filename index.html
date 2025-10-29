@@ -109,6 +109,18 @@
             justify-content: center;
             gap: 40px;
             padding: 120px 40px 40px;
+            z-index: 1;  
+        }
+
+        /* Video background for category landing pages */
+        .category-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
         }
 
         .category-landing h2 {
@@ -245,6 +257,13 @@
         }
 
         .lightbox-image img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .lightbox-image video {
             max-width: 100%;
             max-height: 80vh;
             object-fit: contain;
@@ -415,7 +434,10 @@
     <div id="landing"></div>
 
     <!-- Adventures Category Landing -->
-    <div id="adventures-landing" class="category-landing" style="background-image: url('images/Adventures/1C8A1039.jpg');">
+    <div id="adventures-landing" class="category-landing">
+    <video class="category-video" autoplay muted loop playsinline>
+        <source src="videos/Khartoum_TukTuk.mp4" type="video/mp4">
+    </video>
         <div class="category-overlay">
             <h2>Adventures</h2>
             <div class="category-buttons">
@@ -513,7 +535,7 @@
             <p>Human, World Citizen, Adventurer.</p>
             <p>Humanitarian, Engineer, Photographer, DJ, Writer.</p>
             <p>Enjoys life and all the beauty in it.</p>
-            <p>svenlsl_at_protonmail_dot_com</p>
+            <p>Purchase Info on demand: svenlsl_at_protonmail_dot_com</p>
         </div>
     </div>
 
@@ -524,7 +546,10 @@
         <button class="lightbox-nav next" onclick="navigateImage(1)">›</button>
         <div class="lightbox-content">
             <div class="lightbox-image">
-                <img id="lightbox-img" src="" alt="">
+                <img id="lightbox-img" src="" alt="" style="display:none;">
+                <video id="lightbox-video" controls style="display:none;">
+                    <source id="lightbox-video-source" src="" type="video/mp4">
+                </video>
             </div>
             <div class="lightbox-info">
                 <h3 id="lightbox-title"></h3>
@@ -631,6 +656,7 @@
                 { src: 'images/Adventures/Bulk Color/PICT0422.jpg', title: 'Title 61', description: 'Description' }
             ],
             'adventures-crisis': [
+                { src: 'videos/Haiti_LesCayes.mp4', title: 'Haiti 06/05/2018', description: 'Saison des pluies', type: 'video' },
                 { src: 'images/Adventures/Crisis/1C8A0471.jpg', title: 'Title 1', description: 'Description' },
                 { src: 'images/Adventures/Crisis/1C8A0508.jpg', title: 'Title 2', description: 'Description' },
                 { src: 'images/Adventures/Crisis/1C8A0571.jpg', title: 'Title 3', description: 'Description' },
@@ -1052,10 +1078,28 @@
                     images.forEach((photo, index) => {
                         const item = document.createElement('div');
                         item.className = 'mosaic-item';
-                        item.innerHTML = `
-                            <img src="${photo.src}" alt="${photo.title}">
-                            <div class="mosaic-title">${photo.title}</div>
-                        `;
+                        
+                        if (photo.type === 'video') {
+                            item.innerHTML = `
+                                <video muted loop>
+                                    <source src="${photo.src}" type="video/mp4">
+                                </video>
+                                <div class="mosaic-title">${photo.title}</div>
+                            `;
+                            // Play on hover
+                            item.addEventListener('mouseenter', (e) => {
+                                e.target.querySelector('video').play();
+                            });
+                            item.addEventListener('mouseleave', (e) => {
+                                e.target.querySelector('video').pause();
+                            });
+                        } else {
+                            item.innerHTML = `
+                                <img src="${photo.src}" alt="${photo.title}">
+                                <div class="mosaic-title">${photo.title}</div>
+                            `;
+                        }
+                        
                         item.onclick = () => openLightbox(category, index);
                         grid.appendChild(item);
                     });
@@ -1088,6 +1132,8 @@
         }
 
         function closeLightbox() {
+            const video = document.getElementById('lightbox-video');
+            video.pause(); // Pause video when closing
             document.getElementById('lightbox').classList.remove('active');
             document.body.style.overflow = 'auto';
         }
@@ -1100,7 +1146,25 @@
 
         function updateLightbox() {
             const photo = photos[currentCategory][currentIndex];
-            document.getElementById('lightbox-img').src = photo.src;
+            const img = document.getElementById('lightbox-img');
+            const video = document.getElementById('lightbox-video');
+            const videoSource = document.getElementById('lightbox-video-source');
+            
+            // Check if it's a video
+            if (photo.type === 'video') {
+                // Hide image, show video
+                img.style.display = 'none';
+                video.style.display = 'block';
+                videoSource.src = photo.src;
+                video.load();
+                video.play();
+            } else {
+                // Hide video, show image
+                video.style.display = 'none';
+                img.style.display = 'block';
+                img.src = photo.src;
+            }
+            
             document.getElementById('lightbox-title').textContent = photo.title;
             document.getElementById('lightbox-description').textContent = photo.description;
         }
