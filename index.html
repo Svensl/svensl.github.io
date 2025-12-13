@@ -272,18 +272,43 @@
 
         .lightbox-info {
             width: 500px;
+            max-height: 80vh;
             color: white;
+            display: flex;
+            flex-direction: column;
         }
 
         .lightbox-info h3 {
             font-size: 24px;
             margin-bottom: 15px;
             font-weight: 300;
+            flex-shrink: 0;
         }
 
         .lightbox-info p {
             line-height: 1.6;
             color: #ddd;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        /* Scrollbar styling for description */
+        .lightbox-info p::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .lightbox-info p::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .lightbox-info p::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        .lightbox-info p::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
         }
 
         .lightbox-nav {
