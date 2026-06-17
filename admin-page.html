@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2SL Photography - Admin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a2e;
+            color: #eee;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top Bar */
+        .topbar {
+            background: #16213e;
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #0f3460;
+            flex-shrink: 0;
+        }
+
+        .topbar h1 {
+            font-size: 20px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .topbar-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .btn-export {
+            background: #0f3460;
+            color: white;
+        }
+
+        .btn-export:hover {
+            background: #1a4a7a;
+        }
+
+        .btn-save {
+            background: #e94560;
+            color: white;
+        }
+
+        .btn-save:hover {
+            background: #ff6b81;
+        }
+
+        .btn-add {
+            background: #2d6a4f;
+            color: white;
+        }
+
+        .btn-add:hover {
+            background: #40916c;
+        }
+
+        .status {
+            font-size: 13px;
+            color: #888;
+            padding: 0 15px;
+        }
+
+        .status.saved {
+            color: #4ecca3;
+        }
+
+        /* Main Layout */
+        .main {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background: #16213e;
+            border-right: 1px solid #0f3460;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+
+        .sidebar h3 {
+            padding: 15px 20px;
+            font-size: 14px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sidebar-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-item:hover {
+            background: #1a2744;
+        }
+
+        .sidebar-item.active {
+            background: #1a2744;
+            border-left-color: #e94560;
+        }
+
+        .sidebar-item .count {
+            background: #0f3460;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            color: #888;
+        }
+
+        .sidebar-category {
+            padding: 10px 20px 5px;
+            font-size: 11px;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        /* Content Area */
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Thumbnail Grid */
+        .thumbnail-grid {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            align-content: start;
+        }
+
+        .thumbnail-item {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .thumbnail-item:hover {
+            border-color: #0f3460;
+            transform: scale(1.02);
+        }
+
+        .thumbnail-item.selected {
+            border-color: #e94560;
+            box-shadow: 0 0 15px rgba(233, 69, 96, 0.3);
+        }
+
+        .thumbnail-item img,
+        .thumbnail-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 8px;
+            font-size: 11px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .thumbnail-label.has-description {
+            border-left: 3px solid #4ecca3;
+        }
+
+        .thumbnail-index {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            color: #888;
+        }
+
+        .thumbnail-type {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(233, 69, 96, 0.8);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+        }
+
+        .thumbnail-drag-handle {
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.5);
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            color: #888;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .thumbnail-item:hover .thumbnail-drag-handle {
+            opacity: 1;
+        }
+
+        /* Editor Panel */
+        .editor {
+            width: 450px;
+            background: #16213e;
+            border-left: 1px solid #0f3460;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .editor.hidden {
+            display: none;
+        }
+
+        .editor-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #0f3460;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .editor-header h3 {
+            font-size: 16px;
+            font-weight: 300;
+        }
+
+        .editor-close {
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .editor-close:hover {
+            color: white;
+        }
+
+        .editor-preview {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            background: #111;
+            max-height: 300px;
+        }
+
+        .editor-preview img,
+        .editor-preview video {
+            max-width: 100%;
+            max-height: 260px;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .editor-form {
+            padding: 20px;
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group label {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input {
+            background: #1a1a2e;
+            border: 1px solid #0f3460;
+            color: white;
+            padding: 10px 12px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #e94560;
+        }
+
+        .form-group textarea {
+            background: #1a1a2e;
+            border: 1px solid #0f3460;
+            color: white;
+            padding: 10px 12px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 150px;
+            line-height: 1.6;
+        }
+
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #e94560;
+        }
+
+        .form-group .filepath {
+            font-size: 11px;
+            color: #555;
+            word-break: break-all;
+        }
+
+        .editor-nav {
+            display: flex;
+            gap: 10px;
+            padding: 15px 20px;
+            border-top: 1px solid #0f3460;
+        }
+
+        .editor-nav button {
+            flex: 1;
+            padding: 8px;
+            background: #0f3460;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .editor-nav button:hover {
+            background: #1a4a7a;
+        }
+
+        /* Welcome Screen */
+        .welcome {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 15px;
+            color: #555;
+        }
+
+        .welcome h2 {
+            font-weight: 300;
+            font-size: 24px;
+        }
+
+        .welcome p {
+            font-size: 14px;
+        }
+
+        /* Stats bar */
+        .stats-bar {
+            padding: 10px 20px;
+            background: #111;
+            border-bottom: 1px solid #0f3460;
+            font-size: 12px;
+            color: #888;
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat {
+            display: flex;
+            gap: 5px;
+        }
+
+        .stat-value {
+            color: #4ecca3;
+        }
+
+        /* Delete button */
+        .btn-delete {
+            background: #5c1a1a;
+            color: #ff6b6b;
+            font-size: 12px;
+            padding: 5px 12px;
+        }
+
+        .btn-delete:hover {
+            background: #7a2222;
+        }
+
+        /* Checkbox for type */
+        .type-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .type-toggle input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .type-toggle label {
+            cursor: pointer;
+            font-size: 13px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="topbar">
+        <h1>2SL Photography - Content Manager</h1>
+        <div class="topbar-actions">
+            <span class="status" id="status">Ready</span>
+            <button class="btn btn-add" onclick="addNewEntry()">+ Add Entry</button>
+            <button class="btn btn-export" onclick="exportJSON()">Export photos.json</button>
+        </div>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="main">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <h3>Categories</h3>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <div class="stats-bar" id="stats-bar" style="display:none;">
+                <div class="stat">Photos: <span class="stat-value" id="stat-photos">0</span></div>
+                <div class="stat">Videos: <span class="stat-value" id="stat-videos">0</span></div>
+                <div class="stat">With descriptions: <span class="stat-value" id="stat-described">0</span></div>
+            </div>
+            <div class="thumbnail-grid" id="thumbnail-grid">
+                <div class="welcome">
+                    <h2>Welcome to the Content Manager</h2>
+                    <p>Select a category from the sidebar to start editing.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Editor Panel -->
+        <div class="editor hidden" id="editor">
+            <div class="editor-header">
+                <h3 id="editor-heading">Edit Photo</h3>
+                <button class="editor-close" onclick="closeEditor()">&times;</button>
+            </div>
+            <div class="editor-preview" id="editor-preview"></div>
+            <div class="editor-form">
+                <div class="form-group">
+                    <label>File Path</label>
+                    <span class="filepath" id="editor-filepath"></span>
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="editor-title" placeholder="Enter title..." oninput="updateCurrentEntry()">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="editor-description" placeholder="Enter description. Use Enter key for line breaks..." oninput="updateCurrentEntry()"></textarea>
+                </div>
+                <div class="type-toggle">
+                    <input type="checkbox" id="editor-type" onchange="updateCurrentEntry()">
+                    <label for="editor-type">This is a video file</label>
+                </div>
+                <div style="margin-top: 10px;">
+                    <button class="btn btn-delete" onclick="deleteCurrentEntry()">Delete this entry</button>
+                </div>
+            </div>
+            <div class="editor-nav">
+                <button onclick="navigateEditor(-1)">&larr; Previous</button>
+                <button onclick="navigateEditor(1)">Next &rarr;</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let photos = {};
+        let currentCategory = '';
+        let currentIndex = -1;
+        let hasUnsavedChanges = false;
+
+        const categoryLabels = {
+            'adventures-night': 'Adventures / Night',
+            'adventures-wanderlust': 'Adventures / Wanderlust',
+            'adventures-window-seat': 'Adventures / Window Seat',
+            'landscapes': 'Landscapes',
+            'life-fauna': 'Life / Fauna',
+            'life-flora': 'Life / Flora',
+            'life-people': 'Life / People',
+            'orange': 'Orange',
+            'water': 'Water'
+        };
+
+        const categoryGroups = {
+            'Adventures': ['adventures-night', 'adventures-wanderlust', 'adventures-window-seat'],
+            'Landscapes': ['landscapes'],
+            'Life': ['life-fauna', 'life-flora', 'life-people'],
+            'Orange': ['orange'],
+            'Water': ['water']
+        };
+
+        // Load photos.json
+        async function loadPhotos() {
+            try {
+                const response = await fetch('photos.json');
+                photos = await response.json();
+                buildSidebar();
+                setStatus('Loaded photos.json');
+            } catch (error) {
+                console.error('Error loading photos:', error);
+                setStatus('Error loading photos.json!');
+            }
+        }
+
+        function setStatus(msg, type) {
+            const el = document.getElementById('status');
+            el.textContent = msg;
+            el.className = 'status' + (type === 'saved' ? ' saved' : '');
+        }
+
+        // Build sidebar
+        function buildSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.innerHTML = '<h3>Categories</h3>';
+
+            for (const [group, keys] of Object.entries(categoryGroups)) {
+                const groupEl = document.createElement('div');
+                groupEl.className = 'sidebar-category';
+                groupEl.textContent = group;
+                sidebar.appendChild(groupEl);
+
+                keys.forEach(key => {
+                    if (photos[key]) {
+                        const item = document.createElement('div');
+                        item.className = 'sidebar-item';
+                        item.dataset.category = key;
+                        const label = categoryLabels[key] || key;
+                        const shortLabel = label.includes('/') ? label.split('/').pop().trim() : label;
+                        item.innerHTML = `
+                            <span>${shortLabel}</span>
+                            <span class="count">${photos[key].length}</span>
+                        `;
+                        item.onclick = () => selectCategory(key);
+                        sidebar.appendChild(item);
+                    }
+                });
+            }
+        }
+
+        // Select category
+        function selectCategory(category) {
+            currentCategory = category;
+            currentIndex = -1;
+            closeEditor();
+
+            // Update sidebar active state
+            document.querySelectorAll('.sidebar-item').forEach(item => {
+                item.classList.toggle('active', item.dataset.category === category);
+            });
+
+            // Show stats
+            const statsBar = document.getElementById('stats-bar');
+            statsBar.style.display = 'flex';
+            updateStats();
+
+            // Build thumbnail grid
+            buildThumbnailGrid();
+        }
+
+        function updateStats() {
+            const items = photos[currentCategory] || [];
+            const videoCount = items.filter(p => p.type === 'video').length;
+            const describedCount = items.filter(p => p.description && p.description !== 'Description').length;
+            document.getElementById('stat-photos').textContent = items.length - videoCount;
+            document.getElementById('stat-videos').textContent = videoCount;
+            document.getElementById('stat-described').textContent = describedCount;
+        }
+
+        // Build thumbnail grid
+        function buildThumbnailGrid() {
+            const grid = document.getElementById('thumbnail-grid');
+            const items = photos[currentCategory] || [];
+            grid.innerHTML = '';
+
+            items.forEach((photo, index) => {
+                const item = document.createElement('div');
+                item.className = 'thumbnail-item' + (index === currentIndex ? ' selected' : '');
+
+                const isVideo = photo.type === 'video';
+                const hasDesc = photo.description && photo.description !== 'Description';
+
+                item.innerHTML = `
+                    <span class="thumbnail-index">${index + 1}</span>
+                    ${isVideo ? '<span class="thumbnail-type">VIDEO</span>' : ''}
+                    ${isVideo
+                        ? `<video muted><source src="${photo.src}" type="video/mp4"></video>`
+                        : `<img src="${photo.src}" alt="${photo.title}" onerror="this.style.background='#333';this.alt='Image not found'">`
+                    }
+                    <div class="thumbnail-label ${hasDesc ? 'has-description' : ''}">${photo.title}</div>
+                `;
+
+                item.onclick = () => selectPhoto(index);
+                grid.appendChild(item);
+            });
+        }
+
+        // Select photo
+        function selectPhoto(index) {
+            currentIndex = index;
+            const photo = photos[currentCategory][index];
+
+            // Update thumbnail selection
+            document.querySelectorAll('.thumbnail-item').forEach((item, i) => {
+                item.classList.toggle('selected', i === index);
+            });
+
+            // Show editor
+            const editor = document.getElementById('editor');
+            editor.classList.remove('hidden');
+
+            // Update editor heading
+            document.getElementById('editor-heading').textContent =
+                `Edit ${index + 1} of ${photos[currentCategory].length}`;
+
+            // Update preview
+            const preview = document.getElementById('editor-preview');
+            if (photo.type === 'video') {
+                preview.innerHTML = `<video controls style="max-height:260px"><source src="${photo.src}" type="video/mp4"></video>`;
+            } else {
+                preview.innerHTML = `<img src="${photo.src}" alt="${photo.title}" onerror="this.style.background='#333';this.alt='Image not found'">`;
+            }
+
+            // Update form
+            document.getElementById('editor-filepath').textContent = photo.src;
+            document.getElementById('editor-title').value = photo.title || '';
+            document.getElementById('editor-description').value = photo.description || '';
+            document.getElementById('editor-type').checked = photo.type === 'video';
+        }
+
+        // Update current entry from editor fields
+        function updateCurrentEntry() {
+            if (currentCategory && currentIndex >= 0) {
+                const photo = photos[currentCategory][currentIndex];
+                photo.title = document.getElementById('editor-title').value;
+                photo.description = document.getElementById('editor-description').value;
+
+                const isVideo = document.getElementById('editor-type').checked;
+                if (isVideo) {
+                    photo.type = 'video';
+                } else {
+                    delete photo.type;
+                }
+
+                hasUnsavedChanges = true;
+                setStatus('Unsaved changes');
+
+                // Update thumbnail label
+                const thumbnails = document.querySelectorAll('.thumbnail-item');
+                if (thumbnails[currentIndex]) {
+                    const label = thumbnails[currentIndex].querySelector('.thumbnail-label');
+                    label.textContent = photo.title;
+                    const hasDesc = photo.description && photo.description !== 'Description';
+                    label.className = 'thumbnail-label' + (hasDesc ? ' has-description' : '');
+                }
+
+                updateStats();
+            }
+        }
+
+        // Navigate editor
+        function navigateEditor(direction) {
+            const items = photos[currentCategory];
+            if (!items) return;
+            let newIndex = currentIndex + direction;
+            if (newIndex < 0) newIndex = items.length - 1;
+            if (newIndex >= items.length) newIndex = 0;
+            selectPhoto(newIndex);
+
+            // Scroll thumbnail into view
+            const thumbnails = document.querySelectorAll('.thumbnail-item');
+            if (thumbnails[newIndex]) {
+                thumbnails[newIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        // Close editor
+        function closeEditor() {
+            document.getElementById('editor').classList.add('hidden');
+            currentIndex = -1;
+            document.querySelectorAll('.thumbnail-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+        }
+
+        // Add new entry
+        function addNewEntry() {
+            if (!currentCategory) {
+                alert('Please select a category first.');
+                return;
+            }
+
+            const src = prompt('Enter the image/video file path:\n\nExample: images/Adventures/Night/photo.jpg');
+            if (!src) return;
+
+            const newEntry = {
+                src: src,
+                title: 'New Entry',
+                description: 'Description'
+            };
+
+            if (src.endsWith('.mp4') || src.endsWith('.mov') || src.endsWith('.webm')) {
+                newEntry.type = 'video';
+            }
+
+            photos[currentCategory].push(newEntry);
+            hasUnsavedChanges = true;
+            setStatus('Unsaved changes');
+
+            buildSidebar();
+            buildThumbnailGrid();
+            selectPhoto(photos[currentCategory].length - 1);
+        }
+
+        // Delete current entry
+        function deleteCurrentEntry() {
+            if (currentCategory && currentIndex >= 0) {
+                const photo = photos[currentCategory][currentIndex];
+                if (confirm(`Delete "${photo.title}"?\n\nThis only removes it from the JSON, not the actual file.`)) {
+                    photos[currentCategory].splice(currentIndex, 1);
+                    hasUnsavedChanges = true;
+                    setStatus('Unsaved changes');
+
+                    closeEditor();
+                    buildSidebar();
+                    buildThumbnailGrid();
+                    updateStats();
+                }
+            }
+        }
+
+        // Export JSON
+        function exportJSON() {
+            // Convert descriptions: replace actual newlines with \n for JSON
+            const exportData = JSON.parse(JSON.stringify(photos));
+
+            const jsonStr = JSON.stringify(exportData, null, 4);
+            const blob = new Blob([jsonStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'photos.json';
+            a.click();
+
+            URL.revokeObjectURL(url);
+            hasUnsavedChanges = false;
+            setStatus('Exported photos.json', 'saved');
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+            if (e.key === 'ArrowLeft') navigateEditor(-1);
+            if (e.key === 'ArrowRight') navigateEditor(1);
+            if (e.key === 'Escape') closeEditor();
+            if (e.ctrlKey && e.key === 'e') {
+                e.preventDefault();
+                exportJSON();
+            }
+        });
+
+        // Warn before leaving with unsaved changes
+        window.addEventListener('beforeunload', (e) => {
+            if (hasUnsavedChanges) {
+                e.preventDefault();
+                e.returnValue = '';
+            }
+        });
+
+        // Initialize
+        loadPhotos();
+    </script>
+</body>
+</html>
