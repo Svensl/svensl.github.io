@@ -26,10 +26,10 @@
         /* Navigation Bar */
         nav {
             position: fixed;
-            top: 20px; /* This is the number of pixels from the top of the navigation ribbon  */
+            top: 20px;
             left: 0;
             right: 0;
-            background: rgba(80, 80, 80, 0.5); /* This is where color and transparency of the home page ribbon is set  */
+            background: rgba(80, 80, 80, 0.5);
             backdrop-filter: blur(10px);
             padding: 20px 40px;
             display: flex;
@@ -109,10 +109,9 @@
             justify-content: center;
             gap: 40px;
             padding: 120px 40px 40px;
-            z-index: 1;  
+            z-index: 1;
         }
 
-        /* Video background for category landing pages */
         .category-video {
             position: absolute;
             top: 0;
@@ -293,7 +292,6 @@
             white-space: pre-wrap;
         }
 
-        /* Scrollbar styling for description */
         .lightbox-info p::-webkit-scrollbar {
             width: 8px;
         }
@@ -410,7 +408,6 @@
                 gap: 10px;
             }
 
-            /* Mobile Lightbox - Stack vertically */
             .lightbox {
                 padding: 20px 10px 10px;
             }
@@ -448,7 +445,6 @@
                 padding-right: 0;
             }
 
-            /* Make navigation arrows smaller on mobile */
             .lightbox-nav {
                 font-size: 24px;
                 padding: 10px;
@@ -490,7 +486,6 @@
             }
         }
 
-        /* Extra small screens */
         @media (max-width: 480px) {
             nav h1 {
                 font-size: 16px;
@@ -531,10 +526,10 @@
         <h1>Sven Lothar Schmitz-Leuffen // 2SL Photography</h1>
         <div class="tabs">
             <a onclick="showSection('adventures-landing')">Adventures</a>
-            <a onclick="showSection('window-seat')">Window Seat</a>
-            <a onclick="showSection('water')">Water</a>
-            <a onclick="showSection('orange')">Orange</a>
+            <a onclick="showSection('landscapes')">Landscapes</a>
             <a onclick="showSection('life-landing')">Life</a>
+            <a onclick="showSection('orange')">Orange</a>
+            <a onclick="showSection('water')">Water</a>
             <a onclick="showSection('about')">About</a>
         </div>
     </nav>
@@ -547,18 +542,15 @@
 
     <!-- Adventures Category Landing -->
     <div id="adventures-landing" class="category-landing">
-    <video class="category-video" autoplay muted loop playsinline>
-        <source src="videos/Khartoum_TukTuk.mp4" type="video/mp4">
-    </video>
+        <video class="category-video" autoplay muted loop playsinline>
+            <source src="videos/Khartoum_TukTuk.mp4" type="video/mp4">
+        </video>
         <div class="category-overlay">
             <h2>Adventures</h2>
             <div class="category-buttons">
-                <button class="category-btn" onclick="showSection('adventures-bw')">Bulk Black and White</button>
-                <button class="category-btn" onclick="showSection('adventures-color')">Bulk Color</button>
-                <button class="category-btn" onclick="showSection('adventures-crisis')">Crisis</button>
-                <button class="category-btn" onclick="showSection('adventures-landscape')">Landscape</button>
-                <button class="category-btn" onclick="showSection('adventures-mountains')">Mountains</button>
                 <button class="category-btn" onclick="showSection('adventures-night')">Night</button>
+                <button class="category-btn" onclick="showSection('adventures-wanderlust')">Wanderlust</button>
+                <button class="category-btn" onclick="showSection('adventures-window-seat')">Window Seat</button>
             </div>
         </div>
     </div>
@@ -576,34 +568,25 @@
     </div>
 
     <!-- Adventures Gallery Sections -->
-    <div id="adventures-bw" class="gallery-section">
-        <h2>Adventures - Bulk Black and White</h2>
-        <div class="mosaic" id="adventures-bw-grid"></div>
-    </div>
-
-    <div id="adventures-color" class="gallery-section">
-        <h2>Adventures - Bulk Color</h2>
-        <div class="mosaic" id="adventures-color-grid"></div>
-    </div>
-
-    <div id="adventures-crisis" class="gallery-section">
-        <h2>Adventures - Crisis</h2>
-        <div class="mosaic" id="adventures-crisis-grid"></div>
-    </div>
-
-    <div id="adventures-landscape" class="gallery-section">
-        <h2>Adventures - Landscape</h2>
-        <div class="mosaic" id="adventures-landscape-grid"></div>
-    </div>
-
-    <div id="adventures-mountains" class="gallery-section">
-        <h2>Adventures - Mountains</h2>
-        <div class="mosaic" id="adventures-mountains-grid"></div>
-    </div>
-
     <div id="adventures-night" class="gallery-section">
         <h2>Adventures - Night</h2>
         <div class="mosaic" id="adventures-night-grid"></div>
+    </div>
+
+    <div id="adventures-wanderlust" class="gallery-section">
+        <h2>Adventures - Wanderlust</h2>
+        <div class="mosaic" id="adventures-wanderlust-grid"></div>
+    </div>
+
+    <div id="adventures-window-seat" class="gallery-section">
+        <h2>Adventures - Window Seat</h2>
+        <div class="mosaic" id="adventures-window-seat-grid"></div>
+    </div>
+
+    <!-- Landscapes Gallery -->
+    <div id="landscapes" class="gallery-section">
+        <h2>Landscapes</h2>
+        <div class="mosaic" id="landscapes-grid"></div>
     </div>
 
     <!-- Life Gallery Sections -->
@@ -622,28 +605,24 @@
         <div class="mosaic" id="life-people-grid"></div>
     </div>
 
-    <!-- Other Gallery Sections -->
-    <div id="window-seat" class="gallery-section">
-        <h2>Window Seat</h2>
-        <div class="mosaic" id="window-seat-grid"></div>
-    </div>
-
-    <div id="water" class="gallery-section">
-        <h2>Water</h2>
-        <div class="mosaic" id="water-grid"></div>
-    </div>
-
+    <!-- Orange Gallery -->
     <div id="orange" class="gallery-section">
         <h2>Orange</h2>
         <div class="mosaic" id="orange-grid"></div>
+    </div>
+
+    <!-- Water Gallery -->
+    <div id="water" class="gallery-section">
+        <h2>Water</h2>
+        <div class="mosaic" id="water-grid"></div>
     </div>
 
     <!-- About Section -->
     <div id="about">
         <div class="content">
             <h2>About Me</h2>
-            <p>Born sometime in the last millennium. Before personal computers, Internet, AI, smart phones and digital SLR cameras.</p> 
-            <p>Son, Brother, Husband, and Father. </p>
+            <p>Born sometime in the last millennium. Before personal computers, Internet, AI, smart phones and digital SLR cameras.</p>
+            <p>Son, Brother, Husband, and Father.</p>
             <p>Human, World Citizen, Adventurer.</p>
             <p>Humanitarian, Engineer, Photographer, DJ, Writer.</p>
             <p>Enjoys life and all the beauty in it.</p>
@@ -653,9 +632,9 @@
 
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" onclick="closeLightbox()">×</button>
-        <button class="lightbox-nav prev" onclick="navigateImage(-1)">‹</button>
-        <button class="lightbox-nav next" onclick="navigateImage(1)">›</button>
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <button class="lightbox-nav prev" onclick="navigateImage(-1)">&lsaquo;</button>
+        <button class="lightbox-nav next" onclick="navigateImage(1)">&rsaquo;</button>
         <div class="lightbox-content">
             <div class="lightbox-image">
                 <img id="lightbox-img" src="" alt="" style="display:none;">
@@ -671,7 +650,6 @@
     </div>
 
     <script>
-        // Load photos from external JSON file
         let photos = {};
 
         async function loadPhotos() {
@@ -687,7 +665,6 @@
         let currentCategory = '';
         let currentIndex = 0;
 
-        // Initialize galleries
         function initGalleries() {
             for (const [category, images] of Object.entries(photos)) {
                 const grid = document.getElementById(`${category}-grid`);
@@ -695,7 +672,7 @@
                     images.forEach((photo, index) => {
                         const item = document.createElement('div');
                         item.className = 'mosaic-item';
-                        
+
                         if (photo.type === 'video') {
                             item.innerHTML = `
                                 <video muted loop>
@@ -703,7 +680,6 @@
                                 </video>
                                 <div class="mosaic-title">${photo.title}</div>
                             `;
-                            // Play on hover
                             item.addEventListener('mouseenter', (e) => {
                                 e.target.querySelector('video').play();
                             });
@@ -716,7 +692,7 @@
                                 <div class="mosaic-title">${photo.title}</div>
                             `;
                         }
-                        
+
                         item.onclick = () => openLightbox(category, index);
                         grid.appendChild(item);
                     });
@@ -733,9 +709,9 @@
         function showSection(section) {
             document.getElementById('landing').style.display = 'none';
             document.querySelectorAll('.gallery-section, #about, .category-landing').forEach(s => s.classList.remove('active'));
-            const sectionElement = document.getElementById(section);
-            if (sectionElement) {
-                sectionElement.classList.add('active');
+            const el = document.getElementById(section);
+            if (el) {
+                el.classList.add('active');
                 document.querySelector('.home-btn').style.display = 'block';
             }
         }
@@ -756,6 +732,8 @@
         }
 
         function navigateImage(direction) {
+            const video = document.getElementById('lightbox-video');
+            if (video && !video.paused) video.pause();
             const images = photos[currentCategory];
             currentIndex = (currentIndex + direction + images.length) % images.length;
             updateLightbox();
@@ -766,7 +744,7 @@
             const img = document.getElementById('lightbox-img');
             const video = document.getElementById('lightbox-video');
             const videoSource = document.getElementById('lightbox-video-source');
-            
+
             if (photo.type === 'video') {
                 img.style.display = 'none';
                 video.style.display = 'block';
@@ -778,12 +756,11 @@
                 img.style.display = 'block';
                 img.src = photo.src;
             }
-            
+
             document.getElementById('lightbox-title').textContent = photo.title;
             document.getElementById('lightbox-description').textContent = photo.description;
         }
 
-        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (document.getElementById('lightbox').classList.contains('active')) {
                 if (e.key === 'ArrowLeft') navigateImage(-1);
@@ -792,23 +769,14 @@
             }
         });
 
-        // Disable right-click on all images
         document.addEventListener('contextmenu', function(e) {
-            if (e.target.tagName === 'IMG') {
-                e.preventDefault();
-                return false;
-            }
+            if (e.target.tagName === 'IMG') { e.preventDefault(); return false; }
         });
 
-        // Prevent drag and drop of images
         document.addEventListener('dragstart', function(e) {
-            if (e.target.tagName === 'IMG') {
-                e.preventDefault();
-                return false;
-            }
+            if (e.target.tagName === 'IMG') { e.preventDefault(); return false; }
         });
 
-        // Load photos on page load
         loadPhotos();
     </script>
 </body>

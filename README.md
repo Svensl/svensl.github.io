@@ -9,5 +9,5 @@ This readme explains how to modify and maintain the website
 ## Background Image
 
 # Notes
-- Need to add moon pictures/Ukraine Pictures/Edelweiss Pictures/DRC Pictures/France Hiking Pictures
+- Need to add moon pictures/Ukraine Pictures/Edelweiss Pictures/DRC Pictures/France Hiking Pictures/Edelweiss!
 - On Local Computer, run html file with LiveServer for preview before pushing to web (from VSC, right click on html.index and chose live server)
