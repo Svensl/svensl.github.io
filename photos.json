@@ -2,65 +2,87 @@
     "adventures-night": [
         {
             "src": "images/Adventures/Night/1C8A1217.jpg",
-            "title": "Ethiopia",
-            "description": "Erta Ale",
-            "lat": 46.2,
-            "lng": 6.5
+            "title": "Ethiopia - 09/01/2016",
+            "description": "Erta Ale Volcano",
+            "lat": 13.60626,
+            "lng": 40.661862
         },
         {
             "src": "images/Adventures/Night/1C8A2746.jpg",
-            "title": "1C8A2746",
-            "description": "Description"
+            "title": "Switzerland - 26/12/2016",
+            "description": "Evolène Night",
+            "lat": 46.109719,
+            "lng": 7.496584
         },
         {
             "src": "images/Adventures/Night/1C8A3535.jpg",
-            "title": "1C8A3535",
-            "description": "Description"
+            "title": "Switzerland - 321/07/2017",
+            "description": "First of August national celebration in Val d'Hérens",
+            "lat": 46.231383,
+            "lng": 7.443206
         },
         {
             "src": "images/Adventures/Night/1C8A3580.jpg",
-            "title": "1C8A3580",
-            "description": "Description"
+            "title": "Switzerland 12/08/2017",
+            "description": "Fireworks at the \"Fetes de Genève\"",
+            "lat": 46.206344,
+            "lng": 6.156652
         },
         {
             "src": "images/Adventures/Night/IMG_0004.jpg",
-            "title": "IMG_0004",
-            "description": "Description"
+            "title": "Georgia - 18/08/2012",
+            "description": "Holy Trinity Cathedral of Tbilisi - Sameba",
+            "lat": 41.697562,
+            "lng": 44.815567
         },
         {
             "src": "images/Adventures/Night/IMG_0077.jpg",
-            "title": "IMG_0077",
-            "description": "Description"
+            "title": "Morocco - 24/12/2010",
+            "description": "Desert night near Merzouga",
+            "lat": 31.142231,
+            "lng": -3.974514
         },
         {
             "src": "images/Adventures/Night/IMG_0143.jpg",
-            "title": "IMG_0143",
-            "description": "Description"
+            "title": "Morocco - 21/12/2010",
+            "description": "Essaouira street at night",
+            "lat": 31.513069,
+            "lng": -9.767612
         },
         {
             "src": "images/Adventures/Night/IMG_0296.jpg",
-            "title": "IMG_0296",
-            "description": "Description"
+            "title": "Morocco - 25/12/2010",
+            "description": "Desert night sky on Christmas",
+            "lat": 31.140836,
+            "lng": -4.014969
         },
         {
             "src": "images/Adventures/Night/IMG_0304.jpg",
-            "title": "IMG_0304",
-            "description": "Description"
+            "title": "Switzerland - 06/03/2011",
+            "description": "A sliver of a moon and a star in the Swiss alps",
+            "lat": 46.220255,
+            "lng": 7.601163
         },
         {
             "src": "images/Adventures/Night/IMG_0364.jpg",
-            "title": "IMG_0364",
-            "description": "Description"
+            "title": "Switzerland - 08/08/2009",
+            "description": "Geneva cathedral illuminated for \"Fêtes de Genève\"",
+            "lat": 46.204547,
+            "lng": 6.160288
         },
         {
             "src": "images/Adventures/Night/IMG_0637.jpg",
-            "title": "IMG_0637",
-            "description": "Description"
+            "title": "USA - 20/10/2006",
+            "description": "San Francisco at dusk",
+            "lat": 37.850442,
+            "lng": -122.222266
         },
         {
             "src": "images/Adventures/Night/IMG_0640.jpg",
-            "title": "IMG_0640",
-            "description": "Description"
+            "title": "Georgia - 14/09/2012",
+            "description": "Metekhi church of the Nativity of the Mother of God",
+            "lat": 41.691021,
+            "lng": 44.808985
         },
         {
             "src": "images/Adventures/Night/IMG_0742.jpg",
@@ -69,38 +91,52 @@
         },
         {
             "src": "images/Adventures/Night/IMG_0975.jpg",
-            "title": "IMG_0975",
-            "description": "Description"
+            "title": "Switzerland - 26/11/2010",
+            "description": "MOON!\n",
+            "lat": 46.202171,
+            "lng": 6.117405
         },
         {
             "src": "images/Adventures/Night/IMG_1356.jpg",
-            "title": "IMG_1356",
-            "description": "Description"
+            "title": "USA - 01/08/2011",
+            "description": "Pismo beach pier in California- With a sliver of a moon rising out of the ocean.",
+            "lat": 35.137686,
+            "lng": -120.642617
         },
         {
             "src": "images/Adventures/Night/IMG_1395.jpg",
-            "title": "IMG_1395",
-            "description": "Description"
+            "title": "USA - 12/11/2006",
+            "description": "Nightfall at Dugway Proving Grounds in Utah",
+            "lat": 40.222206,
+            "lng": -112.745893
         },
         {
             "src": "images/Adventures/Night/IMG_1809.jpg",
-            "title": "IMG_1809",
-            "description": "Description"
+            "title": "Georgia - 13/12/2014",
+            "description": "Parliament of Georgia by night with Christmas decorations",
+            "lat": 41.696973,
+            "lng": 44.798835
         },
         {
             "src": "images/Adventures/Night/IMG_2040.jpg",
-            "title": "IMG_2040",
-            "description": "Description"
+            "title": "Switzerland - 04/08/2012",
+            "description": "Lightning!",
+            "lat": 46.265275,
+            "lng": 6.211979
         },
         {
             "src": "images/Adventures/Night/IMG_2051.jpg",
-            "title": "IMG_2051",
-            "description": "Description"
+            "title": "Switzerland - 04/01/2015",
+            "description": "Moon rise form Junction Railway Bridge",
+            "lat": 46.201317,
+            "lng": 6.120925
         },
         {
             "src": "images/Adventures/Night/PICT0079.jpg",
-            "title": "PICT0079",
-            "description": "Description"
+            "title": "Switzerland - 25/06/2015",
+            "description": "Lightning!",
+            "lat": 46.265271,
+            "lng": 6.211964
         }
     ],
     "adventures-wanderlust": [
