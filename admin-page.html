@@ -373,6 +373,30 @@
             word-break: break-all;
         }
 
+        .filepath-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        .filepath-row .filepath {
+            flex: 1;
+        }
+
+        .date-taken {
+            flex-shrink: 0;
+            font-size: 11px;
+            color: #4ecca3;
+            white-space: nowrap;
+            font-family: monospace;
+        }
+
+        .date-taken.none {
+            color: #555;
+            font-style: italic;
+        }
+
         /* Map */
         .map-group label {
             display: flex;
@@ -556,7 +580,10 @@
             <div class="editor-form">
                 <div class="form-group">
                     <label>File Path</label>
-                    <span class="filepath" id="editor-filepath"></span>
+                    <div class="filepath-row">
+                        <span class="filepath" id="editor-filepath"></span>
+                        <span class="date-taken" id="editor-date-taken"></span>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Title</label>
@@ -598,6 +625,15 @@
         // --- Map state ---
         let map = null;          // Leaflet map instance (created once)
         let marker = null;       // current location marker
+
+        // Extract the "Date taken" value from a photo's metadata string.
+        // Metadata format: "Date taken: DD/MM/YYYY HH:MM • Camera: ... • ...".
+        // Returns the trimmed date string, or null if unavailable.
+        function extractDateTaken(metadata) {
+            if (!metadata || typeof metadata !== 'string') return null;
+            const match = metadata.match(/Date taken:\s*([^•]+)/);
+            return match ? match[1].trim() : null;
+        }
 
         // Initialize the Leaflet map once. Called lazily the first time a photo
         // is opened, because the map container has no size until the editor is visible.
@@ -895,6 +931,19 @@
 
             // Update form
             document.getElementById('editor-filepath').textContent = photo.src;
+
+            // Show "Date taken" parsed from the metadata string (format:
+            // "Date taken: DD/MM/YYYY HH:MM • Camera: ... • ..."). Falls back
+            // gracefully when an entry has no metadata or no date segment.
+            const dateEl = document.getElementById('editor-date-taken');
+            const dateTaken = extractDateTaken(photo.metadata);
+            if (dateTaken) {
+                dateEl.textContent = '📅 ' + dateTaken;
+                dateEl.classList.remove('none');
+            } else {
+                dateEl.textContent = 'No date';
+                dateEl.classList.add('none');
+            }
             document.getElementById('editor-title').value = photo.title || '';
             document.getElementById('editor-description').value = photo.description || '';
             document.getElementById('editor-type').checked = photo.type === 'video';

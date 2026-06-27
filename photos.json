@@ -168,177 +168,225 @@
         },
         {
             "src": "images/Adventures/Wanderlust/1C8A0508.jpg",
-            "title": "1C8A0508",
-            "description": "Description",
-            "metadata": "Date taken: 25/09/2015 13:41 • Camera: Canon EOS 5D Mark III • F-stop: f/5.6 • Exposure time: 1/400s • ISO Speed: 250 • Focal length: 24mm"
+            "title": "South Sudan - 25/09/2015",
+            "description": "Juba Airport",
+            "metadata": "Date taken: 25/09/2015 13:41 • Camera: Canon EOS 5D Mark III • F-stop: f/5.6 • Exposure time: 1/400s • ISO Speed: 250 • Focal length: 24mm",
+            "lat": 4.872518,
+            "lng": 31.596832
         },
         {
             "src": "images/Adventures/Wanderlust/1C8A0635.jpg",
-            "title": "1C8A0635",
-            "description": "Description",
-            "metadata": "Date taken: 19/10/2015 15:17 • Camera: Canon EOS 5D Mark III • F-stop: f/6.3 • Exposure time: 1/1000s • ISO Speed: 200 • Focal length: 57mm"
+            "title": "South Sudan - 19/10/2015",
+            "description": "Bentiu Protection of Civilian Camp",
+            "metadata": "Date taken: 19/10/2015 15:17 • Camera: Canon EOS 5D Mark III • F-stop: f/6.3 • Exposure time: 1/1000s • ISO Speed: 200 • Focal length: 57mm",
+            "lat": 9.327269,
+            "lng": 29.797262
         },
         {
             "src": "images/Adventures/Wanderlust/1C8A0670.jpg",
-            "title": "1C8A0670",
-            "description": "Description",
+            "title": "South Sudan - 21/10/2015",
+            "description": "Bentiu Airstrip Entrance - Very welcoming!",
             "metadata": "Date taken: 21/10/2015 11:07 • Camera: Canon EOS 5D Mark III • F-stop: f/8 • Exposure time: 1/250s • ISO Speed: 100 • Focal length: 24mm"
         },
         {
             "src": "images/Adventures/Wanderlust/1C8A0837.jpg",
-            "title": "1C8A0837",
-            "description": "Description",
-            "metadata": "Date taken: 19/12/2015 16:06 • Camera: Canon EOS 5D Mark III • F-stop: f/5 • Exposure time: 1/80s • ISO Speed: 5000 • Focal length: 67mm"
+            "title": "Ethiopia - 19/12/2015",
+            "description": "Tomb of Emperor Haile Selassie in Holy Trinity church in Addis Ababa ",
+            "metadata": "Date taken: 19/12/2015 16:06 • Camera: Canon EOS 5D Mark III • F-stop: f/5 • Exposure time: 1/80s • ISO Speed: 5000 • Focal length: 67mm",
+            "lat": 9.03081,
+            "lng": 38.766533
         },
         {
             "src": "images/Adventures/Wanderlust/1C8A1573.jpg",
-            "title": "1C8A1573",
-            "description": "Description",
-            "metadata": "Date taken: 27/02/2016 11:39 • Camera: Canon EOS 5D Mark III • F-stop: f/4.5 • Exposure time: 1/320s • ISO Speed: 400 • Focal length: 24mm"
+            "title": "Pakistan - 27/02/2016",
+            "description": "Badshahi Mosque ablution area in Lahore",
+            "metadata": "Date taken: 27/02/2016 11:39 • Camera: Canon EOS 5D Mark III • F-stop: f/4.5 • Exposure time: 1/320s • ISO Speed: 400 • Focal length: 24mm",
+            "lat": 31.587888,
+            "lng": 74.311086
         },
         {
             "src": "images/Adventures/Wanderlust/1C8A1580.jpg",
-            "title": "1C8A1580",
-            "description": "Description",
-            "metadata": "Date taken: 27/02/2016 11:45 • Camera: Canon EOS 5D Mark III • F-stop: f/9 • Exposure time: 1/320s • ISO Speed: 100 • Focal length: 24mm"
+            "title": "Pakistan - 27/02/2016",
+            "description": "Badshahi Mosque in Lahore",
+            "metadata": "Date taken: 27/02/2016 11:45 • Camera: Canon EOS 5D Mark III • F-stop: f/9 • Exposure time: 1/320s • ISO Speed: 100 • Focal length: 24mm",
+            "lat": 31.588269,
+            "lng": 74.310875
         },
         {
             "src": "images/Adventures/Wanderlust/1C8A1782.jpg",
-            "title": "1C8A1782",
-            "description": "Description",
-            "metadata": "Date taken: 07/05/2016 16:32 • Camera: Canon EOS 5D Mark III • F-stop: f/10 • Exposure time: 1/80s • ISO Speed: 100 • Focal length: 55mm"
+            "title": "France - 07/05/2016",
+            "description": "Bunker remnant of World War 2, slowly getting swallowed by the ocean",
+            "metadata": "Date taken: 07/05/2016 16:32 • Camera: Canon EOS 5D Mark III • F-stop: f/10 • Exposure time: 1/80s • ISO Speed: 100 • Focal length: 55mm",
+            "lat": 43.643863,
+            "lng": -1.446643
         },
         {
             "src": "images/Adventures/Wanderlust/1C8A2390.jpg",
-            "title": "1C8A2390",
-            "description": "Description",
-            "metadata": "Date taken: 05/11/2016 15:41 • Camera: Canon EOS 5D Mark III • F-stop: f/13 • Exposure time: 1/250s • ISO Speed: 250 • Focal length: 24mm"
+            "title": "Haiti - 05/11/2016",
+            "description": "Jalouzi Ghetto next to Pétion Ville in Port-au -Prince",
+            "metadata": "Date taken: 05/11/2016 15:41 • Camera: Canon EOS 5D Mark III • F-stop: f/13 • Exposure time: 1/250s • ISO Speed: 250 • Focal length: 24mm",
+            "lat": 18.509963,
+            "lng": -72.289247
         },
         {
             "src": "images/Adventures/Wanderlust/20191015_164353.jpg",
-            "title": "20191015_164353",
-            "description": "Description",
-            "metadata": "Date taken: 15/10/2019 16:43 • Camera: samsung SM-G970F • F-stop: f/2.4 • Exposure time: 1/180s • ISO Speed: 50 • Focal length: 4mm"
+            "title": "Afghanistan - 15/10/2019",
+            "description": "Windows covered with advertising in Kabul",
+            "metadata": "Date taken: 15/10/2019 16:43 • Camera: samsung SM-G970F • F-stop: f/2.4 • Exposure time: 1/180s • ISO Speed: 50 • Focal length: 4mm",
+            "lat": 34.547711,
+            "lng": 69.254723
         },
         {
             "src": "images/Adventures/Wanderlust/20231014_104017(1)(1).jpg",
-            "title": "20231014_104017(1)(1)",
-            "description": "Description",
+            "title": "Germany - 14/10/2023",
+            "description": "The famous Kölner Dom. The Cologne Cathedral.\nThis is the only image in the whole website that has been edited to remove people. There were a lot of people in front of the cathedral in reality. ",
             "lat": 50.941125,
             "lng": 6.95642,
             "metadata": "Date taken: 14/10/2023 10:40 • Camera: samsung SM-G970F • F-stop: f/2.2 • Exposure time: 1/380s • ISO Speed: 50 • Focal length: 2mm"
         },
         {
             "src": "images/Adventures/Wanderlust/20250313_184928.jpg",
-            "title": "20250313_184928",
-            "description": "Description",
+            "title": "Ukraine - 13/03/2025",
+            "description": "An war damaged organ on display in the Lviv train station",
             "lat": 49.839755,
             "lng": 23.994327,
             "metadata": "Date taken: 13/03/2025 18:49 • Camera: samsung Galaxy S23 • F-stop: f/1.8 • Exposure time: 1/25s • ISO Speed: 640 • Focal length: 5mm"
         },
         {
             "src": "images/Adventures/Wanderlust/DJI_0371.jpg",
-            "title": "DJI_0371",
-            "description": "Description",
+            "title": "France - 03/01/2025",
+            "description": "Snowed in trees from the sky",
             "lat": 47.033845,
             "lng": 6.566883,
             "metadata": "Date taken: 03/01/2025 15:59 • Camera: DJI FC7203 • F-stop: f/2.8 • Exposure time: 1/80s • ISO Speed: 100 • Focal length: 4mm"
         },
         {
             "src": "images/Adventures/Wanderlust/IMG_0019.jpg",
-            "title": "IMG_0019",
-            "description": "Description",
-            "metadata": "Date taken: 15/09/2013 01:21 • Camera: Canon EOS 7D • F-stop: f/7.1 • Exposure time: 1/160s • ISO Speed: 500 • Focal length: 11mm"
+            "title": "USA - 15/09/2013",
+            "description": "Trump International Hotel and Tower in Chicago",
+            "metadata": "Date taken: 15/09/2013 01:21 • Camera: Canon EOS 7D • F-stop: f/7.1 • Exposure time: 1/160s • ISO Speed: 500 • Focal length: 11mm",
+            "lat": 41.889252,
+            "lng": -87.625912
         },
         {
             "src": "images/Adventures/Wanderlust/IMG_0104.jpg",
-            "title": "IMG_0104",
-            "description": "Description",
-            "metadata": "Date taken: 14/07/2010 14:31 • Camera: Canon EOS 7D • F-stop: f/2.8 • Exposure time: 1/250s • ISO Speed: 800 • Focal length: 17mm"
+            "title": "Switzerland - 14/07/2010",
+            "description": "Inside the Rhône Glacier. Probably melted out today :-(",
+            "metadata": "Date taken: 14/07/2010 14:31 • Camera: Canon EOS 7D • F-stop: f/2.8 • Exposure time: 1/250s • ISO Speed: 800 • Focal length: 17mm",
+            "lat": 46.583281,
+            "lng": 8.388856
         },
         {
             "src": "images/Adventures/Wanderlust/IMG_0172.jpg",
-            "title": "IMG_0172",
-            "description": "Description",
-            "metadata": "Date taken: 21/12/2010 09:39 • Camera: Canon EOS 7D • F-stop: f/4 • Exposure time: 1/200s • ISO Speed: 500 • Focal length: 20mm"
+            "title": "Morocco 21/12/2010",
+            "description": "Boats in Essaouira",
+            "metadata": "Date taken: 21/12/2010 09:39 • Camera: Canon EOS 7D • F-stop: f/4 • Exposure time: 1/200s • ISO Speed: 500 • Focal length: 20mm",
+            "lat": 31.508583,
+            "lng": -9.772558
         },
         {
             "src": "images/Adventures/Wanderlust/IMG_0221.jpg",
-            "title": "IMG_0221",
-            "description": "Description",
-            "metadata": "Date taken: 23/06/2011 08:03 • Camera: Canon EOS 7D • F-stop: f/11 • Exposure time: 1/80s • ISO Speed: 100 • Focal length: 55mm"
+            "title": "USA - 23/06/2011",
+            "description": "Dillingham Boat Harbor in Alaska",
+            "metadata": "Date taken: 23/06/2011 08:03 • Camera: Canon EOS 7D • F-stop: f/11 • Exposure time: 1/80s • ISO Speed: 100 • Focal length: 55mm",
+            "lat": 59.039086,
+            "lng": -158.476835
         },
         {
             "src": "images/Adventures/Wanderlust/IMG_0227.jpg",
-            "title": "IMG_0227",
-            "description": "Description",
-            "metadata": "Date taken: 21/12/2010 10:29 • Camera: Canon EOS 7D • F-stop: f/9 • Exposure time: 1/125s • ISO Speed: 200 • Focal length: 55mm"
+            "title": "Morocco - 21/12/2010",
+            "description": "Fishing boats in Essaouira",
+            "metadata": "Date taken: 21/12/2010 10:29 • Camera: Canon EOS 7D • F-stop: f/9 • Exposure time: 1/125s • ISO Speed: 200 • Focal length: 55mm",
+            "lat": 31.509273,
+            "lng": -9.773679
         },
         {
             "src": "images/Adventures/Wanderlust/IMG_0380.jpg",
-            "title": "IMG_0380",
-            "description": "Description",
-            "metadata": "Date taken: 22/07/2011 12:17 • Camera: Canon EOS 7D • F-stop: f/9 • Exposure time: 1/160s • ISO Speed: 200 • Focal length: 17mm"
+            "title": "USA - 22/07/2011",
+            "description": "Point Sur Lighthouse in Big Sur Coast in California",
+            "metadata": "Date taken: 22/07/2011 12:17 • Camera: Canon EOS 7D • F-stop: f/9 • Exposure time: 1/160s • ISO Speed: 200 • Focal length: 17mm",
+            "lat": 36.306331,
+            "lng": -121.90151
         },
         {
             "src": "images/Adventures/Wanderlust/IMG_0397.jpg",
-            "title": "IMG_0397",
-            "description": "Description",
-            "metadata": "Date taken: 29/10/2009 10:11 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/2.8 • Exposure time: 1/1000s • ISO Speed: 100 • Focal length: 55mm"
+            "title": "Madagascar - 29/10/2009",
+            "description": "Boat ride between Toliara and Anakao",
+            "metadata": "Date taken: 29/10/2009 10:11 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/2.8 • Exposure time: 1/1000s • ISO Speed: 100 • Focal length: 55mm",
+            "lat": -23.636976,
+            "lng": 43.537592
         },
         {
             "src": "images/Adventures/Wanderlust/IMG_0455.jpg",
-            "title": "IMG_0455",
-            "description": "Description",
-            "metadata": "Date taken: 29/08/2012 11:09 • Camera: Canon EOS 7D • F-stop: f/3.5 • Exposure time: 1/60s • ISO Speed: 2000 • Focal length: 10mm"
+            "title": "Georgia - 29/08/2012",
+            "description": "Inside the Sapara monastery in the south west of the country. It was built in the 9th century. It is on a hillside in a forest. Access is through a windy uphill road through the forest which adds to the charm of discovering the place as it is quite secluded. \n",
+            "metadata": "Date taken: 29/08/2012 11:09 • Camera: Canon EOS 7D • F-stop: f/3.5 • Exposure time: 1/60s • ISO Speed: 2000 • Focal length: 10mm",
+            "lat": 41.602262,
+            "lng": 43.030937
         },
         {
             "src": "images/Adventures/Wanderlust/IMG_0502.jpg",
-            "title": "IMG_0502",
-            "description": "Description",
-            "metadata": "Date taken: 01/07/2011 00:52 • Camera: Canon EOS 7D • F-stop: f/3.5 • Exposure time: 1/20s • ISO Speed: 2500 • Focal length: 40mm"
+            "title": "USA - 07/07/2011",
+            "description": "My cousins trusted fishing boat in Alaska",
+            "metadata": "Date taken: 01/07/2011 00:52 • Camera: Canon EOS 7D • F-stop: f/3.5 • Exposure time: 1/20s • ISO Speed: 2500 • Focal length: 40mm",
+            "lat": 58.855903,
+            "lng": -158.490678
         },
         {
             "src": "images/Adventures/Wanderlust/IMG_0580.jpg",
-            "title": "IMG_0580",
-            "description": "Description",
-            "metadata": "Date taken: 17/07/2010 10:15 • Camera: Canon EOS 7D • F-stop: f/5.6 • Exposure time: 1/125s • ISO Speed: 320 • Focal length: 54mm"
+            "title": "Switzerland - 17/07/2010",
+            "description": "Wilhelm Tell Statue in Altdorf in Switzerland",
+            "metadata": "Date taken: 17/07/2010 10:15 • Camera: Canon EOS 7D • F-stop: f/5.6 • Exposure time: 1/125s • ISO Speed: 320 • Focal length: 54mm",
+            "lat": 46.88175,
+            "lng": 8.643979
         },
         {
             "src": "images/Adventures/Wanderlust/IMG_0800_1_2_3_tonemapped_tonemapped.jpg",
-            "title": "IMG_0800_1_2_3_tonemapped_tonemapped",
-            "description": "Description",
-            "metadata": "Date taken: 07/10/2012 16:07 • Camera: Canon EOS 7D • F-stop: f/10 • Exposure time: 1/80s • ISO Speed: 400 • Focal length: 10mm"
+            "title": "Georgia - 07/10/2012",
+            "description": "The Chronicles of Georgia monument. Located near the Tbilisi see. \nI visited one afternoon with a colleague and took several pictures up there. I was in an HDR period and was using and abusing those compositions quite a bit. But I do like how this one turned out with the shade on the floor and the ray of light in between columns.\n",
+            "metadata": "Date taken: 07/10/2012 16:07 • Camera: Canon EOS 7D • F-stop: f/10 • Exposure time: 1/80s • ISO Speed: 400 • Focal length: 10mm",
+            "lat": 41.770596,
+            "lng": 44.810478
         },
         {
             "src": "images/Adventures/Wanderlust/IMG_0838.jpg",
-            "title": "IMG_0838",
-            "description": "Description",
-            "metadata": "Date taken: 07/10/2012 16:20 • Camera: Canon EOS 7D • F-stop: f/11 • Exposure time: 1/400s • ISO Speed: 400 • Focal length: 400mm"
+            "title": "Georgia - 07/10/2012",
+            "description": "These are buildings on the outskirts of Tbilisi. Remnants from the Soviet Union with fairly brutal architecture.\nTbilisi is a city of a lot of contrasts. Old and new, rich and poor. The center is absolutely marvellous and a tourist delight. It has nothing to envy to parts of Paris or Istanbul and is a really nice place to visit. Great outdoor spaces and terraces, fountains, really good restaurants, nice bars, and old town and a newer part of town, interesting architecture, a lot of history, etc. \nBut then, on the outskirts, it can quickly become ghetto like. The soviet era buildings can be quite lugubrious and actually a bit scary.\nTbilisi is never the less a jewel in Eurasia and deserves to be visited. \n",
+            "metadata": "Date taken: 07/10/2012 16:20 • Camera: Canon EOS 7D • F-stop: f/11 • Exposure time: 1/400s • ISO Speed: 400 • Focal length: 400mm",
+            "lat": 41.770828,
+            "lng": 44.811114
         },
         {
             "src": "images/Adventures/Wanderlust/IMG_1224.jpg",
-            "title": "IMG_1224",
-            "description": "Description",
-            "metadata": "Date taken: 01/08/2011 20:12 • Camera: Canon EOS 7D • F-stop: f/22 • Exposure time: 1s • ISO Speed: 100 • Focal length: 17mm"
+            "title": "USA - 01/08/2011",
+            "description": "Pismo beach pier at dawn",
+            "metadata": "Date taken: 01/08/2011 20:12 • Camera: Canon EOS 7D • F-stop: f/22 • Exposure time: 1s • ISO Speed: 100 • Focal length: 17mm",
+            "lat": 35.13787,
+            "lng": -120.642982
         },
         {
             "src": "images/Adventures/Wanderlust/IMG_2177.jpg",
-            "title": "IMG_2177",
-            "description": "Description",
-            "metadata": "Date taken: 15/03/2015 11:08 • Camera: Canon EOS 7D • F-stop: f/4.5 • Exposure time: 1/40s • ISO Speed: 1250 • Focal length: 22mm"
+            "title": "Niger - 15/03/2015",
+            "description": "Picture form inside the Great Mosque of Niamey",
+            "metadata": "Date taken: 15/03/2015 11:08 • Camera: Canon EOS 7D • F-stop: f/4.5 • Exposure time: 1/40s • ISO Speed: 1250 • Focal length: 22mm",
+            "lat": 13.522115,
+            "lng": 2.132883
         },
         {
             "src": "images/Adventures/Wanderlust/IMG_2546.jpg",
-            "title": "IMG_2546",
-            "description": "Description",
-            "metadata": "Date taken: 19/04/2015 09:20 • Camera: Canon EOS 7D • F-stop: f/10 • Exposure time: 1/320s • ISO Speed: 200 • Focal length: 200mm"
+            "title": "Niger - 19/04/2015",
+            "description": "Elephants along the Niger River in the W National Park",
+            "metadata": "Date taken: 19/04/2015 09:20 • Camera: Canon EOS 7D • F-stop: f/10 • Exposure time: 1/320s • ISO Speed: 200 • Focal length: 200mm",
+            "lat": 12.430793,
+            "lng": 2.786067
         },
         {
             "src": "images/Adventures/Wanderlust/PICT0555.jpg",
-            "title": "PICT0555",
-            "description": "Description",
-            "metadata": "Date taken: 18/08/2004 08:42 • Camera: Minolta Co., Ltd. DiMAGE F300 • F-stop: f/4 • Exposure time: 1/90s • ISO Speed: 64 • Focal length: 8mm"
+            "title": "Switzerland - 18/008/2004",
+            "description": "Escaliers des Savetiers a Lausanne",
+            "metadata": "Date taken: 18/08/2004 08:42 • Camera: Minolta Co., Ltd. DiMAGE F300 • F-stop: f/4 • Exposure time: 1/90s • ISO Speed: 64 • Focal length: 8mm",
+            "lat": 46.52074,
+            "lng": 6.634273
         }
     ],
     "adventures-window-seat": [
@@ -468,48 +516,36 @@
             "src": "images/Adventures/Window Seat/P1000524.jpg",
             "title": "P1000524",
             "description": "Description",
-            "lat": 5861.688255,
-            "lng": 5861.688255,
             "metadata": "Date taken: 29/04/2018 15:04 • Camera: Panasonic DMC-TZ61 • F-stop: f/5.3 • Exposure time: 1/250s • ISO Speed: 100 • Focal length: 24mm"
         },
         {
             "src": "images/Adventures/Window Seat/P1010303.jpg",
             "title": "P1010303",
             "description": "Description",
-            "lat": 5861.688255,
-            "lng": 5861.688255,
             "metadata": "Date taken: 15/03/2019 15:05 • Camera: Panasonic DMC-TZ61 • F-stop: f/5.6 • Exposure time: 1/320s • ISO Speed: 200 • Focal length: 38mm"
         },
         {
             "src": "images/Adventures/Window Seat/P1010374.jpg",
             "title": "P1010374",
             "description": "Description",
-            "lat": 5861.688255,
-            "lng": 5861.688255,
             "metadata": "Date taken: 18/10/2019 07:41 • Camera: Panasonic DMC-TZ61 • F-stop: f/5.5 • Exposure time: 1/400s • ISO Speed: 100 • Focal length: 29mm"
         },
         {
             "src": "images/Adventures/Window Seat/P1010526.jpg",
             "title": "P1010526",
             "description": "Description",
-            "lat": 5861.688255,
-            "lng": 5861.688255,
             "metadata": "Date taken: 06/03/2020 11:59 • Camera: Panasonic DMC-TZ61 • F-stop: f/5.6 • Exposure time: 1/1250s • ISO Speed: 100 • Focal length: 41mm"
         },
         {
             "src": "images/Adventures/Window Seat/P1010546.jpg",
             "title": "P1010546",
             "description": "Description",
-            "lat": 5861.688255,
-            "lng": 5861.688255,
             "metadata": "Date taken: 06/03/2020 12:04 • Camera: Panasonic DMC-TZ61 • F-stop: f/4.3 • Exposure time: 1/1600s • ISO Speed: 100 • Focal length: 11mm"
         },
         {
             "src": "images/Adventures/Window Seat/P1010550.jpg",
             "title": "P1010550",
             "description": "Description",
-            "lat": 5861.688255,
-            "lng": 5861.688255,
             "metadata": "Date taken: 06/03/2020 12:10 • Camera: Panasonic DMC-TZ61 • F-stop: f/6.3 • Exposure time: 1/2000s • ISO Speed: 100 • Focal length: 45mm"
         }
     ],
@@ -1182,8 +1218,6 @@
             "src": "images/Life/People/P1010173.jpg",
             "title": "P1010173",
             "description": "Description",
-            "lat": 5861.688255,
-            "lng": 5861.688255,
             "metadata": "Date taken: 01/02/2019 11:48 • Camera: Panasonic DMC-TZ61 • F-stop: f/3.3 • Exposure time: 1/800s • ISO Speed: 160 • Focal length: 4mm"
         }
     ],

@@ -149,8 +149,10 @@ def extract_exif_data(filepath):
         if gps_info:
             lat, lng = extract_gps_coords(gps_info)
             if lat is not None and lng is not None:
-                result["lat"] = round(lat, 6)
-                result["lng"] = round(lng, 6)
+                # Validate coordinate ranges
+                if -90 <= lat <= 90 and -180 <= lng <= 180:
+                    result["lat"] = round(lat, 6)
+                    result["lng"] = round(lng, 6)
 
         return result
 
