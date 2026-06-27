@@ -606,9 +606,11 @@
         },
         {
             "src": "images/Landscapes/1C8A4132.jpg",
-            "title": "Title 16",
+            "title": "France - 28/11/2017",
             "description": "Description",
-            "metadata": "Date taken: 28/11/2017 23:03 • Camera: Canon EOS 5D Mark III • F-stop: f/5.6 • Exposure time: 1/60s • ISO Speed: 500 • Focal length: 24mm"
+            "metadata": "Date taken: 28/11/2017 23:03 • Camera: Canon EOS 5D Mark III • F-stop: f/5.6 • Exposure time: 1/60s • ISO Speed: 500 • Focal length: 24mm",
+            "lat": 16.396566,
+            "lng": -61.605603
         },
         {
             "src": "images/Landscapes/1C8A4176.jpg",
@@ -686,9 +688,11 @@
         },
         {
             "src": "images/Landscapes/IMG_0117.jpg",
-            "title": "IMG_0117",
-            "description": "Description",
-            "metadata": "Date taken: 20/01/2007 14:48 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/6.3 • Exposure time: 1/100s • ISO Speed: 100 • Focal length: 18mm"
+            "title": "USA - 20/01/2008",
+            "description": "Waipi'o Valley in Hawaii - The Valley of Kings",
+            "metadata": "Date taken: 20/01/2007 14:48 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/6.3 • Exposure time: 1/100s • ISO Speed: 100 • Focal length: 18mm",
+            "lat": 20.117855,
+            "lng": -155.583728
         },
         {
             "src": "images/Landscapes/IMG_0197.jpg",
@@ -710,9 +714,11 @@
         },
         {
             "src": "images/Landscapes/IMG_0332.jpg",
-            "title": "Title 31",
-            "description": "Description",
-            "metadata": "Date taken: 29/10/2009 09:42 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/7.1 • Exposure time: 1/250s • ISO Speed: 100 • Focal length: 10mm"
+            "title": "Madagascar - 29/10/2009",
+            "description": "Anakao Beach",
+            "metadata": "Date taken: 29/10/2009 09:42 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/7.1 • Exposure time: 1/250s • ISO Speed: 100 • Focal length: 10mm",
+            "lat": -23.646431,
+            "lng": 43.650228
         },
         {
             "src": "images/Landscapes/IMG_0595_6_7_8_9_fused.jpg",
