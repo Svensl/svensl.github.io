@@ -21,7 +21,7 @@
         /* Landing Page */
         #landing {
             height: 100vh;
-            background: url('images/1C8A0980.jpg') center/cover no-repeat;
+            background: url('images/1C8A1846.jpg') center/cover no-repeat;
             position: relative;
         }
 
@@ -284,6 +284,23 @@
             margin-bottom: 15px;
             font-weight: 300;
             flex-shrink: 0;
+        }
+
+        .lightbox-metadata {
+            font-style: italic;
+            font-size: 13px;
+            color: #999;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            flex-shrink: 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 12px;
+        }
+
+        .lightbox-metadata span.meta-label {
+            color: #bbb;
+            font-style: normal;
+            font-weight: 500;
         }
 
         .lightbox-info p {
@@ -602,6 +619,10 @@
                 line-height: 1.5;
             }
 
+            .lightbox-metadata {
+                font-size: 11px;
+            }
+
             .mosaic {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
@@ -632,7 +653,7 @@
     <!-- Adventures Category Landing -->
     <div id="adventures-landing" class="category-landing">
         <video class="category-video" autoplay muted loop playsinline>
-            <source src="videos/Khartoum_TukTuk_720p.mp4" type="video/mp4">
+            <source src="videos/Khartoum_TukTuk.mp4" type="video/mp4">
         </video>
         <div class="category-overlay">
             <h2>Adventures</h2>
@@ -645,10 +666,7 @@
     </div>
 
     <!-- Life Category Landing -->
-    <div id="life-landing" class="category-landing">
-        <video class="category-video" autoplay muted loop playsinline>
-            <source src="videos/20190802_215709_720p.mp4" type="video/mp4">
-        </video>
+    <div id="life-landing" class="category-landing" style="background-image: url('images/Life/People/IMG_0023.jpg');">
         <div class="category-overlay">
             <h2>Life</h2>
             <div class="category-buttons">
@@ -741,6 +759,7 @@
             </div>
             <div class="lightbox-info">
                 <h3 id="lightbox-title"></h3>
+                <div class="lightbox-metadata" id="lightbox-metadata"></div>
                 <p id="lightbox-description"></p>
             </div>
         </div>
@@ -846,6 +865,7 @@
             const img = document.getElementById('lightbox-img');
             const video = document.getElementById('lightbox-video');
             const videoSource = document.getElementById('lightbox-video-source');
+            const metadataDiv = document.getElementById('lightbox-metadata');
 
             if (photo.type === 'video') {
                 img.style.display = 'none';
@@ -861,6 +881,15 @@
 
             document.getElementById('lightbox-title').textContent = photo.title;
             document.getElementById('lightbox-description').textContent = photo.description;
+
+            // Display metadata from photos.json
+            if (photo.metadata) {
+                metadataDiv.innerHTML = '<span class="meta-label">Metadata:</span> ' + photo.metadata;
+                metadataDiv.style.display = 'block';
+            } else {
+                metadataDiv.innerHTML = '';
+                metadataDiv.style.display = 'none';
+            }
         }
 
         document.addEventListener('keydown', (e) => {
