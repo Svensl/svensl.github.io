@@ -2,8 +2,10 @@
     "adventures-night": [
         {
             "src": "images/Adventures/Night/1C8A1217.jpg",
-            "title": "1C8A1217",
-            "description": "Description"
+            "title": "Ethiopia",
+            "description": "Erta Ale",
+            "lat": 46.2,
+            "lng": 6.5
         },
         {
             "src": "images/Adventures/Night/1C8A2746.jpg",

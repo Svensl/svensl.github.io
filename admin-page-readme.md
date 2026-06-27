@@ -39,22 +39,22 @@ The Content Manager (`admin.html`) is a local tool for editing photo titles and 
 ```
 ┌──────────────────────────────────────────────────────────────┐
 │  Top Bar                              [+ Add] [Export JSON]  │
-├────────────┬──────────────────────────────┬──────────────────┤
-│            │  Stats: Photos | Videos |    │                  │
-│  Sidebar   │  Described                   │  Editor Panel    │
-│            ├──────────────────────────────┤                  │
-│  Category  │                              │  Preview         │
-│  List      │  Thumbnail Grid              │  Title field     │
-│            │                              │  Description     │
-│            │                              │  field           │
-│            │                              │                  │
-│            │                              │  [Prev] [Next]   │
-└────────────┴──────────────────────────────┴──────────────────┘
+├────────────┬──────────────┬──────────────────────────────────┤
+│            │ Stats: Photos│                                  │
+│  Sidebar   │ Videos | GPS │  Editor Panel (~2/3 of screen)   │
+│            ├──────────────┤                                  │
+│  Category  │              │  Title field                     │
+│  List      │  Thumbnail   │  Description field               │
+│            │  Grid        │  Map (click to set location)     │
+│            │ (selected    │   • Street / Satellite toggle    │
+│            │  tile is     │                                  │
+│            │  highlighted)│  [Prev] [Next]                   │
+└────────────┴──────────────┴──────────────────────────────────┘
 ```
 
 - **Sidebar (left):** Lists all photo categories with item counts
-- **Thumbnail Grid (center):** Shows all photos in the selected category
-- **Editor Panel (right):** Appears when a photo is selected, shows preview and editable fields
+- **Thumbnail Grid (center):** Shows all photos in the selected category. The currently selected photo is highlighted with a red ring and serves as the live preview (the editor panel no longer shows a separate preview image).
+- **Editor Panel (right):** Appears when a photo is selected and takes up roughly two-thirds of the screen. Shows the editable title and description fields and an interactive map for setting the location.
 
 ---
 
@@ -74,20 +74,29 @@ The thumbnail grid will populate with all images in that category.
 
 ### Step 2: Select a Photo
 
-Click any thumbnail to open the editor panel on the right. You will see:
+Click any thumbnail to open the editor panel on the right. The selected thumbnail is **highlighted with a red ring** in the center grid and acts as your live preview. The editor panel shows:
 
-- A **preview** of the image or video
 - The **file path**
 - An editable **Title** field
 - An editable **Description** text area
+- An interactive **map** for setting the location
 - A **video toggle** checkbox
 
-### Step 3: Edit Title and Description
+### Step 3: Edit Title, Description, and Location
 
 - Click into the **Title** field and type your title
 - Click into the **Description** field and type your description
 - Press **Enter** for line breaks within the description (these will display as paragraphs on the website)
+- Set the **location** by clicking on the map (see below). This stores `lat` and `lng` in `photos.json`. Location is optional.
 - Changes are saved in memory immediately as you type
+
+**Setting a location on the map:**
+
+- **Click anywhere on the map** to drop a marker. The latitude and longitude are stored automatically and shown beneath the map.
+- **Drag the marker** to fine-tune the position; the coordinates update as you drop it.
+- Use the **Street / Satellite** toggle in the top-right corner of the map to switch base maps. Satellite imagery is useful for placing a marker on a precise natural feature.
+- Click **Clear location** to remove the coordinates from the entry.
+- When a photo already has coordinates, the map opens centered on that location with the marker in place.
 
 ### Step 4: Navigate Between Photos
 
@@ -112,6 +121,7 @@ You can move between photos in three ways:
 ### Visual Indicators
 
 - **Green bar** on a thumbnail label: This photo has a description (other than the default "Description" placeholder)
+- **Green "GPS" badge** on a thumbnail: This entry has GPS coordinates
 - **Red "VIDEO" badge** on a thumbnail: This entry is a video file
 - **Index number** on each thumbnail: Shows the display order on the website
 
@@ -122,6 +132,7 @@ When a category is selected, the stats bar shows:
 - **Photos:** Number of image files
 - **Videos:** Number of video files
 - **With descriptions:** Number of entries that have been given a real description
+- **With GPS:** Number of entries that have GPS coordinates
 
 ### Adding a New Entry
 
@@ -177,6 +188,38 @@ Make sure your `photos.json` is saved with **UTF-8 encoding**. This is important
 ### Line Breaks in Descriptions
 
 When you press Enter in the description field, it creates a real line break. In the exported JSON, these appear as `\n` characters. The website's CSS (`white-space: pre-wrap`) ensures these display as proper paragraph breaks.
+
+### GPS Coordinates and the Map
+
+Coordinates are set by clicking the interactive map in the editor panel. They are stored in WGS84 Decimal Degrees format. Each entry in `photos.json` can optionally include `lat` and `lng` fields:
+
+```json
+{
+    "src": "images/Orange/1C8A0438.jpg",
+    "title": "Marseilles",
+    "description": "Planete Mars",
+    "lat": 43.2965,
+    "lng": 5.3698
+}
+```
+
+Both fields are written together: clicking the map (or dragging the marker) stores `lat` and `lng`, and **Clear location** removes both. An entry either has both fields or neither.
+
+**Base maps:** The map offers two base layers, switchable from the toggle in the top-right corner:
+
+- **Street** — OpenStreetMap tiles
+- **Satellite** — Esri World Imagery (aerial/satellite)
+
+**Map requires an internet connection.** The map tiles are loaded from online services (OpenStreetMap and Esri), so the map area will appear blank if you are offline. Editing titles and descriptions still works offline; only the map needs connectivity. The Esri satellite layer is a free public tile service used here without an API key, which is fine for this local single-user tool.
+
+**Quick reference for common locations** (in case you want to verify a marker landed in the right place):
+
+| Location | Latitude | Longitude |
+|----------|----------|-----------|
+| Geneva | 46.2044 | 6.1432 |
+| Danakil, Ethiopia | 14.2417 | 40.3000 |
+| Marseilles | 43.2965 | 5.3698 |
+| Port-au-Prince, Haiti | 18.5944 | -72.3074 |
 
 ---
 

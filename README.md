@@ -1,265 +1,163 @@
-# 2SL Photography - Content Manager
+# 2SL Photography - Website
 
 ## Overview
 
-The Content Manager (`admin.html`) is a local tool for editing photo titles and descriptions on the 2SL Photography website. It provides a visual interface to browse your photo categories, preview images, and update the `photos.json` file that powers the website.
+`index.html` is the public photography portfolio website for 2SL Photography. It is a single self-contained HTML file (HTML, CSS, and JavaScript all in one) that displays photos and videos organized into categories, with a full-screen landing image, category navigation, a mosaic gallery, and a lightbox viewer.
 
-> **Important:** This tool is for local use only. It is not deployed on the web and should not be uploaded to GitHub Pages.
+The site reads all of its content from `photos.json`, so you never need to edit `index.html` to add, remove, or re-caption photos. Content is managed separately (see **Related Files** below).
 
----
-
-## Prerequisites
-
-- **VS Code** with the **Live Server** extension installed
-- Your website files in the same folder:
-  ```
-  svensl.github.io/
-    index.html        ← Website
-    admin.html        ← Content Manager
-    photos.json       ← Photo data (titles, descriptions)
-    images/           ← Photo files
-    videos/           ← Video files
-  ```
+> This is the file that **is** deployed to the web via GitHub Pages.
 
 ---
 
-## Getting Started
+## How It Works
 
-1. Open the `svensl.github.io` folder in VS Code
-2. Right-click on `admin.html`
-3. Select **"Open with Live Server"**
-4. The Content Manager opens in your browser
-
-> **Note:** You must use Live Server. Opening `admin.html` directly by double-clicking will not work due to browser security restrictions.
-
----
-
-## Interface Layout
+When the page loads, a script fetches `photos.json` and builds each category's gallery from the entries it finds. Each entry provides a file path (`src`), a `title`, a `description`, and optionally a location (`lat`/`lng`) and a `type` of `video`.
 
 ```
-┌──────────────────────────────────────────────────────────────┐
-│  Top Bar                              [+ Add] [Export JSON]  │
-├────────────┬──────────────────────────────┬──────────────────┤
-│            │  Stats: Photos | Videos |    │                  │
-│  Sidebar   │  Described | GPS             │  Editor Panel    │
-│            ├──────────────────────────────┤                  │
-│  Category  │                              │  Preview         │
-│  List      │  Thumbnail Grid              │  Title field     │
-│            │                              │  Description     │
-│            │                              │  field           │
-│            │                              │  Lat / Lng       │
-│            │                              │                  │
-│            │                              │  [Prev] [Next]   │
-└────────────┴──────────────────────────────┴──────────────────┘
+index.html  ──reads──>  photos.json  ──points to──>  images/ and videos/
 ```
 
-- **Sidebar (left):** Lists all photo categories with item counts
-- **Thumbnail Grid (center):** Shows all photos in the selected category
-- **Editor Panel (right):** Appears when a photo is selected, shows preview and editable fields
+Because everything is driven by `photos.json`, the website's appearance updates automatically whenever that file changes.
 
 ---
 
-## Workflow
+## Page Structure
 
-### Step 1: Select a Category
+### Landing Page
 
-Click any category in the left sidebar. Categories are grouped by section:
+A full-screen background image (currently `images/1C8A0980.jpg`) shown when the site first loads.
 
-- **Adventures:** Night, Wanderlust, Window Seat
-- **Landscapes**
-- **Life:** Fauna, Flora, People
-- **Orange**
-- **Water**
+### Navigation Bar
 
-The thumbnail grid will populate with all images in that category.
+A fixed bar across the top with the site title and tabs:
 
-### Step 2: Select a Photo
+- **Adventures** — opens a category landing page with a background video and three sub-galleries: Night, Wanderlust, Window Seat
+- **Landscapes** — opens the Landscapes gallery directly
+- **Life** — opens a category landing page with a background video and three sub-galleries: Fauna, Flora, People
+- **Orange** — opens the Orange gallery directly
+- **Water** — opens the Water gallery directly
+- **About** — opens the About page
 
-Click any thumbnail to open the editor panel on the right. You will see:
+A **Home** button appears (bottom-right on mobile, top-right on desktop) once you have navigated away from the landing page.
 
-- A **preview** of the image or video
-- The **file path**
-- An editable **Title** field
-- An editable **Description** text area
-- A **video toggle** checkbox
+### Category Landing Pages (Adventures & Life)
 
-### Step 3: Edit Title, Description, and GPS Coordinates
+These two sections show a looping background video with buttons for their sub-galleries. The videos are:
 
-- Click into the **Title** field and type your title
-- Click into the **Description** field and type your description
-- Press **Enter** for line breaks within the description (these will display as paragraphs on the website)
-- Enter **GPS coordinates** in WGS84 Decimal Degrees format (optional, for future map feature)
-  - **Latitude:** -90 to 90 (e.g., `46.2044` for Geneva)
-  - **Longitude:** -180 to 180 (e.g., `6.1432` for Geneva)
-  - Leave both fields empty if no coordinates are needed
-- Changes are saved in memory immediately as you type
+- Adventures: `videos/Khartoum_TukTuk_720p.mp4`
+- Life: `videos/20190802_215709_720p.mp4`
 
-**Tip:** To find GPS coordinates, right-click any location on Google Maps. The coordinates appear at the top of the menu in decimal degrees format.
+### Galleries
 
-### Step 4: Navigate Between Photos
+Each gallery displays its photos as a responsive **mosaic** of square tiles. Hovering a tile reveals its title; hovering a video tile plays it muted. Clicking any tile opens the lightbox.
 
-You can move between photos in three ways:
+### Lightbox
 
-- Click the **Previous** / **Next** buttons at the bottom of the editor
-- Use the **← →** arrow keys (only when not typing in a text field)
-- Click any other **thumbnail** in the grid
+A full-screen overlay showing the selected image or video at large size, alongside its title and description. Within the lightbox you can:
 
-### Step 5: Export the Updated JSON
+- Move between items with the **on-screen arrows** or the **left/right arrow keys**
+- Close with the **×** button or the **Escape** key
 
-1. Click the green **"Export photos.json"** button in the top bar
-2. Your browser will download a new `photos.json` file (typically to your Downloads folder)
-3. **Move** the downloaded file into your project folder (`svensl.github.io/`)
-4. **Replace** the existing `photos.json` when prompted
-5. Your website now reflects the updated content
+Descriptions preserve line breaks (the CSS uses `white-space: pre-wrap`), so multi-paragraph captions written in the Content Manager display correctly.
+
+### About Page
+
+A simple text page with a short biography and a contact email.
 
 ---
 
-## Features
+## Categories
 
-### Visual Indicators
+The galleries are defined by the category keys in `photos.json`. The site expects these keys:
 
-- **Green bar** on a thumbnail label: This photo has a description (other than the default "Description" placeholder)
-- **Green "GPS" badge** on a thumbnail: This entry has GPS coordinates
-- **Red "VIDEO" badge** on a thumbnail: This entry is a video file
-- **Index number** on each thumbnail: Shows the display order on the website
+| Category key | Section shown |
+|--------------|---------------|
+| `adventures-night` | Adventures / Night |
+| `adventures-wanderlust` | Adventures / Wanderlust |
+| `adventures-window-seat` | Adventures / Window Seat |
+| `landscapes` | Landscapes |
+| `life-fauna` | Life / Fauna |
+| `life-flora` | Life / Flora |
+| `life-people` | Life / People |
+| `orange` | Orange |
+| `water` | Water |
 
-### Stats Bar
-
-When a category is selected, the stats bar shows:
-
-- **Photos:** Number of image files
-- **Videos:** Number of video files
-- **With descriptions:** Number of entries that have been given a real description
-- **With GPS:** Number of entries that have GPS coordinates
-
-### Adding a New Entry
-
-1. Select the target category in the sidebar
-2. Click **"+ Add Entry"** in the top bar
-3. Enter the file path when prompted (e.g., `images/Adventures/Night/newphoto.jpg`)
-4. The new entry appears at the end of the grid
-5. Click it to edit the title and description
-6. Export when finished
-
-> Video files (.mp4, .mov, .webm) are automatically detected and marked as videos.
-
-### Deleting an Entry
-
-1. Select the photo you want to remove
-2. In the editor panel, click **"Delete this entry"**
-3. Confirm the deletion
-
-> This only removes the entry from `photos.json`. The actual image file is not deleted from your computer.
+Each key in the JSON must match the `id` of a gallery grid in `index.html` (e.g. `adventures-night` matches `<div class="mosaic" id="adventures-night-grid">`). If you add a brand-new category, you must add both the JSON key **and** a matching HTML section.
 
 ---
 
-## Keyboard Shortcuts
+## Editing Content
 
-| Shortcut | Action |
-|----------|--------|
-| `←` | Previous photo (when not typing) |
-| `→` | Next photo (when not typing) |
-| `Escape` | Close editor panel |
-| `Ctrl + E` | Export photos.json |
+You do **not** edit `index.html` to change photos or captions. Instead:
+
+1. **Add or remove photo files**, then run the sync script to update `photos.json` (see `readme-sync.md`).
+2. **Edit titles, descriptions, and locations** using the Content Manager (see `admin-page-readme.md`).
+3. **Publish** the updated `photos.json` (and any new image/video files) to GitHub Pages.
+
+The only reasons to edit `index.html` directly are structural changes: adding a new category section, changing the landing image, swapping the category landing videos, editing the About text, or adjusting the styling.
 
 ---
 
-## Important Notes
+## Image Protection
 
-### Always Export Before Closing
+The site includes basic deterrent measures: right-clicking on images and dragging images are disabled via JavaScript. This discourages casual copying only. Anyone can still view images through browser developer tools or by taking a screenshot, so do not treat this as real protection for high-value images.
 
-The Content Manager works entirely in memory. If you close the browser tab without exporting, all your changes will be lost. The tool will show a warning if you try to leave with unsaved changes.
+---
 
-### The Status Indicator
+## Responsive Design
 
-The status text in the top bar tells you the current state:
+The layout adapts to screen size through CSS media queries:
 
-- **"Ready"** — Just loaded, no changes made
-- **"Loaded photos.json"** — File loaded successfully
-- **"Unsaved changes"** — You have edits that haven't been exported yet
-- **"Exported photos.json"** — Export completed successfully
+- **Desktop:** wide mosaic, lightbox image and caption side by side
+- **Tablet (≤768px):** stacked navigation, smaller mosaic tiles, lightbox image above caption
+- **Phone (≤480px):** smallest mosaic tiles and reduced font sizes
 
-### File Encoding
+---
 
-Make sure your `photos.json` is saved with **UTF-8 encoding**. This is important for special characters (accents, umlauts, etc.). You can verify this in VS Code by checking the encoding indicator in the bottom-right corner of the editor.
+## Deployment
 
-### Line Breaks in Descriptions
+`index.html`, `photos.json`, the `images/` folder, the `videos/` folder, and the `CNAME` file are the parts of the project that go live on the web. To publish changes:
 
-When you press Enter in the description field, it creates a real line break. In the exported JSON, these appear as `\n` characters. The website's CSS (`white-space: pre-wrap`) ensures these display as proper paragraph breaks.
-
-### GPS Coordinates
-
-Coordinates are stored in WGS84 Decimal Degrees format. Each entry in `photos.json` can optionally include `lat` and `lng` fields:
-
-```json
-{
-    "src": "images/Orange/1C8A0438.jpg",
-    "title": "Marseilles",
-    "description": "Planete Mars",
-    "lat": 43.2965,
-    "lng": 5.3698
-}
+```bash
+git add index.html photos.json images videos
+git commit -m "Update website"
+git push
 ```
 
-Both fields must be filled for coordinates to be saved. If either field is empty, neither is stored in the JSON.
-
-**Quick reference for common locations:**
-
-| Location | Latitude | Longitude |
-|----------|----------|-----------|
-| Geneva | 46.2044 | 6.1432 |
-| Danakil, Ethiopia | 14.2417 | 40.3000 |
-| Marseilles | 43.2965 | 5.3698 |
-| Port-au-Prince, Haiti | 18.5944 | -72.3074 |
-
-**Finding coordinates:** Right-click any location on [Google Maps](https://maps.google.com). The coordinates appear at the top of the context menu in decimal degrees format. Click to copy, then paste into the admin fields.
+Changes appear on the live site within a few minutes. See `InitialWebSetup.md` for first-time GitHub Pages and custom-domain (Namecheap) setup.
 
 ---
 
-## Updating the Website After Editing
+## Related Files
 
-After exporting a new `photos.json`:
-
-1. Replace the old `photos.json` in your project folder
-2. **To test locally:** Open `index.html` with Live Server and verify your changes
-3. **To publish online:**
-   ```bash
-   git add photos.json
-   git commit -m "Updated photo descriptions"
-   git push
-   ```
-4. Changes will be live on your website within a few minutes
+| File | Purpose | Deploy to web? |
+|------|---------|----------------|
+| `index.html` | The public website (this document) | **Yes** |
+| `photos.json` | Photo data: paths, titles, descriptions, locations | **Yes** |
+| `images/` | Photo files | **Yes** |
+| `videos/` | Video files | **Yes** |
+| `CNAME` | Custom domain configuration | **Yes** |
+| `admin-page.html` | Content Manager (local editing tool) — see `admin-page-readme.md` | **No** |
+| `sync_photos.py` | Folder-to-JSON sync script — see `readme-sync.md` | **No** |
 
 ---
 
 ## Troubleshooting
 
-### Photos not loading
-- Make sure `admin.html` is in the same folder as `photos.json` and `images/`
-- Make sure you are using Live Server (not opening the file directly)
+### A photo or video does not appear
 
-### Export not working
-- Check that your browser allows downloads
-- Look in your Downloads folder for the file
+- Confirm the file's `src` path in `photos.json` exactly matches the real file location. Paths are **case-sensitive** on GitHub Pages (unlike Windows).
+- Confirm the file was actually committed and pushed.
 
-### Special characters appearing as garbled text
-- Open `photos.json` in VS Code
-- Check the encoding in the bottom-right corner — it should say **UTF-8**
-- If not, click on the encoding label → "Reopen with Encoding" → select **UTF-8**
+### A whole gallery is empty
 
-### New photos not showing
-- If you added new image files to your folders, you need to add them to `photos.json` using the **"+ Add Entry"** button in the Content Manager
+- Check that the category key in `photos.json` matches a grid `id` in `index.html`.
 
----
+### Videos do not play
 
-## File Reference
+- Confirm the file is `.mp4` and that the entry has `"type": "video"` in `photos.json`.
 
-| File | Purpose | Deploy to web? |
-|------|---------|---------------|
-| `index.html` | Main website | Yes |
-| `admin.html` | Content Manager (this tool) | **No** |
-| `photos.json` | Photo data (titles, descriptions) | Yes |
-| `images/` | Photo files | Yes |
-| `videos/` | Video files | Yes |
-| `CNAME` | Custom domain config | Yes |
-| `README.md` | This documentation | Optional |
+### Changes do not show up
+
+- Clear your browser cache (`Ctrl + Shift + R`) and reload. GitHub Pages can also take a few minutes to update.

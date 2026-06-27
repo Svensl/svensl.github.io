@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2SL Photography - Admin</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <style>
         * {
             margin: 0;
@@ -185,7 +189,9 @@
 
         .thumbnail-item.selected {
             border-color: #e94560;
-            box-shadow: 0 0 15px rgba(233, 69, 96, 0.3);
+            box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.6), 0 0 20px rgba(233, 69, 96, 0.5);
+            transform: scale(1.04);
+            z-index: 2;
         }
 
         .thumbnail-item img,
@@ -267,7 +273,9 @@
 
         /* Editor Panel */
         .editor {
-            width: 450px;
+            width: 66vw;
+            max-width: 66vw;
+            min-width: 480px;
             background: #16213e;
             border-left: 1px solid #0f3460;
             display: flex;
@@ -302,22 +310,6 @@
 
         .editor-close:hover {
             color: white;
-        }
-
-        .editor-preview {
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            background: #111;
-            max-height: 300px;
-        }
-
-        .editor-preview img,
-        .editor-preview video {
-            max-width: 100%;
-            max-height: 260px;
-            object-fit: contain;
-            border-radius: 4px;
         }
 
         .editor-form {
@@ -379,6 +371,52 @@
             font-size: 11px;
             color: #555;
             word-break: break-all;
+        }
+
+        /* Map */
+        .map-group label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #editor-map {
+            width: 100%;
+            height: 320px;
+            border-radius: 5px;
+            border: 1px solid #0f3460;
+            background: #1a1a2e;
+            z-index: 1;
+        }
+
+        .map-coords {
+            font-size: 12px;
+            color: #4ecca3;
+            margin-top: 6px;
+            font-family: monospace;
+        }
+
+        .map-coords .none {
+            color: #555;
+        }
+
+        .btn-clear-coords {
+            background: #5c1a1a;
+            color: #ff6b6b;
+            font-size: 11px;
+            padding: 3px 10px;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .btn-clear-coords:hover {
+            background: #7a2222;
+        }
+
+        /* Leaflet controls contrast on dark UI */
+        .leaflet-control-layers,
+        .leaflet-bar a {
+            color: #1a1a2e;
         }
 
         .editor-nav {
@@ -515,7 +553,6 @@
                 <h3 id="editor-heading">Edit Photo</h3>
                 <button class="editor-close" onclick="closeEditor()">&times;</button>
             </div>
-            <div class="editor-preview" id="editor-preview"></div>
             <div class="editor-form">
                 <div class="form-group">
                     <label>File Path</label>
@@ -529,18 +566,13 @@
                     <label>Description</label>
                     <textarea id="editor-description" placeholder="Enter description. Use Enter key for line breaks..." oninput="updateCurrentEntry()"></textarea>
                 </div>
-                <div class="form-group">
-                    <label>GPS Coordinates (WGS84 Decimal Degrees)</label>
-                    <div style="display: flex; gap: 10px;">
-                        <div style="flex:1;">
-                            <input type="number" id="editor-lat" step="any" placeholder="Latitude (e.g. 46.2044)" oninput="updateCurrentEntry()" style="width:100%">
-                            <span style="font-size:10px; color:#555;">Lat: -90 to 90</span>
-                        </div>
-                        <div style="flex:1;">
-                            <input type="number" id="editor-lng" step="any" placeholder="Longitude (e.g. 6.1432)" oninput="updateCurrentEntry()" style="width:100%">
-                            <span style="font-size:10px; color:#555;">Lng: -180 to 180</span>
-                        </div>
-                    </div>
+                <div class="form-group map-group">
+                    <label>
+                        <span>Location &mdash; click the map to set coordinates</span>
+                        <button class="btn btn-clear-coords" onclick="clearCoords()">Clear location</button>
+                    </label>
+                    <div id="editor-map"></div>
+                    <div class="map-coords" id="map-coords"><span class="none">No coordinates set</span></div>
                 </div>
                 <div class="type-toggle">
                     <input type="checkbox" id="editor-type" onchange="updateCurrentEntry()">
@@ -562,6 +594,129 @@
         let currentCategory = '';
         let currentIndex = -1;
         let hasUnsavedChanges = false;
+
+        // --- Map state ---
+        let map = null;          // Leaflet map instance (created once)
+        let marker = null;       // current location marker
+
+        // Initialize the Leaflet map once. Called lazily the first time a photo
+        // is opened, because the map container has no size until the editor is visible.
+        function initMap() {
+            if (map) return;
+
+            // Street base layer (OpenStreetMap)
+            const street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; OpenStreetMap contributors'
+            });
+
+            // Satellite base layer (Esri World Imagery — free, no API key)
+            const satellite = L.tileLayer(
+                'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+                {
+                    maxZoom: 19,
+                    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics'
+                }
+            );
+
+            map = L.map('editor-map', {
+                center: [20, 0],
+                zoom: 2,
+                layers: [street]   // default base map
+            });
+
+            // Base-map switcher control (top-right): Street vs Satellite
+            L.control.layers(
+                { 'Street': street, 'Satellite': satellite },
+                {},
+                { collapsed: false }
+            ).addTo(map);
+
+            // Click anywhere to set the location for the current photo
+            map.on('click', (e) => {
+                setMarker(e.latlng.lat, e.latlng.lng);
+                writeCoordsToEntry(e.latlng.lat, e.latlng.lng);
+            });
+        }
+
+        // Place or move the marker and update the readout text.
+        function setMarker(lat, lng) {
+            if (!map) return;
+            if (marker) {
+                marker.setLatLng([lat, lng]);
+            } else {
+                marker = L.marker([lat, lng], { draggable: true }).addTo(map);
+                // Dragging the marker also updates the stored coordinates
+                marker.on('dragend', () => {
+                    const p = marker.getLatLng();
+                    writeCoordsToEntry(p.lat, p.lng);
+                    updateCoordsReadout(p.lat, p.lng);
+                });
+            }
+            updateCoordsReadout(lat, lng);
+        }
+
+        // Remove the marker from the map (used when a photo has no coordinates).
+        function removeMarker() {
+            if (marker && map) {
+                map.removeLayer(marker);
+                marker = null;
+            }
+            updateCoordsReadout(null, null);
+        }
+
+        // Update the text under the map showing current lat/lng.
+        function updateCoordsReadout(lat, lng) {
+            const el = document.getElementById('map-coords');
+            if (lat === null || lng === null || lat === undefined || lng === undefined) {
+                el.innerHTML = '<span class="none">No coordinates set</span>';
+            } else {
+                el.textContent = `Lat ${lat.toFixed(5)}, Lng ${lng.toFixed(5)}`;
+            }
+        }
+
+        // Persist coordinates into the current JSON entry and flag unsaved changes.
+        function writeCoordsToEntry(lat, lng) {
+            if (!currentCategory || currentIndex < 0) return;
+            const photo = photos[currentCategory][currentIndex];
+            photo.lat = parseFloat(lat.toFixed(6));
+            photo.lng = parseFloat(lng.toFixed(6));
+            hasUnsavedChanges = true;
+            setStatus('Unsaved changes');
+            updateThumbnailGpsBadge();
+            updateStats();
+        }
+
+        // Clear coordinates from the current entry and the map.
+        function clearCoords() {
+            if (!currentCategory || currentIndex < 0) return;
+            const photo = photos[currentCategory][currentIndex];
+            delete photo.lat;
+            delete photo.lng;
+            removeMarker();
+            hasUnsavedChanges = true;
+            setStatus('Unsaved changes');
+            updateThumbnailGpsBadge();
+            updateStats();
+        }
+
+        // Sync the GPS badge on the currently selected thumbnail.
+        function updateThumbnailGpsBadge() {
+            const thumbnails = document.querySelectorAll('.thumbnail-item');
+            const thumb = thumbnails[currentIndex];
+            if (!thumb) return;
+            const photo = photos[currentCategory][currentIndex];
+            const hasGPS = photo.lat !== undefined && photo.lng !== undefined;
+            let gpsBadge = thumb.querySelector('.thumbnail-gps');
+            if (hasGPS && !gpsBadge) {
+                gpsBadge = document.createElement('span');
+                gpsBadge.className = 'thumbnail-gps';
+                gpsBadge.textContent = 'GPS';
+                thumb.appendChild(gpsBadge);
+            } else if (!hasGPS && gpsBadge) {
+                gpsBadge.remove();
+            }
+        }
 
         const categoryLabels = {
             'adventures-night': 'Adventures / Night',
@@ -710,21 +865,32 @@
             document.getElementById('editor-heading').textContent =
                 `Edit ${index + 1} of ${photos[currentCategory].length}`;
 
-            // Update preview
-            const preview = document.getElementById('editor-preview');
-            if (photo.type === 'video') {
-                preview.innerHTML = `<video controls style="max-height:260px"><source src="${photo.src}" type="video/mp4"></video>`;
-            } else {
-                preview.innerHTML = `<img src="${photo.src}" alt="${photo.title}" onerror="this.style.background='#333';this.alt='Image not found'">`;
+            // Scroll the selected thumbnail into view in the center grid,
+            // since the preview now lives there (not in the editor panel).
+            const selectedThumb = document.querySelectorAll('.thumbnail-item')[index];
+            if (selectedThumb) {
+                selectedThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
 
             // Update form
             document.getElementById('editor-filepath').textContent = photo.src;
             document.getElementById('editor-title').value = photo.title || '';
             document.getElementById('editor-description').value = photo.description || '';
-            document.getElementById('editor-lat').value = photo.lat !== undefined ? photo.lat : '';
-            document.getElementById('editor-lng').value = photo.lng !== undefined ? photo.lng : '';
             document.getElementById('editor-type').checked = photo.type === 'video';
+
+            // Update map: initialize on first use, then show this photo's location.
+            initMap();
+            // Leaflet needs a size recalculation now that the editor is visible.
+            setTimeout(() => {
+                map.invalidateSize();
+                if (photo.lat !== undefined && photo.lng !== undefined) {
+                    setMarker(photo.lat, photo.lng);
+                    map.setView([photo.lat, photo.lng], 10);
+                } else {
+                    removeMarker();
+                    map.setView([20, 0], 2);
+                }
+            }, 0);
         }
 
         // Update current entry from editor fields
@@ -734,15 +900,8 @@
                 photo.title = document.getElementById('editor-title').value;
                 photo.description = document.getElementById('editor-description').value;
 
-                const latVal = document.getElementById('editor-lat').value;
-                const lngVal = document.getElementById('editor-lng').value;
-                if (latVal !== '' && lngVal !== '') {
-                    photo.lat = parseFloat(latVal);
-                    photo.lng = parseFloat(lngVal);
-                } else {
-                    delete photo.lat;
-                    delete photo.lng;
-                }
+                // GPS coordinates are managed by the map (click / drag / clear),
+                // so they are intentionally not read from input fields here.
 
                 const isVideo = document.getElementById('editor-type').checked;
                 if (isVideo) {
