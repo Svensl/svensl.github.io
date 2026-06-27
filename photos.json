@@ -472,9 +472,11 @@
         },
         {
             "src": "images/Adventures/Window Seat/IMG_0005.jpg",
-            "title": "IMG_0005",
-            "description": "Description",
-            "metadata": "Date taken: 14/09/2013 17:01 • Camera: Canon EOS 7D • F-stop: f/9 • Exposure time: 1/400s • ISO Speed: 200 • Focal length: 37mm"
+            "title": "Greenland - 14/09/2013",
+            "description": "Flying over Greenland from Geneva to Chicago! ",
+            "metadata": "Date taken: 14/09/2013 17:01 • Camera: Canon EOS 7D • F-stop: f/9 • Exposure time: 1/400s • ISO Speed: 200 • Focal length: 37mm",
+            "lat": 66.278461,
+            "lng": -37.443994
         },
         {
             "src": "images/Adventures/Window Seat/IMG_0741.jpg",
@@ -1230,9 +1232,11 @@
     "orange": [
         {
             "src": "images/Orange/1C8A0438.jpg",
-            "title": "1C8A0438",
+            "title": "France - 29/08/2015",
             "description": "Description",
-            "metadata": "Date taken: 29/08/2015 20:09 • Camera: Canon EOS 5D Mark III • F-stop: f/7.1 • Exposure time: 1/400s • ISO Speed: 100 • Focal length: 310mm"
+            "metadata": "Date taken: 29/08/2015 20:09 • Camera: Canon EOS 5D Mark III • F-stop: f/7.1 • Exposure time: 1/400s • ISO Speed: 100 • Focal length: 310mm",
+            "lat": 43.29295,
+            "lng": 5.3703
         },
         {
             "src": "images/Orange/1C8A0640.jpg",
@@ -1242,9 +1246,11 @@
         },
         {
             "src": "images/Orange/1C8A1004.jpg",
-            "title": "1C8A1004",
-            "description": "Description",
-            "metadata": "Date taken: 07/01/2016 17:38 • Camera: Canon EOS 5D Mark III • F-stop: f/6.3 • Exposure time: 1/320s • ISO Speed: 100 • Focal length: 70mm"
+            "title": "Ethiopia - 07/01/2016",
+            "description": "Lake Karum",
+            "metadata": "Date taken: 07/01/2016 17:38 • Camera: Canon EOS 5D Mark III • F-stop: f/6.3 • Exposure time: 1/320s • ISO Speed: 100 • Focal length: 70mm",
+            "lat": 14.093541,
+            "lng": 40.34309
         },
         {
             "src": "images/Orange/1C8A4433.jpg",
@@ -1260,9 +1266,11 @@
         },
         {
             "src": "images/Orange/DSCN0097.jpg",
-            "title": "DSCN0097",
+            "title": "Burkina Faso - 07/01/2004",
             "description": "Description",
-            "metadata": "Date taken: 07/11/2004 19:32 • Camera: NIKON E5200 • F-stop: f/2.8 • Exposure time: 1/900s • ISO Speed: 64 • Focal length: 8mm"
+            "metadata": "Date taken: 07/11/2004 19:32 • Camera: NIKON E5200 • F-stop: f/2.8 • Exposure time: 1/900s • ISO Speed: 64 • Focal length: 8mm",
+            "lat": 10.714792,
+            "lng": -4.74694
         },
         {
             "src": "images/Orange/IMG_0011.jpg",
@@ -1284,33 +1292,43 @@
         },
         {
             "src": "images/Orange/IMG_0181.jpg",
-            "title": "IMG_0181",
+            "title": "Madagascar - 27/10/2009",
             "description": "Description",
-            "metadata": "Date taken: 27/10/2009 04:32 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/5.6 • Exposure time: 1/320s • ISO Speed: 100 • Focal length: 55mm"
+            "metadata": "Date taken: 27/10/2009 04:32 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/5.6 • Exposure time: 1/320s • ISO Speed: 100 • Focal length: 55mm",
+            "lat": -23.554428,
+            "lng": 43.762924
         },
         {
             "src": "images/Orange/IMG_0242.jpg",
-            "title": "IMG_0242",
-            "description": "Description",
-            "metadata": "Date taken: 23/01/2007 20:07 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/5.6 • Exposure time: 1/160s • ISO Speed: 100 • Focal length: 140mm"
+            "title": "USA - 23/01/2008",
+            "description": "Hawaii Sunset",
+            "metadata": "Date taken: 23/01/2007 20:07 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/5.6 • Exposure time: 1/160s • ISO Speed: 100 • Focal length: 140mm",
+            "lat": 19.636757,
+            "lng": -155.992324
         },
         {
             "src": "images/Orange/IMG_0294.jpg",
-            "title": "IMG_0294",
-            "description": "Description",
-            "metadata": "Date taken: 13/04/2007 09:16 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/5.6 • Exposure time: 1/200s • ISO Speed: 100 • Focal length: 18mm"
+            "title": "Italy - 13/04/2007",
+            "description": "Varazze",
+            "metadata": "Date taken: 13/04/2007 09:16 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/5.6 • Exposure time: 1/200s • ISO Speed: 100 • Focal length: 18mm",
+            "lat": 44.361047,
+            "lng": 8.575355
         },
         {
             "src": "images/Orange/IMG_0306.jpg",
-            "title": "IMG_0306",
+            "title": "USA - 22/06/2011",
             "description": "Description",
-            "metadata": "Date taken: 22/06/2011 23:32 • Camera: Canon EOS 7D • F-stop: f/5.6 • Exposure time: 1/1000s • ISO Speed: 200 • Focal length: 260mm"
+            "metadata": "Date taken: 22/06/2011 23:32 • Camera: Canon EOS 7D • F-stop: f/5.6 • Exposure time: 1/1000s • ISO Speed: 200 • Focal length: 260mm",
+            "lat": 59.039373,
+            "lng": -158.473404
         },
         {
             "src": "images/Orange/IMG_0367.jpg",
-            "title": "IMG_0367",
+            "title": "Niger - 11/08/2014",
             "description": "Description",
-            "metadata": "Date taken: 11/08/2014 13:08 • Camera: Canon EOS 7D • F-stop: f/8 • Exposure time: 1/500s • ISO Speed: 400 • Focal length: 300mm"
+            "metadata": "Date taken: 11/08/2014 13:08 • Camera: Canon EOS 7D • F-stop: f/8 • Exposure time: 1/500s • ISO Speed: 400 • Focal length: 300mm",
+            "lat": 13.490495,
+            "lng": 2.121509
         },
         {
             "src": "images/Orange/IMG_0902.jpg",
@@ -1332,13 +1350,15 @@
         },
         {
             "src": "images/Orange/IMG_2273.jpg",
-            "title": "IMG_2273",
+            "title": "Niger - 28/03/2015",
             "description": "Description",
-            "metadata": "Date taken: 28/03/2015 19:27 • Camera: Canon EOS 7D • F-stop: f/3.2 • Exposure time: 1/50s • ISO Speed: 1600 • Focal length: 21mm"
+            "metadata": "Date taken: 28/03/2015 19:27 • Camera: Canon EOS 7D • F-stop: f/3.2 • Exposure time: 1/50s • ISO Speed: 1600 • Focal length: 21mm",
+            "lat": 13.505263,
+            "lng": 2.110048
         },
         {
             "src": "images/Orange/P1010210.jpg",
-            "title": "P1010210",
+            "title": "Kuwait - 12/03/2019",
             "description": "Description",
             "lat": 29.345322,
             "lng": 48.07602,
