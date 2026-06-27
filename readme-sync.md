@@ -127,9 +127,11 @@ The script will:
 |----------|--------|
 | New image file found in a folder | Added to JSON with filename as title and "Description" as placeholder |
 | New video file found (.mp4, .webm, .mov) | Added to JSON with `"type": "video"` |
-| Image already exists in JSON | Kept as-is with title and description preserved |
+| Image already exists in JSON | Kept as-is with title, description, and GPS coordinates preserved |
 | Image in JSON but file deleted from folder | Entry removed from JSON |
 | Video in `videos/` folder referenced in JSON | Preserved if file still exists |
+
+> **Note:** The script preserves all existing data fields including `title`, `description`, `lat`, `lng`, and `type`. No manually entered data is lost when syncing.
 
 ---
 
@@ -198,7 +200,7 @@ Add or remove extensions as needed.
    python sync_photos.py
 
 4. Open admin.html with Live Server
-   → Edit titles and descriptions for new entries
+   → Edit titles, descriptions, and GPS coordinates for new entries
    → Click "Export photos.json"
    → Replace the file in your project folder
 
@@ -286,5 +288,32 @@ The script writes JSON with `ensure_ascii=False` and UTF-8 encoding. If you see 
 ## Notes
 
 - The script does **not** modify, move, or delete any image or video files. It only reads folder contents and updates `photos.json`.
-- New entries use the filename (without extension) as the default title. Edit titles and descriptions using `admin.html`.
+- New entries use the filename (without extension) as the default title. Edit titles, descriptions, and GPS coordinates using `admin.html`.
+- The script preserves all existing fields in each entry, including `title`, `description`, `lat`, `lng`, and `type`.
 - The script sorts files alphabetically within each category. If you need a different order, rearrange entries manually in `admin.html` or directly in `photos.json`.
+
+---
+
+## JSON Entry Format
+
+Each entry in `photos.json` supports the following fields:
+
+```json
+{
+    "src": "images/Orange/1C8A0438.jpg",
+    "title": "Marseilles",
+    "description": "Planete Mars",
+    "lat": 43.2965,
+    "lng": 5.3698,
+    "type": "video"
+}
+```
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `src` | Yes | Relative path to image or video file |
+| `title` | Yes | Display title on website and in admin |
+| `description` | Yes | Description text shown in lightbox |
+| `lat` | No | GPS latitude in WGS84 Decimal Degrees (-90 to 90) |
+| `lng` | No | GPS longitude in WGS84 Decimal Degrees (-180 to 180) |
+| `type` | No | Set to `"video"` for video files, omit for images |

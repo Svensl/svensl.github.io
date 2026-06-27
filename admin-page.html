@@ -233,6 +233,20 @@
             font-size: 10px;
         }
 
+        .thumbnail-gps {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(78, 204, 163, 0.85);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+        }
+
+        .thumbnail-type + .thumbnail-gps {
+            right: 55px;
+        }
+
         .thumbnail-drag-handle {
             position: absolute;
             top: 5px;
@@ -485,6 +499,7 @@
                 <div class="stat">Photos: <span class="stat-value" id="stat-photos">0</span></div>
                 <div class="stat">Videos: <span class="stat-value" id="stat-videos">0</span></div>
                 <div class="stat">With descriptions: <span class="stat-value" id="stat-described">0</span></div>
+                <div class="stat">With GPS: <span class="stat-value" id="stat-gps">0</span></div>
             </div>
             <div class="thumbnail-grid" id="thumbnail-grid">
                 <div class="welcome">
@@ -513,6 +528,19 @@
                 <div class="form-group">
                     <label>Description</label>
                     <textarea id="editor-description" placeholder="Enter description. Use Enter key for line breaks..." oninput="updateCurrentEntry()"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>GPS Coordinates (WGS84 Decimal Degrees)</label>
+                    <div style="display: flex; gap: 10px;">
+                        <div style="flex:1;">
+                            <input type="number" id="editor-lat" step="any" placeholder="Latitude (e.g. 46.2044)" oninput="updateCurrentEntry()" style="width:100%">
+                            <span style="font-size:10px; color:#555;">Lat: -90 to 90</span>
+                        </div>
+                        <div style="flex:1;">
+                            <input type="number" id="editor-lng" step="any" placeholder="Longitude (e.g. 6.1432)" oninput="updateCurrentEntry()" style="width:100%">
+                            <span style="font-size:10px; color:#555;">Lng: -180 to 180</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="type-toggle">
                     <input type="checkbox" id="editor-type" onchange="updateCurrentEntry()">
@@ -627,9 +655,11 @@
             const items = photos[currentCategory] || [];
             const videoCount = items.filter(p => p.type === 'video').length;
             const describedCount = items.filter(p => p.description && p.description !== 'Description').length;
+            const gpsCount = items.filter(p => p.lat !== undefined && p.lng !== undefined).length;
             document.getElementById('stat-photos').textContent = items.length - videoCount;
             document.getElementById('stat-videos').textContent = videoCount;
             document.getElementById('stat-described').textContent = describedCount;
+            document.getElementById('stat-gps').textContent = gpsCount;
         }
 
         // Build thumbnail grid
@@ -644,10 +674,12 @@
 
                 const isVideo = photo.type === 'video';
                 const hasDesc = photo.description && photo.description !== 'Description';
+                const hasGPS = photo.lat !== undefined && photo.lng !== undefined;
 
                 item.innerHTML = `
                     <span class="thumbnail-index">${index + 1}</span>
                     ${isVideo ? '<span class="thumbnail-type">VIDEO</span>' : ''}
+                    ${hasGPS ? '<span class="thumbnail-gps">GPS</span>' : ''}
                     ${isVideo
                         ? `<video muted><source src="${photo.src}" type="video/mp4"></video>`
                         : `<img src="${photo.src}" alt="${photo.title}" onerror="this.style.background='#333';this.alt='Image not found'">`
@@ -690,6 +722,8 @@
             document.getElementById('editor-filepath').textContent = photo.src;
             document.getElementById('editor-title').value = photo.title || '';
             document.getElementById('editor-description').value = photo.description || '';
+            document.getElementById('editor-lat').value = photo.lat !== undefined ? photo.lat : '';
+            document.getElementById('editor-lng').value = photo.lng !== undefined ? photo.lng : '';
             document.getElementById('editor-type').checked = photo.type === 'video';
         }
 
@@ -699,6 +733,16 @@
                 const photo = photos[currentCategory][currentIndex];
                 photo.title = document.getElementById('editor-title').value;
                 photo.description = document.getElementById('editor-description').value;
+
+                const latVal = document.getElementById('editor-lat').value;
+                const lngVal = document.getElementById('editor-lng').value;
+                if (latVal !== '' && lngVal !== '') {
+                    photo.lat = parseFloat(latVal);
+                    photo.lng = parseFloat(lngVal);
+                } else {
+                    delete photo.lat;
+                    delete photo.lng;
+                }
 
                 const isVideo = document.getElementById('editor-type').checked;
                 if (isVideo) {
@@ -717,6 +761,18 @@
                     label.textContent = photo.title;
                     const hasDesc = photo.description && photo.description !== 'Description';
                     label.className = 'thumbnail-label' + (hasDesc ? ' has-description' : '');
+
+                    // Update GPS badge
+                    const hasGPS = photo.lat !== undefined && photo.lng !== undefined;
+                    let gpsBadge = thumbnails[currentIndex].querySelector('.thumbnail-gps');
+                    if (hasGPS && !gpsBadge) {
+                        gpsBadge = document.createElement('span');
+                        gpsBadge.className = 'thumbnail-gps';
+                        gpsBadge.textContent = 'GPS';
+                        thumbnails[currentIndex].appendChild(gpsBadge);
+                    } else if (!hasGPS && gpsBadge) {
+                        gpsBadge.remove();
+                    }
                 }
 
                 updateStats();
