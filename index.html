@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2SL Photography</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <style>
         * {
             margin: 0;
@@ -383,6 +385,79 @@
             margin-bottom: 20px;
         }
 
+        /* Map Page */
+        #map-page {
+            display: none;
+            padding: 100px 0 0;
+            height: 100vh;
+            background: #f5f5f5;
+        }
+
+        #map-page.active {
+            display: block;
+        }
+
+        #map-container {
+            width: 100%;
+            height: calc(100vh - 100px);
+        }
+
+        .map-thumbnail-marker {
+            border: 3px solid white;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            object-fit: cover;
+        }
+
+        .map-thumbnail-marker:hover {
+            transform: scale(1.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            z-index: 1000 !important;
+        }
+
+        .leaflet-popup-content {
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .leaflet-popup-content img {
+            max-width: 200px;
+            max-height: 150px;
+            border-radius: 4px;
+            object-fit: cover;
+            margin-bottom: 8px;
+        }
+
+        .leaflet-popup-content h4 {
+            margin: 0 0 4px;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .leaflet-popup-content p {
+            margin: 0;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .leaflet-popup-content a {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 4px 12px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .leaflet-popup-content a:hover {
+            background: #555;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             nav {
@@ -484,6 +559,19 @@
                 padding: 12px 30px;
                 font-size: 16px;
             }
+
+            #map-page {
+                padding: 80px 0 0;
+            }
+
+            #map-container {
+                height: calc(100vh - 80px);
+            }
+
+            .map-thumbnail-marker {
+                width: 35px !important;
+                height: 35px !important;
+            }
         }
 
         @media (max-width: 480px) {
@@ -530,6 +618,7 @@
             <a onclick="showSection('life-landing')">Life</a>
             <a onclick="showSection('orange')">Orange</a>
             <a onclick="showSection('water')">Water</a>
+            <a onclick="showSection('map-page')">Map</a>
             <a onclick="showSection('about')">About</a>
         </div>
     </nav>
@@ -620,15 +709,19 @@
         <div class="mosaic" id="water-grid"></div>
     </div>
 
+    <!-- Map Page -->
+    <div id="map-page">
+        <div id="map-container"></div>
+    </div>
+
     <!-- About Section -->
     <div id="about">
         <div class="content">
             <h2>About Me</h2>
-            <p>Born sometime in the last millennium. Before personal computers, digital SLR cameras, Internet, smart phones, and AI.</p>
-            <p>Son, Brother, and Father.</p>
+            <p>Born sometime in the last millennium. Before personal computers, Internet, AI, smart phones and digital SLR cameras.</p>
+            <p>Son, Brother, Husband, and Father.</p>
             <p>Human, World Citizen, Adventurer.</p>
             <p>Humanitarian, Engineer, Photographer, DJ, Writer.</p>
-            <p>Likes maps.</p>
             <p>Enjoys life and all the beauty in it.</p>
             <p>Purchase Info on demand: svenlsl_at_protonmail_dot_com</p>
         </div>
@@ -706,17 +799,22 @@
 
         function showLanding() {
             document.getElementById('landing').style.display = 'block';
-            document.querySelectorAll('.gallery-section, #about, .category-landing').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.gallery-section, #about, .category-landing, #map-page').forEach(s => s.classList.remove('active'));
             document.querySelector('.home-btn').style.display = 'none';
         }
 
         function showSection(section) {
             document.getElementById('landing').style.display = 'none';
-            document.querySelectorAll('.gallery-section, #about, .category-landing').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.gallery-section, #about, .category-landing, #map-page').forEach(s => s.classList.remove('active'));
             const el = document.getElementById(section);
             if (el) {
                 el.classList.add('active');
                 document.querySelector('.home-btn').style.display = 'block';
+
+                // Initialize map when Map tab is shown
+                if (section === 'map-page') {
+                    initMap();
+                }
             }
         }
 
@@ -780,6 +878,87 @@
         document.addEventListener('dragstart', function(e) {
             if (e.target.tagName === 'IMG') { e.preventDefault(); return false; }
         });
+
+        // ===========================================
+        // MAP FUNCTIONALITY
+        // ===========================================
+
+        let map = null;
+        let mapInitialized = false;
+
+        function initMap() {
+            if (mapInitialized) {
+                // Just refresh the map size in case the container was hidden
+                setTimeout(() => map.invalidateSize(), 100);
+                return;
+            }
+
+            // Create map centered on a world view
+            map = L.map('map-container').setView([25, 10], 2);
+
+            // OpenStreetMap tile layer (free, no API key)
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                maxZoom: 19
+            }).addTo(map);
+
+            // Collect all photos with GPS coordinates
+            const gpsPhotos = [];
+            for (const [category, items] of Object.entries(photos)) {
+                items.forEach((photo, index) => {
+                    if (photo.lat !== undefined && photo.lng !== undefined) {
+                        gpsPhotos.push({
+                            category: category,
+                            index: index,
+                            photo: photo
+                        });
+                    }
+                });
+            }
+
+            // Add markers for each photo with coordinates
+            const markers = [];
+            gpsPhotos.forEach(item => {
+                const { category, index, photo } = item;
+
+                // Create a small thumbnail icon
+                const icon = L.divIcon({
+                    className: '',
+                    html: `<img src="${photo.src}" class="map-thumbnail-marker" style="width:50px; height:50px;">`,
+                    iconSize: [50, 50],
+                    iconAnchor: [25, 25],
+                    popupAnchor: [0, -30]
+                });
+
+                const marker = L.marker([photo.lat, photo.lng], { icon: icon }).addTo(map);
+
+                // Popup with larger preview and link to lightbox
+                const categoryLabel = category.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+                marker.bindPopup(`
+                    <img src="${photo.src}" alt="${photo.title}">
+                    <h4>${photo.title}</h4>
+                    <p>${categoryLabel}</p>
+                    <a onclick="closeSectionAndOpenLightbox('${category}', ${index})">View Photo</a>
+                `);
+
+                markers.push(marker);
+            });
+
+            // Fit map to show all markers if there are any
+            if (markers.length > 0) {
+                const group = L.featureGroup(markers);
+                map.fitBounds(group.getBounds().pad(0.1));
+            }
+
+            mapInitialized = true;
+        }
+
+        function closeSectionAndOpenLightbox(category, index) {
+            // Close the map popup
+            if (map) map.closePopup();
+            // Open the lightbox directly from the map
+            openLightbox(category, index);
+        }
 
         loadPhotos();
     </script>
