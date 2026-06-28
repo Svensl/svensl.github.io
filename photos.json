@@ -554,57 +554,75 @@
     "landscapes": [
         {
             "src": "images/Landscapes/1C8A0288.jpg",
-            "title": "1C8A0288",
+            "title": "Switzerland - 10/04/2023",
             "description": "Description",
-            "metadata": "Date taken: 10/04/2023 07:12 • Camera: Canon EOS 5D Mark III • F-stop: f/5.6 • Exposure time: 1/320s • ISO Speed: 200 • Focal length: 400mm"
+            "metadata": "Date taken: 10/04/2023 07:12 • Camera: Canon EOS 5D Mark III • F-stop: f/5.6 • Exposure time: 1/320s • ISO Speed: 200 • Focal length: 400mm",
+            "lat": 46.195269,
+            "lng": 7.432249
         },
         {
             "src": "images/Landscapes/1C8A0568.jpg",
-            "title": "1C8A0568",
+            "title": "France - 29/12/2024",
             "description": "Description",
-            "metadata": "Date taken: 29/12/2024 12:56 • Camera: Canon EOS 5D Mark III • F-stop: f/7.1 • Exposure time: 1/400s • ISO Speed: 100 • Focal length: 400mm"
+            "metadata": "Date taken: 29/12/2024 12:56 • Camera: Canon EOS 5D Mark III • F-stop: f/7.1 • Exposure time: 1/400s • ISO Speed: 100 • Focal length: 400mm",
+            "lat": 47.02465,
+            "lng": 6.559142
         },
         {
             "src": "images/Landscapes/1C8A0980.jpg",
-            "title": "1C8A0980",
+            "title": "Ethiopia - 07/01/2016",
             "description": "Description",
-            "metadata": "Date taken: 07/01/2016 17:20 • Camera: Canon EOS 5D Mark III • F-stop: f/5.6 • Exposure time: 1/125s • ISO Speed: 100 • Focal length: 24mm"
+            "metadata": "Date taken: 07/01/2016 17:20 • Camera: Canon EOS 5D Mark III • F-stop: f/5.6 • Exposure time: 1/125s • ISO Speed: 100 • Focal length: 24mm",
+            "lat": 14.09966,
+            "lng": 40.348883
         },
         {
             "src": "images/Landscapes/1C8A1070.jpg",
-            "title": "1C8A1070",
-            "description": "Description",
-            "metadata": "Date taken: 08/01/2016 09:15 • Camera: Canon EOS 5D Mark III • F-stop: f/11 • Exposure time: 1/250s • ISO Speed: 200 • Focal length: 24mm"
+            "title": "Ethiopia - 08/01/2016",
+            "description": "Dalol Depression",
+            "metadata": "Date taken: 08/01/2016 09:15 • Camera: Canon EOS 5D Mark III • F-stop: f/11 • Exposure time: 1/250s • ISO Speed: 200 • Focal length: 24mm",
+            "lat": 14.239801,
+            "lng": 40.296866
         },
         {
             "src": "images/Landscapes/1C8A1846.jpg",
-            "title": "Title 9",
-            "description": "Description",
-            "metadata": "Date taken: 09/05/2016 13:56 • Camera: Canon EOS 5D Mark III • F-stop: f/11 • Exposure time: 1/1000s • ISO Speed: 1000 • Focal length: 300mm"
+            "title": "France - 09/05/2016",
+            "description": "Banc d'Arguin dans le Bassin d'Arcachon",
+            "metadata": "Date taken: 09/05/2016 13:56 • Camera: Canon EOS 5D Mark III • F-stop: f/11 • Exposure time: 1/1000s • ISO Speed: 1000 • Focal length: 300mm",
+            "lat": 44.587778,
+            "lng": -1.214497
         },
         {
             "src": "images/Landscapes/1C8A2633.jpg",
-            "title": "1C8A2633",
-            "description": "Description",
-            "metadata": "Date taken: 25/12/2016 15:07 • Camera: Canon EOS 5D Mark III • F-stop: f/8 • Exposure time: 1/800s • ISO Speed: 640 • Focal length: 260mm"
+            "title": "Switzerland - 25/12/2016",
+            "description": "La Dent Blanche",
+            "metadata": "Date taken: 25/12/2016 15:07 • Camera: Canon EOS 5D Mark III • F-stop: f/8 • Exposure time: 1/800s • ISO Speed: 640 • Focal length: 260mm",
+            "lat": 46.055126,
+            "lng": 7.554649
         },
         {
             "src": "images/Landscapes/1C8A2973.jpg",
-            "title": "1C8A2973",
-            "description": "Description",
-            "metadata": "Date taken: 21/01/2017 17:46 • Camera: Canon EOS 5D Mark III • F-stop: f/10 • Exposure time: 1/160s • ISO Speed: 800 • Focal length: 135mm"
+            "title": "Switzerland - 21/01/2017",
+            "description": "Mont Blanc above the clouds",
+            "metadata": "Date taken: 21/01/2017 17:46 • Camera: Canon EOS 5D Mark III • F-stop: f/10 • Exposure time: 1/160s • ISO Speed: 800 • Focal length: 135mm",
+            "lat": 46.439942,
+            "lng": 6.165766
         },
         {
             "src": "images/Landscapes/1C8A3462.jpg",
-            "title": "1C8A3462",
-            "description": "Description",
-            "metadata": "Date taken: 31/07/2017 14:47 • Camera: Canon EOS 5D Mark III • F-stop: f/8 • Exposure time: 1/250s • ISO Speed: 100 • Focal length: 24mm"
+            "title": "Switzerland - 31/07/2017",
+            "description": "Pas de Lovégno",
+            "metadata": "Date taken: 31/07/2017 14:47 • Camera: Canon EOS 5D Mark III • F-stop: f/8 • Exposure time: 1/250s • ISO Speed: 100 • Focal length: 24mm",
+            "lat": 46.175748,
+            "lng": 7.490192
         },
         {
             "src": "images/Landscapes/1C8A3815.jpg",
-            "title": "1C8A3815",
-            "description": "Description",
-            "metadata": "Date taken: 07/10/2017 16:50 • Camera: Canon EOS 5D Mark III • F-stop: f/7.1 • Exposure time: 1/500s • ISO Speed: 100 • Focal length: 70mm"
+            "title": "Switzerland - 07/10/2017",
+            "description": "Le Léman",
+            "metadata": "Date taken: 07/10/2017 16:50 • Camera: Canon EOS 5D Mark III • F-stop: f/7.1 • Exposure time: 1/500s • ISO Speed: 100 • Focal length: 70mm",
+            "lat": 46.437252,
+            "lng": 6.916218
         },
         {
             "src": "images/Landscapes/1C8A4132.jpg",
@@ -616,63 +634,83 @@
         },
         {
             "src": "images/Landscapes/1C8A4176.jpg",
-            "title": "Title 17",
-            "description": "Description",
-            "metadata": "Date taken: 29/11/2017 18:27 • Camera: Canon EOS 5D Mark III • F-stop: f/16 • Exposure time: 2.5s • ISO Speed: 100 • Focal length: 57mm"
+            "title": "France - 29/11/2017",
+            "description": "Plage du Vieux Fort",
+            "metadata": "Date taken: 29/11/2017 18:27 • Camera: Canon EOS 5D Mark III • F-stop: f/16 • Exposure time: 2.5s • ISO Speed: 100 • Focal length: 57mm",
+            "lat": 15.977771,
+            "lng": -61.309888
         },
         {
             "src": "images/Landscapes/1C8A4237.jpg",
-            "title": "Title 18",
-            "description": "Description",
-            "metadata": "Date taken: 30/11/2017 12:30 • Camera: Canon EOS 5D Mark III • F-stop: f/7.1 • Exposure time: 1/400s • ISO Speed: 100 • Focal length: 59mm"
+            "title": "France - 30/11/2017",
+            "description": "Plage du Vieux Fort",
+            "metadata": "Date taken: 30/11/2017 12:30 • Camera: Canon EOS 5D Mark III • F-stop: f/7.1 • Exposure time: 1/400s • ISO Speed: 100 • Focal length: 59mm",
+            "lat": 15.977585,
+            "lng": -61.311003
         },
         {
             "src": "images/Landscapes/1C8A5283.jpg",
-            "title": "1C8A5283",
-            "description": "Description",
-            "metadata": "Date taken: 26/10/2018 13:55 • Camera: Canon EOS 5D Mark III • F-stop: f/8 • Exposure time: 1/500s • ISO Speed: 100 • Focal length: 400mm"
+            "title": "France - 26/10/2018",
+            "description": "Arve valley from the top of Salève",
+            "metadata": "Date taken: 26/10/2018 13:55 • Camera: Canon EOS 5D Mark III • F-stop: f/8 • Exposure time: 1/500s • ISO Speed: 100 • Focal length: 400mm",
+            "lat": 46.135408,
+            "lng": 6.175202
         },
         {
             "src": "images/Landscapes/1C8A5876.jpg",
-            "title": "1C8A5876",
-            "description": "Description",
-            "metadata": "Date taken: 16/03/2019 16:17 • Camera: Canon EOS 5D Mark III • F-stop: f/7.1 • Exposure time: 1/320s • ISO Speed: 100 • Focal length: 190mm"
+            "title": "France - 16/03/2019",
+            "description": "Mont Blanc from top of Salève",
+            "metadata": "Date taken: 16/03/2019 16:17 • Camera: Canon EOS 5D Mark III • F-stop: f/7.1 • Exposure time: 1/320s • ISO Speed: 100 • Focal length: 190mm",
+            "lat": 46.135412,
+            "lng": 6.17514
         },
         {
             "src": "images/Landscapes/1C8A6523.jpg",
-            "title": "1C8A6523",
-            "description": "Description",
-            "metadata": "Date taken: 18/08/2019 15:19 • Camera: Canon EOS 5D Mark III • F-stop: f/20 • Exposure time: 1/100s • ISO Speed: 500 • Focal length: 24mm"
+            "title": "Switzerland - 18/08/2019",
+            "description": "Mont Miné Glacier form Ferpècle",
+            "metadata": "Date taken: 18/08/2019 15:19 • Camera: Canon EOS 5D Mark III • F-stop: f/20 • Exposure time: 1/100s • ISO Speed: 500 • Focal length: 24mm",
+            "lat": 46.048157,
+            "lng": 7.556277
         },
         {
             "src": "images/Landscapes/1C8A8120.jpg",
-            "title": "1C8A8120",
-            "description": "Description",
-            "metadata": "Date taken: 11/02/2021 16:17 • Camera: Canon EOS 5D Mark III • F-stop: f/7.1 • Exposure time: 1/400s • ISO Speed: 100 • Focal length: 400mm"
+            "title": "Switzerland - 11/02/2021",
+            "description": "La Maya Peak",
+            "metadata": "Date taken: 11/02/2021 16:17 • Camera: Canon EOS 5D Mark III • F-stop: f/7.1 • Exposure time: 1/400s • ISO Speed: 100 • Focal length: 400mm",
+            "lat": 46.196513,
+            "lng": 7.445258
         },
         {
             "src": "images/Landscapes/1C8A8390.jpg",
-            "title": "1C8A8390",
-            "description": "Description",
-            "metadata": "Date taken: 23/05/2021 10:43 • Camera: Canon EOS 5D Mark III • F-stop: f/10 • Exposure time: 1/400s • ISO Speed: 100 • Focal length: 100mm"
+            "title": "France - 23/05/2021",
+            "description": "Cliff side near Lake Bénit",
+            "metadata": "Date taken: 23/05/2021 10:43 • Camera: Canon EOS 5D Mark III • F-stop: f/10 • Exposure time: 1/400s • ISO Speed: 100 • Focal length: 100mm",
+            "lat": 46.025485,
+            "lng": 6.492712
         },
         {
             "src": "images/Landscapes/1C8A8411.jpg",
-            "title": "1C8A8411",
-            "description": "Description",
-            "metadata": "Date taken: 23/05/2021 11:19 • Camera: Canon EOS 5D Mark III • F-stop: f/10 • Exposure time: 1/320s • ISO Speed: 800 • Focal length: 24mm"
+            "title": "France - 23/05/2021",
+            "description": "Lake Bénit",
+            "metadata": "Date taken: 23/05/2021 11:19 • Camera: Canon EOS 5D Mark III • F-stop: f/10 • Exposure time: 1/320s • ISO Speed: 800 • Focal length: 24mm",
+            "lat": 46.028681,
+            "lng": 6.504384
         },
         {
             "src": "images/Landscapes/1C8A9243.jpg",
-            "title": "1C8A9243",
+            "title": "Switzerland - 31/12/2021",
             "description": "Description",
-            "metadata": "Date taken: 31/12/2021 09:30 • Camera: Canon EOS 5D Mark III • F-stop: f/6.3 • Exposure time: 1/320s • ISO Speed: 1000 • Focal length: 360mm"
+            "metadata": "Date taken: 31/12/2021 09:30 • Camera: Canon EOS 5D Mark III • F-stop: f/6.3 • Exposure time: 1/320s • ISO Speed: 1000 • Focal length: 360mm",
+            "lat": 46.656064,
+            "lng": 7.042974
         },
         {
             "src": "images/Landscapes/20190811_135134.mp4",
-            "title": "20190811_135134",
-            "description": "Description",
-            "type": "video"
+            "title": "Switzerland - ",
+            "description": "The Rhône and Arve Junction in Geneva",
+            "type": "video",
+            "lat": 46.201243,
+            "lng": 6.12092
         },
         {
             "src": "images/Landscapes/20230902_180050.mp4",
@@ -682,8 +720,8 @@
         },
         {
             "src": "images/Landscapes/20240106_140523.jpg",
-            "title": "20240106_140523",
-            "description": "Description",
+            "title": "France - 06/01/2024",
+            "description": "Snow shoeing in the White",
             "lat": 45.960375,
             "lng": 6.769217,
             "metadata": "Date taken: 06/01/2024 14:05 • Camera: samsung Galaxy S23 • F-stop: f/1.8 • Exposure time: 1/3200s • ISO Speed: 25 • Focal length: 5mm"
@@ -698,21 +736,27 @@
         },
         {
             "src": "images/Landscapes/IMG_0197.jpg",
-            "title": "IMG_0197",
-            "description": "Description",
-            "metadata": "Date taken: 25/12/2010 16:17 • Camera: Canon EOS 7D • F-stop: f/10 • Exposure time: 1/200s • ISO Speed: 200 • Focal length: 235mm"
+            "title": "Morocco - 25/12/2010",
+            "description": "Camels near Merzouga",
+            "metadata": "Date taken: 25/12/2010 16:17 • Camera: Canon EOS 7D • F-stop: f/10 • Exposure time: 1/200s • ISO Speed: 200 • Focal length: 235mm",
+            "lat": 31.10667,
+            "lng": -3.997728
         },
         {
             "src": "images/Landscapes/IMG_0256 cs3.jpg",
-            "title": "IMG_0256 cs3",
+            "title": "Switzerland - 31/12/2007",
             "description": "Description",
-            "metadata": "Date taken: 31/12/2007 05:31 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/5.6 • Exposure time: 1/320s • ISO Speed: 100 • Focal length: 49mm"
+            "metadata": "Date taken: 31/12/2007 05:31 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/5.6 • Exposure time: 1/320s • ISO Speed: 100 • Focal length: 49mm",
+            "lat": 46.451341,
+            "lng": 6.171655
         },
         {
             "src": "images/Landscapes/IMG_0271.jpg",
-            "title": "IMG_0271",
-            "description": "Description",
-            "metadata": "Date taken: 15/12/2006 15:08 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/22 • Exposure time: 1s • ISO Speed: 100 • Focal length: 34mm"
+            "title": "USA - 15/12/2006",
+            "description": "Redwood National Park",
+            "metadata": "Date taken: 15/12/2006 15:08 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/22 • Exposure time: 1s • ISO Speed: 100 • Focal length: 34mm",
+            "lat": 41.364699,
+            "lng": -124.047814
         },
         {
             "src": "images/Landscapes/IMG_0332.jpg",
@@ -724,51 +768,63 @@
         },
         {
             "src": "images/Landscapes/IMG_0595_6_7_8_9_fused.jpg",
-            "title": "Title 42",
-            "description": "Description",
-            "metadata": "Date taken: 21/09/2013 08:42 • Camera: Canon EOS 7D • F-stop: f/5 • Exposure time: 1/250s • ISO Speed: 500 • Focal length: 20mm"
+            "title": "USA - 21/09/2013",
+            "description": "Yellowstone National Park",
+            "metadata": "Date taken: 21/09/2013 08:42 • Camera: Canon EOS 7D • F-stop: f/5 • Exposure time: 1/250s • ISO Speed: 500 • Focal length: 20mm",
+            "lat": 44.507279,
+            "lng": -110.486567
         },
         {
             "src": "images/Landscapes/IMG_0755.jpg",
-            "title": "Title 46",
-            "description": "Description",
-            "metadata": "Date taken: 22/09/2013 09:41 • Camera: Canon EOS 7D • F-stop: f/10 • Exposure time: 1/250s • ISO Speed: 200 • Focal length: 24mm"
+            "title": "USA - 22/09/2013",
+            "description": "The Great Salt Lake",
+            "metadata": "Date taken: 22/09/2013 09:41 • Camera: Canon EOS 7D • F-stop: f/10 • Exposure time: 1/250s • ISO Speed: 200 • Focal length: 24mm",
+            "lat": 40.692093,
+            "lng": -112.457963
         },
         {
             "src": "images/Landscapes/IMG_1158.jpg",
-            "title": "IMG_1158",
-            "description": "Description",
-            "metadata": "Date taken: 31/07/2011 20:36 • Camera: Canon EOS 7D • F-stop: f/9 • Exposure time: 4s • ISO Speed: 100 • Focal length: 17mm"
+            "title": "USA - 31/07/2011",
+            "description": "Pismo Beach at dawn",
+            "metadata": "Date taken: 31/07/2011 20:36 • Camera: Canon EOS 7D • F-stop: f/9 • Exposure time: 4s • ISO Speed: 100 • Focal length: 17mm",
+            "lat": 35.134896,
+            "lng": -120.640693
         },
         {
             "src": "images/Landscapes/IMG_1180.jpg",
-            "title": "Title 52",
-            "description": "Description",
-            "metadata": "Date taken: 04/11/2009 10:51 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/7.1 • Exposure time: 1/125s • ISO Speed: 100 • Focal length: 22mm"
+            "title": "Madagascar - 04/11/2009",
+            "description": "Rice fields in Madagascar",
+            "metadata": "Date taken: 04/11/2009 10:51 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/7.1 • Exposure time: 1/125s • ISO Speed: 100 • Focal length: 22mm",
+            "lat": -20.543697,
+            "lng": 47.246363
         },
         {
             "src": "images/Landscapes/IMG_1508.jpg",
-            "title": "IMG_1508",
-            "description": "Description",
-            "metadata": "Date taken: 22/05/2012 16:18 • Camera: Canon EOS 7D • F-stop: f/5 • Exposure time: 1/500s • ISO Speed: 100 • Focal length: 135mm"
+            "title": "Switzerland - 22/05/2012",
+            "description": "Hiking above Les Marécottes",
+            "metadata": "Date taken: 22/05/2012 16:18 • Camera: Canon EOS 7D • F-stop: f/5 • Exposure time: 1/500s • ISO Speed: 100 • Focal length: 135mm",
+            "lat": 46.118376,
+            "lng": 7.010871
         },
         {
             "src": "images/Landscapes/IMG_1974.jpg",
-            "title": "IMG_1974",
-            "description": "Description",
-            "metadata": "Date taken: 24/07/2012 16:52 • Camera: Canon EOS 7D • F-stop: f/14 • Exposure time: 1/125s • ISO Speed: 200 • Focal length: 42mm"
+            "title": "Switzerland - 24/07/2012",
+            "description": "Hay Stacks in Geneva",
+            "metadata": "Date taken: 24/07/2012 16:52 • Camera: Canon EOS 7D • F-stop: f/14 • Exposure time: 1/125s • ISO Speed: 200 • Focal length: 42mm",
+            "lat": 46.231168,
+            "lng": 6.24955
         },
         {
             "src": "images/Landscapes/IMG_20201025_135046_027.jpg",
-            "title": "IMG_20201025_135046_027",
-            "description": "Description",
+            "title": "Switzerland - 25/10/2020",
+            "description": "Bank of the Rhône in Geneva",
             "lat": 46.2025,
             "lng": 6.127778
         },
         {
             "src": "images/Landscapes/IMG_20211028_184905_296.jpg",
-            "title": "IMG_20211028_184905_296",
-            "description": "Description",
+            "title": "Switzerland - 28/10/2021",
+            "description": "Fall colors by drone",
             "lat": 46.141944,
             "lng": 6.184444
         }
@@ -1240,9 +1296,11 @@
         },
         {
             "src": "images/Orange/1C8A0640.jpg",
-            "title": "1C8A0640",
+            "title": "France - 31/12/2024",
             "description": "Description",
-            "metadata": "Date taken: 31/12/2024 17:46 • Camera: Canon EOS 5D Mark III • F-stop: f/2.8 • Exposure time: 1/40s • ISO Speed: 250 • Focal length: 47mm"
+            "metadata": "Date taken: 31/12/2024 17:46 • Camera: Canon EOS 5D Mark III • F-stop: f/2.8 • Exposure time: 1/40s • ISO Speed: 250 • Focal length: 47mm",
+            "lat": 47.038866,
+            "lng": 6.577101
         },
         {
             "src": "images/Orange/1C8A1004.jpg",
@@ -1254,9 +1312,11 @@
         },
         {
             "src": "images/Orange/1C8A4433.jpg",
-            "title": "1C8A4433",
-            "description": "Description",
-            "metadata": "Date taken: 02/12/2017 17:30 • Camera: Canon EOS 5D Mark III • F-stop: f/13 • Exposure time: 1/1000s • ISO Speed: 500 • Focal length: 390mm"
+            "title": "France - 02/12/2017",
+            "description": "Guadeloupe",
+            "metadata": "Date taken: 02/12/2017 17:30 • Camera: Canon EOS 5D Mark III • F-stop: f/13 • Exposure time: 1/1000s • ISO Speed: 500 • Focal length: 390mm",
+            "lat": 16.323022,
+            "lng": -61.787881
         },
         {
             "src": "images/Orange/1C8A9201.jpg",
