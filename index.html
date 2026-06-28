@@ -985,7 +985,11 @@
                 var oms = new OverlappingMarkerSpiderfier(map, {
                     keepSpiderfied: true,
                     nearbyDistance: 40,
-                    legWeight: 2
+                    legWeight: 2,
+                    circleFootSeparation: 50,
+                    spiralFootSeparation: 56,
+                    spiralLengthStart: 22,
+                    spiralLengthFactor: 10
                 });
                 // Only show popup when clicking a spiderfied or standalone marker
                 oms.addListener('click', function(marker) {
