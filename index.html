@@ -934,12 +934,39 @@
             }
 
             try {
-                map = L.map('map-container').setView([25, 10], 2);
+                // Base maps
+                var esriTopo = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+                    maxZoom: 19,
+                    attribution: 'Tiles &copy; Esri'
+                });
 
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                var esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                    maxZoom: 19,
+                    attribution: 'Tiles &copy; Esri'
+                });
+
+                var esriLabels = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', {
                     maxZoom: 19
-                }).addTo(map);
+                });
+
+                var satellite = L.layerGroup([esriImagery, esriLabels]);
+
+                var cartoLight = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                    maxZoom: 19,
+                    attribution: '&copy; <a href="https://carto.com/">CARTO</a>'
+                });
+
+                map = L.map('map-container', {
+                    center: [25, 10],
+                    zoom: 2,
+                    layers: [esriTopo]
+                });
+
+                L.control.layers({
+                    'Topographic': esriTopo,
+                    'Satellite': satellite,
+                    'Light': cartoLight
+                }, {}, { collapsed: false, position: 'bottomleft' }).addTo(map);
 
                 // Collect all photos with GPS coordinates
                 const gpsPhotos = [];
