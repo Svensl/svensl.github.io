@@ -1118,51 +1118,67 @@
         },
         {
             "src": "images/Life/People/1C8A0718.jpg",
-            "title": "Title 2",
-            "description": "Description",
-            "metadata": "Date taken: 06/11/2015 18:16 • Camera: Canon EOS 5D Mark III • F-stop: f/5.6 • Exposure time: 1/80s • ISO Speed: 2500 • Focal length: 65mm"
+            "title": "South Sudan - 06/11/2015",
+            "description": "A fisherman on the Nile.",
+            "metadata": "Date taken: 06/11/2015 18:16 • Camera: Canon EOS 5D Mark III • F-stop: f/5.6 • Exposure time: 1/80s • ISO Speed: 2500 • Focal length: 65mm",
+            "lat": 4.824924,
+            "lng": 31.609825
         },
         {
             "src": "images/Life/People/1C8A0929.jpg",
-            "title": "Title 3",
-            "description": "Description",
-            "metadata": "Date taken: 07/01/2016 16:46 • Camera: Canon EOS 5D Mark III • F-stop: f/5.6 • Exposure time: 1/250s • ISO Speed: 100 • Focal length: 70mm"
+            "title": "Ethiopia - 07/01/2016",
+            "description": "Camels transporting salt slabs harvested from the slat flats on Lake Karum. My understanding is that they bring the slabs all the way to Mekele. A long distance. ",
+            "metadata": "Date taken: 07/01/2016 16:46 • Camera: Canon EOS 5D Mark III • F-stop: f/5.6 • Exposure time: 1/250s • ISO Speed: 100 • Focal length: 70mm",
+            "lat": 14.092917,
+            "lng": 40.332145
         },
         {
             "src": "images/Life/People/1C8A0981.jpg",
-            "title": "Title 4",
+            "title": "Ethiopia - 07/01/2016",
             "description": "Description",
-            "metadata": "Date taken: 07/01/2016 17:20 • Camera: Canon EOS 5D Mark III • F-stop: f/5 • Exposure time: 1/125s • ISO Speed: 100 • Focal length: 44mm"
+            "metadata": "Date taken: 07/01/2016 17:20 • Camera: Canon EOS 5D Mark III • F-stop: f/5 • Exposure time: 1/125s • ISO Speed: 100 • Focal length: 44mm",
+            "lat": 14.097079,
+            "lng": 40.363002
         },
         {
             "src": "images/Life/People/1C8A1039.jpg",
-            "title": "1C8A1039",
+            "title": "Ethiopia - 08/01/2016",
             "description": "Description",
-            "metadata": "Date taken: 08/01/2016 08:58 • Camera: Canon EOS 5D Mark III • F-stop: f/11 • Exposure time: 1/80s • ISO Speed: 100 • Focal length: 47mm"
+            "metadata": "Date taken: 08/01/2016 08:58 • Camera: Canon EOS 5D Mark III • F-stop: f/11 • Exposure time: 1/80s • ISO Speed: 100 • Focal length: 47mm",
+            "lat": 14.239889,
+            "lng": 40.298131
         },
         {
             "src": "images/Life/People/1C8A1143.jpg",
-            "title": "Title 5",
-            "description": "Description",
-            "metadata": "Date taken: 08/01/2016 16:21 • Camera: Canon EOS 5D Mark III • F-stop: f/14 • Exposure time: 1/20s • ISO Speed: 800 • Focal length: 100mm"
+            "title": "Ethiopia - 08/01/2016",
+            "description": "Next to Abala Waterfall.\nThis place is a watering point were people come fill in jerricans and let their cattle drink. There were about a dozen women and children the day I passed by for a visit. I took several pictures of people gathering water and although this one does not show any of the process, I really like the posture and expression of that woman that was resting on the rocks.",
+            "metadata": "Date taken: 08/01/2016 16:21 • Camera: Canon EOS 5D Mark III • F-stop: f/14 • Exposure time: 1/20s • ISO Speed: 800 • Focal length: 100mm",
+            "lat": 13.356918,
+            "lng": 39.74492
         },
         {
             "src": "images/Life/People/1C8A1559.jpg",
-            "title": "Title 10",
-            "description": "Description",
-            "metadata": "Date taken: 27/02/2016 11:32 • Camera: Canon EOS 5D Mark III • F-stop: f/4.5 • Exposure time: 1/160s • ISO Speed: 100 • Focal length: 70mm"
+            "title": "Pakistan - 27/02/2016",
+            "description": "These are young men on a road near the Lahore Fort. Selling some kind of dried pancakes. I liked how they had similar expressions and posture and snapped a quick picture.",
+            "metadata": "Date taken: 27/02/2016 11:32 • Camera: Canon EOS 5D Mark III • F-stop: f/4.5 • Exposure time: 1/160s • ISO Speed: 100 • Focal length: 70mm",
+            "lat": 31.586249,
+            "lng": 74.316954
         },
         {
             "src": "images/Life/People/1C8A1620.jpg",
-            "title": "Title 14",
-            "description": "Description",
-            "metadata": "Date taken: 27/02/2016 12:34 • Camera: Canon EOS 5D Mark III • F-stop: f/7.1 • Exposure time: 1/200s • ISO Speed: 100 • Focal length: 24mm"
+            "title": "Pakistan - 27/02/2016",
+            "description": "Some random intersection. So many details in this picture but I like the way it is centered on a the man with his cigarette.\nGPS Location approximate.",
+            "metadata": "Date taken: 27/02/2016 12:34 • Camera: Canon EOS 5D Mark III • F-stop: f/7.1 • Exposure time: 1/200s • ISO Speed: 100 • Focal length: 24mm",
+            "lat": 31.582849,
+            "lng": 74.314355
         },
         {
             "src": "images/Life/People/1C8A1706.jpg",
-            "title": "Title 16",
-            "description": "Description",
-            "metadata": "Date taken: 06/05/2016 16:43 • Camera: Canon EOS 5D Mark III • F-stop: f/9 • Exposure time: 1/800s • ISO Speed: 250 • Focal length: 400mm"
+            "title": "France - 06/05/2016",
+            "description": "A surfer in Hossegor. The wave is HUGE! ",
+            "metadata": "Date taken: 06/05/2016 16:43 • Camera: Canon EOS 5D Mark III • F-stop: f/9 • Exposure time: 1/800s • ISO Speed: 250 • Focal length: 400mm",
+            "lat": 43.666164,
+            "lng": -1.442511
         },
         {
             "src": "images/Life/People/1C8A3406.jpg",
@@ -1172,45 +1188,59 @@
         },
         {
             "src": "images/Life/People/IMG_0017.jpg",
-            "title": "Title 23",
-            "description": "Description",
-            "metadata": "Date taken: 26/12/2010 12:20 • Camera: Canon EOS 7D • F-stop: f/6.3 • Exposure time: 1/200s • ISO Speed: 200 • Focal length: 400mm"
+            "title": "Morocco - 26/12/2010",
+            "description": "A group of women at a bus stop. Somewhere between Agadir and Merzouga!\nAbsolutely can't remember the GPS location. Very approximative.",
+            "metadata": "Date taken: 26/12/2010 12:20 • Camera: Canon EOS 7D • F-stop: f/6.3 • Exposure time: 1/200s • ISO Speed: 200 • Focal length: 400mm",
+            "lat": 30.410782,
+            "lng": -7.041102
         },
         {
             "src": "images/Life/People/IMG_0059.jpg",
-            "title": "Title 26",
-            "description": "Description",
-            "metadata": "Date taken: 12/01/2007 09:33 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/5.6 • Exposure time: 1/800s • ISO Speed: 100 • Focal length: 300mm"
+            "title": "USA - 12/01/2007",
+            "description": "Mavericks Surf Contest. Giant Waves.\nhttps://en.wikipedia.org/wiki/Mavericks_Beach\n",
+            "metadata": "Date taken: 12/01/2007 09:33 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/5.6 • Exposure time: 1/800s • ISO Speed: 100 • Focal length: 300mm",
+            "lat": 37.505913,
+            "lng": -122.508692
         },
         {
             "src": "images/Life/People/IMG_0138.jpg",
-            "title": "Title 29",
-            "description": "Description",
-            "metadata": "Date taken: 21/06/2014 04:47 • Camera: Canon EOS 7D • F-stop: f/8 • Exposure time: 1/200s • ISO Speed: 250 • Focal length: 55mm"
+            "title": "Niger - 21/06/2014",
+            "description": "Ayorou Refugee Camp on world refugee day.",
+            "metadata": "Date taken: 21/06/2014 04:47 • Camera: Canon EOS 7D • F-stop: f/8 • Exposure time: 1/200s • ISO Speed: 250 • Focal length: 55mm",
+            "lat": 14.756291,
+            "lng": 0.934276
         },
         {
             "src": "images/Life/People/IMG_0177.jpg",
-            "title": "IMG_0177",
+            "title": "Niger - 21/06/2014",
             "description": "Description",
-            "metadata": "Date taken: 21/06/2014 06:40 • Camera: Canon EOS 7D • F-stop: f/9 • Exposure time: 1/200s • ISO Speed: 250 • Focal length: 17mm"
+            "metadata": "Date taken: 21/06/2014 06:40 • Camera: Canon EOS 7D • F-stop: f/9 • Exposure time: 1/200s • ISO Speed: 250 • Focal length: 17mm",
+            "lat": 14.734378,
+            "lng": 0.921868
         },
         {
             "src": "images/Life/People/IMG_0189.jpg",
-            "title": "Title 33",
-            "description": "Description",
-            "metadata": "Date taken: 28/12/2010 09:48 • Camera: Canon EOS 7D • F-stop: f/5.6 • Exposure time: 1/800s • ISO Speed: 160 • Focal length: 400mm"
+            "title": "Morocco - 28/12/2010",
+            "description": "Wanderer on Al-Hadeem Square in Meknes",
+            "metadata": "Date taken: 28/12/2010 09:48 • Camera: Canon EOS 7D • F-stop: f/5.6 • Exposure time: 1/800s • ISO Speed: 160 • Focal length: 400mm",
+            "lat": 33.893088,
+            "lng": -5.565787
         },
         {
             "src": "images/Life/People/IMG_0191.jpg",
-            "title": "IMG_0191",
-            "description": "Description",
-            "metadata": "Date taken: 16/09/2013 23:47 • Camera: Canon EOS 7D • F-stop: f/9 • Exposure time: 1/80s • ISO Speed: 200 • Focal length: 28mm"
+            "title": "USA - 16/09/2013",
+            "description": "Your Truly.\nRandom GPS Location in the middle west.",
+            "metadata": "Date taken: 16/09/2013 23:47 • Camera: Canon EOS 7D • F-stop: f/9 • Exposure time: 1/80s • ISO Speed: 200 • Focal length: 28mm",
+            "lat": 44.245199,
+            "lng": -101.376577
         },
         {
             "src": "images/Life/People/IMG_0197.jpg",
-            "title": "IMG_0197",
-            "description": "Description",
-            "metadata": "Date taken: 24/08/2012 19:29 • Camera: Canon EOS 7D • F-stop: f/5 • Exposure time: 1/400s • ISO Speed: 1600 • Focal length: 170mm"
+            "title": "Georgia - 24/08/2021",
+            "description": "Basket ball game at the Tbilisi Sports Palace. A Georgian Dunk!",
+            "metadata": "Date taken: 24/08/2012 19:29 • Camera: Canon EOS 7D • F-stop: f/5 • Exposure time: 1/400s • ISO Speed: 1600 • Focal length: 170mm",
+            "lat": 41.719504,
+            "lng": 44.779642
         },
         {
             "src": "images/Life/People/IMG_0207.jpg",
@@ -1238,9 +1268,11 @@
         },
         {
             "src": "images/Life/People/IMG_0567.jpg",
-            "title": "Title 43",
-            "description": "Description",
-            "metadata": "Date taken: 06/10/2014 07:31 • Camera: Canon EOS 7D • F-stop: f/2.8 • Exposure time: 1/100s • ISO Speed: 400 • Focal length: 55mm"
+            "title": "Niger - 06/10/2024",
+            "description": "This is Boubacar.\nHe was a colleague of mine when I was working in Niger. He was the long-distance driver of the NGO is was working with. He would bring me to refugee camps and other destinations. \nWe spent many hours together on the road talking about various topics. We befriended each other and he invited me over to his place for Eid Al-Adha. I met his family and ate with them and several other people in his community. Boubacar was a very cheerful person and he always had this big smile on him. I remember him to be a very nice and soft person. \nBoubacar unfortunately died in very sad and dreadful circumstances (retarded Jihadists) on the 9th of August 2020. \nMay his sweet soul rest in peace. \n",
+            "metadata": "Date taken: 06/10/2014 07:31 • Camera: Canon EOS 7D • F-stop: f/2.8 • Exposure time: 1/100s • ISO Speed: 400 • Focal length: 55mm",
+            "lat": 13.53603,
+            "lng": 2.104071
         },
         {
             "src": "images/Life/People/IMG_0769.jpg",
@@ -1268,9 +1300,11 @@
         },
         {
             "src": "images/Life/People/P1010173.jpg",
-            "title": "P1010173",
-            "description": "Description",
-            "metadata": "Date taken: 01/02/2019 11:48 • Camera: Panasonic DMC-TZ61 • F-stop: f/3.3 • Exposure time: 1/800s • ISO Speed: 160 • Focal length: 4mm"
+            "title": "Nigeria - 01/02/2019",
+            "description": "Security\nRandom GPS Location. Could be withing a 100 km.",
+            "metadata": "Date taken: 01/02/2019 11:48 • Camera: Panasonic DMC-TZ61 • F-stop: f/3.3 • Exposure time: 1/800s • ISO Speed: 160 • Focal length: 4mm",
+            "lat": 4.830312,
+            "lng": 7.032002
         }
     ],
     "orange": [
