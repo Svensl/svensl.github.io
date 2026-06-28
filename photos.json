@@ -1320,9 +1320,11 @@
         },
         {
             "src": "images/Orange/1C8A9201.jpg",
-            "title": "1C8A9201",
-            "description": "Description",
-            "metadata": "Date taken: 17/12/2021 17:39 • Camera: Canon EOS 5D Mark III • F-stop: f/10 • Exposure time: 1/800s • ISO Speed: 100 • Focal length: 400mm"
+            "title": "France - 17/12/2021",
+            "description": "Sunset from the Salève",
+            "metadata": "Date taken: 17/12/2021 17:39 • Camera: Canon EOS 5D Mark III • F-stop: f/10 • Exposure time: 1/800s • ISO Speed: 100 • Focal length: 400mm",
+            "lat": 46.126973,
+            "lng": 6.173639
         },
         {
             "src": "images/Orange/DSCN0097.jpg",
@@ -1334,21 +1336,35 @@
         },
         {
             "src": "images/Orange/IMG_0011.jpg",
-            "title": "IMG_0011",
-            "description": "Description",
-            "metadata": "Date taken: 11/12/2006 16:47 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/10 • Exposure time: 1/250s • ISO Speed: 400 • Focal length: 18mm"
+            "title": "USA - 11/12/2006",
+            "description": "Eureka Sunset",
+            "metadata": "Date taken: 11/12/2006 16:47 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/10 • Exposure time: 1/250s • ISO Speed: 400 • Focal length: 18mm",
+            "lat": 40.804113,
+            "lng": -124.20151
+        },
+        {
+            "src": "images/Orange/IMG_0039.jpg",
+            "title": "USA - 21/01/2008",
+            "description": "Mauna Kea",
+            "metadata": "Date taken: 21/01/2007 20:02 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/10 • Exposure time: 1/320s • ISO Speed: 200 • Focal length: 130mm",
+            "lat": 19.814676,
+            "lng": -155.514206
         },
         {
             "src": "images/Orange/IMG_0148.jpg",
-            "title": "IMG_0148",
-            "description": "Description",
-            "metadata": "Date taken: 26/10/2009 17:07 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/2.8 • Exposure time: 1/1250s • ISO Speed: 100 • Focal length: 55mm"
+            "title": "Madagascar - 26/10/2009",
+            "description": "People under tree at sunset",
+            "metadata": "Date taken: 26/10/2009 17:07 • Camera: Canon EOS DIGITAL REBEL XTi • F-stop: f/2.8 • Exposure time: 1/1250s • ISO Speed: 100 • Focal length: 55mm",
+            "lat": -23.554477,
+            "lng": 43.762087
         },
         {
             "src": "images/Orange/IMG_0170.jpg",
-            "title": "IMG_0170",
-            "description": "Description",
-            "metadata": "Date taken: 25/12/2010 07:40 • Camera: Canon EOS 7D • F-stop: f/14 • Exposure time: 1/640s • ISO Speed: 1600 • Focal length: 55mm"
+            "title": "Morocco - 25/12/2010",
+            "description": "Camels in Merzouga Desert",
+            "metadata": "Date taken: 25/12/2010 07:40 • Camera: Canon EOS 7D • F-stop: f/14 • Exposure time: 1/640s • ISO Speed: 1600 • Focal length: 55mm",
+            "lat": 31.131432,
+            "lng": -3.992749
         },
         {
             "src": "images/Orange/IMG_0181.jpg",
@@ -1392,21 +1408,27 @@
         },
         {
             "src": "images/Orange/IMG_0902.jpg",
-            "title": "IMG_0902",
-            "description": "Description",
-            "metadata": "Date taken: 24/09/2013 21:05 • Camera: Canon EOS 7D • F-stop: f/7.1 • Exposure time: 1/400s • ISO Speed: 800 • Focal length: 18mm"
+            "title": "USA - 24/09/2013",
+            "description": "Pacific Sunset after crossing the USA from Chicago",
+            "metadata": "Date taken: 24/09/2013 21:05 • Camera: Canon EOS 7D • F-stop: f/7.1 • Exposure time: 1/400s • ISO Speed: 800 • Focal length: 18mm",
+            "lat": 39.309498,
+            "lng": -123.8101
         },
         {
             "src": "images/Orange/IMG_1187.jpg",
-            "title": "IMG_1187",
-            "description": "Description",
-            "metadata": "Date taken: 01/08/2011 19:56 • Camera: Canon EOS 7D • F-stop: f/13 • Exposure time: 1/160s • ISO Speed: 100 • Focal length: 55mm"
+            "title": "USA - 01/08/2011",
+            "description": "Sunset at Pismo beach and pier",
+            "metadata": "Date taken: 01/08/2011 19:56 • Camera: Canon EOS 7D • F-stop: f/13 • Exposure time: 1/160s • ISO Speed: 100 • Focal length: 55mm",
+            "lat": 35.137388,
+            "lng": -120.642832
         },
         {
             "src": "images/Orange/IMG_1285.jpg",
-            "title": "IMG_1285",
-            "description": "Description",
-            "metadata": "Date taken: 01/08/2011 20:31 • Camera: Canon EOS 7D • F-stop: f/11 • Exposure time: 4s • ISO Speed: 100 • Focal length: 100mm"
+            "title": "USA - 01/08/2011",
+            "description": "Pismo Peer",
+            "metadata": "Date taken: 01/08/2011 20:31 • Camera: Canon EOS 7D • F-stop: f/11 • Exposure time: 4s • ISO Speed: 100 • Focal length: 100mm",
+            "lat": 35.138147,
+            "lng": -120.644731
         },
         {
             "src": "images/Orange/IMG_2273.jpg",
