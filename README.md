@@ -31,7 +31,7 @@ The website reads all of its photo content from `photos.json`, so you almost nev
 | `videos/` | Video files | **Yes** |
 | `CNAME` | Custom domain configuration | **Yes** |
 | `admin-page.html` | Content Manager (local editing tool) | **No** |
-| `sync-script.py` | Folder-to-JSON sync script | **No** |
+| `sync-script.py` | Folder-to-JSON sync script (reads photo EXIF; needs Pillow) | **No** |
 | `compress_mp4.py` | Local video compression helper | **No** |
 | `readme.md` | This documentation | Optional |
 
@@ -78,6 +78,7 @@ To swap any of these, replace the filename in the relevant line of `index.html` 
 - **Life** — opens a category landing page with a background video (hard-coded) and three sub-galleries: Fauna, Flora, People
 - **Orange** — opens the Orange gallery directly
 - **Water** — opens the Water gallery directly
+- **Map** — opens an interactive world map plotting every geotagged photo (see Map Page below)
 - **About** — opens the About page
 
 A **Home** button appears (bottom-right on mobile, top-right on desktop) once you have navigated away from the landing page.
@@ -86,14 +87,26 @@ A **Home** button appears (bottom-right on mobile, top-right on desktop) once yo
 
 **Galleries** — Each gallery displays its photos as a responsive **mosaic** of square tiles. Hovering a tile reveals its title; hovering a video tile plays it muted. Clicking any tile opens the lightbox.
 
-**Lightbox** — A full-screen overlay showing the selected image or video at large size, alongside its title and description. Within the lightbox you can:
+**Lightbox** — A full-screen overlay showing the selected image or video at large size, alongside its title, its EXIF capture details (the `metadata` string, shown as a "Metadata:" line when present), and its description. Within the lightbox you can:
 
 - Move between items with the **on-screen arrows** or the **left/right arrow keys**
 - Close with the **×** button or the **Escape** key
 
 Descriptions preserve line breaks (the CSS uses `white-space: pre-wrap`), so multi-paragraph captions written in the Content Manager display correctly.
 
-**About Page** — A simple text page with a short biography and a contact email.
+**Map Page** — A full-page interactive map (built with Leaflet) that automatically plots every entry in `photos.json` that has `lat`/`lng` coordinates. Each photo appears as a small thumbnail marker; clicking a marker opens a popup with the photo, its title, and its category, plus a **View Photo** link that opens the item in the lightbox. The map auto-fits to show all geotagged photos and is built on demand the first time the Map tab is opened.
+
+A base-map switcher (a Leaflet layer control, shown expanded in the bottom-left corner) lets the visitor choose between three base maps:
+
+- **Topographic** — Esri World Topographic map (the default)
+- **Satellite** — Esri World Imagery with a transparent Esri reference overlay (boundaries and place names) stacked on top
+- **Light** — CARTO's light/minimal basemap
+
+All three base layers are free public tile services used without an API key, served from Esri (ArcGIS Online) and CARTO. The map depends on Leaflet, which is loaded from a CDN (`unpkg.com`) — an internet connection is required for the map and its tiles to display.
+
+> This public Map page is separate from the editing map inside the Content Manager (`admin-page.html`), and the two now offer different base-map sets: the public map provides Topographic / Satellite / Light, while the Content Manager provides Street / Satellite (Hybrid). They are configured independently in their respective files.
+
+**About Page** — A short text biography for Sven Lothar Schmitz-Leuffen with a contact line for purchase inquiries (the email is written in an obfuscated form, `svenlsl_at_protonmail_dot_com`, to reduce scraping).
 
 ### Categories
 
@@ -162,11 +175,12 @@ The layout adapts to screen size through CSS media queries:
 
 ```json
 {
-    "src": "images/Orange/1C8A0438.jpg",
-    "title": "Marseilles",
-    "description": "Planete Mars",
-    "lat": 43.2965,
-    "lng": 5.3698,
+    "src": "images/Adventures/Night/1C8A1217.jpg",
+    "title": "Ethiopia - 09/01/2016",
+    "description": "Erta Ale Volcano",
+    "lat": 13.60626,
+    "lng": 40.661862,
+    "metadata": "Date taken: 09/01/2016 22:11 • Camera: Canon EOS 5D Mark III • F-stop: f/5 • Exposure time: 1/80s • ISO Speed: 1000 • Focal length: 100mm",
     "type": "video"
 }
 ```
@@ -178,9 +192,10 @@ The layout adapts to screen size through CSS media queries:
 | `description` | Yes | Description text shown in lightbox |
 | `lat` | No | GPS latitude in WGS84 Decimal Degrees (−90 to 90) |
 | `lng` | No | GPS longitude in WGS84 Decimal Degrees (−180 to 180) |
+| `metadata` | No | A single string of EXIF capture details (date taken, camera, f-stop, exposure, ISO, focal length), separated by ` • `. The Content Manager reads its read-only "Date Taken" field from this string. |
 | `type` | No | Set to `"video"` for video files; omit for images |
 
-`lat` and `lng` are written together — an entry either has both or neither.
+`lat` and `lng` are written together — an entry either has both or neither. The `metadata` field is present on image entries (it carries the EXIF capture details) and is preserved as-is by the sync script.
 
 ### Encoding
 
@@ -242,7 +257,7 @@ The Content Manager (`admin-page.html`) is a local tool for editing photo titles
 
 **Step 1 — Select a Category.** Click any category in the left sidebar. Categories are grouped: Adventures (Night, Wanderlust, Window Seat), Landscapes, Life (Fauna, Flora, People), Orange, Water.
 
-**Step 2 — Select a Photo.** Click any thumbnail to open the editor panel. The selected thumbnail is highlighted with a red ring and acts as your live preview. The editor shows the file path, an editable Title field, an editable Description text area, an interactive map, and a video toggle.
+**Step 2 — Select a Photo.** Click any thumbnail to open the editor panel. The selected thumbnail is highlighted with a red ring and acts as your live preview. The editor shows the file path, an editable Title field, an editable Description text area, a read-only **Date Taken** field (parsed from the entry's `metadata` string in `photos.json`), an interactive map, and a video toggle.
 
 **Step 3 — Edit Title, Description, and Location.**
 - Type into the **Title** and **Description** fields.
@@ -253,7 +268,7 @@ The Content Manager (`admin-page.html`) is a local tool for editing photo titles
 *Setting a location on the map:*
 - **Click anywhere on the map** to drop a marker; coordinates are stored and shown beneath the map.
 - **Drag the marker** to fine-tune; coordinates update on drop.
-- Use the **Street / Satellite** toggle (top-right of the map) to switch base maps.
+- Use the **Street / Satellite (Hybrid)** toggle (top-right of the map) to switch base maps; Satellite (Hybrid) — Esri imagery with labels and boundaries — is the default.
 - Click **Clear location** to remove the coordinates.
 - If a photo already has coordinates, the map opens centered on that location.
 
@@ -305,7 +320,7 @@ The Content Manager (`admin-page.html`) is a local tool for editing photo titles
 - **File encoding** must be UTF-8 (verify in VS Code's bottom-right corner).
 - **Line breaks** entered with Enter appear as `\n` in the JSON; the website's `white-space: pre-wrap` CSS renders them as paragraphs.
 
-**GPS coordinates and the map.** Coordinates are stored in WGS84 Decimal Degrees. The map offers two base layers via the top-right toggle: **Street** (OpenStreetMap tiles) and **Satellite** (Esri World Imagery). The **map requires an internet connection** — tiles load from online services, so the map area appears blank offline (editing titles/descriptions still works offline). The Esri satellite layer is a free public tile service used without an API key, which is fine for this local single-user tool.
+**GPS coordinates and the map.** Coordinates are stored in WGS84 Decimal Degrees. The map offers two base layers via the top-right toggle: **Street** (OpenStreetMap tiles) and **Satellite (Hybrid)**, which is the default. The Hybrid layer stacks Esri World Imagery (aerial/satellite) with a transparent Esri reference overlay that adds country/administrative boundaries, place names, and major points of interest on top of the imagery. Both layers allow **overzoom to level 22**: real tiles exist up to native zoom 19 (`maxNativeZoom`), and the map upscales beyond that so you can keep zooming in to place a marker precisely. The **map requires an internet connection** — tiles load from online services, so the map area appears blank offline (editing titles/descriptions still works offline). The Esri layers are free public tile services used without an API key, which is fine for this local single-user tool.
 
 Quick reference for verifying common locations:
 
@@ -330,14 +345,18 @@ Quick reference for verifying common locations:
 
 ## `sync-script.py` — The Photo Sync Tool
 
-`sync-script.py` is a Python script that automatically scans your image folders and updates `photos.json` to match. It detects new images, removes entries for deleted files, and preserves all existing titles, descriptions, and GPS coordinates.
+`sync-script.py` is a Python script that automatically scans your image folders and updates `photos.json` to match. It detects new images, removes entries for deleted files, and preserves all existing titles, descriptions, and GPS coordinates. For new images it also reads **EXIF data** straight from the photo files — extracting GPS coordinates and building a camera `metadata` string (date taken, camera, f-stop, exposure, ISO, focal length).
 
 > **Important:** This script is for local use only. It should not be uploaded to GitHub Pages.
 
 ### Prerequisites
 
 - **Python 3.6+** installed. Check with `python --version`. If not installed, download from [python.org/downloads](https://www.python.org/downloads/) and check **"Add Python to PATH"** during installation.
-- No additional packages are required — the script uses only built-in libraries.
+- **Pillow** is required for EXIF extraction (GPS coordinates and camera metadata):
+  ```bash
+  pip install Pillow
+  ```
+  The script still runs without Pillow, but EXIF extraction is **disabled** — it will print "EXIF extraction: Disabled" and add new entries without `metadata`, `lat`, or `lng`. Install Pillow to get the full benefit.
 
 ### File Location
 
@@ -378,29 +397,35 @@ cd "C:\Users\schmi\OneDrive\Pictures\Website\Website 2025\svensl.github.io"
 python sync-script.py --dry
 ```
 
-Example output:
+Example output (the header reports whether EXIF extraction is enabled, and each changed category can show `GPS:` and `EXIF:` counts):
 
 ```
-============================================================
+======================================================================
   2SL Photography - Photo Sync Tool
-============================================================
+======================================================================
 
   MODE: Dry Run (preview only, no files will be changed)
+  EXIF extraction: Enabled (Pillow detected)
 
-  [~] adventures-night              Total:  45  (+2 new, 43 kept, -0 removed)
-  [=] adventures-wanderlust         Total:  30  (+0 new, 30 kept, -0 removed)
-  [~] landscapes                    Total:  62  (+3 new, 59 kept, -1 removed)
-  [=] life-fauna                    Total:  39  (+0 new, 39 kept, -0 removed)
+  [~] adventures-night              Total:  45  (+2 new, 43 kept, -0 removed)  GPS:40 EXIF:43
+  [=] adventures-wanderlust         Total:  30  (+0 new, 30 kept, -0 removed)  GPS:28 EXIF:30
+  [~] landscapes                    Total:  62  (+3 new, 59 kept, -1 removed)  GPS:55 EXIF:60
   ...
 
+----------------------------------------------------------------------
   SUMMARY
-    New files found:    +5
-    Existing kept:       280
-    Removed (missing):  -1
-    Total entries:       284
+    New files found:       +5
+    Existing kept:          280
+    Removed (missing):     -1
+    Total entries:          284
+    With GPS coordinates:   265
+    With EXIF metadata:     280
+----------------------------------------------------------------------
 
   Dry run complete. Run without --dry to apply changes.
 ```
+
+> If Pillow is not installed, the header instead reads "EXIF extraction: Disabled (install: pip install Pillow)" and no GPS/EXIF data is added to new entries.
 
 **Apply changes** — If the preview looks correct:
 
@@ -408,7 +433,15 @@ Example output:
 python sync-script.py
 ```
 
-The script will: (1) create a timestamped backup of `photos.json`, (2) add entries for new image/video files, (3) remove entries for files no longer on disk, (4) preserve all existing titles, descriptions, and GPS, and (5) write the updated `photos.json`.
+The script will: (1) create a timestamped backup of `photos.json`, (2) add entries for new image/video files — reading EXIF (GPS + `metadata`) for new images when Pillow is available, (3) remove entries for files no longer on disk, (4) preserve all existing titles, descriptions, GPS, and metadata, and (5) write the updated `photos.json` (UTF-8, `ensure_ascii=False`, 4-space indent).
+
+**Re-read EXIF for existing entries** — Use the `--exif` flag to fill in metadata/GPS for entries that are missing it (for example, photos added before Pillow was installed):
+
+```bash
+python sync-script.py --exif
+```
+
+> `--exif` only **fills gaps** — it reads EXIF for image entries that have no `metadata` yet, and only adds `lat`/`lng` when they are not already set. It does not overwrite metadata or coordinates you already have (including locations you placed by hand in the Content Manager). The flags can be combined, e.g. `python sync-script.py --exif --dry` to preview an EXIF backfill.
 
 ### Output Symbols
 
@@ -416,19 +449,25 @@ The script will: (1) create a timestamped backup of `photos.json`, (2) add entri
 |--------|---------|
 | `[=]` | Category unchanged, no new or removed files |
 | `[~]` | Category changed, files added or removed |
+| `GPS:n` | Number of entries in that category with GPS coordinates |
+| `EXIF:n` | Number of entries in that category with an EXIF metadata string |
 | `[FOLDER NOT FOUND]` | The folder path does not exist on disk |
 
 ### What the Script Does
 
 | Scenario | Action |
 |----------|--------|
-| New image file found | Added to JSON with filename as title and "Description" placeholder |
-| New video file found (.mp4, .webm, .mov) | Added to JSON with `"type": "video"` |
-| Image already in JSON | Kept as-is; title, description, and GPS preserved |
+| New image file found | Added to JSON with filename as title and "Description" placeholder; EXIF read for GPS + `metadata` (if Pillow installed) |
+| New video file found (.mp4, .webm, .mov) | Added to JSON with `"type": "video"` (no EXIF read) |
+| Image already in JSON | Kept as-is; title, description, GPS, and metadata preserved (unless `--exif` fills a missing field) |
 | Image in JSON but file deleted | Entry removed from JSON |
-| Video referenced in JSON | Preserved if the file still exists |
+| Video referenced in `videos/` | Preserved if the file still exists; removed if it doesn't |
 
-> The script preserves all existing fields (`title`, `description`, `lat`, `lng`, `type`). No manually entered data is lost when syncing. It never modifies, moves, or deletes any image or video file — it only reads folder contents and updates `photos.json`. Files are sorted alphabetically within each category.
+> The script preserves all existing fields (`title`, `description`, `lat`, `lng`, `metadata`, `type`). No manually entered data is lost when syncing. It never modifies, moves, or deletes any image or video file — it only reads folder contents (and image EXIF) and updates `photos.json`. Files are sorted alphabetically within each category.
+
+### EXIF Extraction Details
+
+When Pillow is installed, the script reads each new image's EXIF tags and assembles the fields it finds into a single `metadata` string of the form `Date taken: … • Camera: … • F-stop: … • Exposure time: … • ISO Speed: … • Focal length: …` (only the parts that are present are included). It also reads GPS tags, converts them from degrees/minutes/seconds to decimal degrees, validates the ranges, and stores them as `lat`/`lng` rounded to six decimal places. Camera make and model are combined intelligently to avoid repeating the make. Any image without EXIF (or with unreadable EXIF) is simply added without those fields.
 
 ### Backups
 
@@ -471,6 +510,7 @@ VIDEO_EXTENSIONS = {".mp4", ".webm", ".mov"}
 |---------|-------------|
 | `python sync-script.py --dry` | Preview changes without modifying files |
 | `python sync-script.py` | Scan folders and update photos.json |
+| `python sync-script.py --exif` | Backfill EXIF (GPS + metadata) for entries that are missing it |
 
 ### Troubleshooting (Sync Tool)
 
@@ -704,11 +744,13 @@ CNAME Record  www     svensl.github.io.      Automatic
 2. Preview the sync:
    python sync-script.py --dry
 
-3. Apply the sync:
+3. Apply the sync (with Pillow installed, new photos get GPS + metadata
+   read from their EXIF automatically):
    python sync-script.py
 
 4. Open admin-page.html with Live Server:
-   → Edit titles, descriptions, and GPS for new entries
+   → Edit titles and descriptions for new entries
+   → Adjust or add GPS locations on the map where EXIF had none
    → Click "Export photos.json"
    → Replace the file in your project folder
 
