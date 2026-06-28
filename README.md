@@ -102,7 +102,31 @@ A base-map switcher (a Leaflet layer control, shown expanded in the bottom-left 
 - **Satellite** — Esri World Imagery with a transparent Esri reference overlay (boundaries and place names) stacked on top
 - **Light** — CARTO's light/minimal basemap
 
-All three base layers are free public tile services used without an API key, served from Esri (ArcGIS Online) and CARTO. The map depends on Leaflet, which is loaded from a CDN (`unpkg.com`) — an internet connection is required for the map and its tiles to display.
+All three base layers are free public tile services used without an API key, served from Esri (ArcGIS Online) and CARTO. The map depends on two libraries loaded from CDNs — Leaflet (`unpkg.com`) and OverlappingMarkerSpiderfier (`cdnjs.cloudflare.com`) — so an internet connection is required for the map and its tiles to display.
+
+#### Overlapping markers — the "spider" function
+
+Many photos are taken at (or very near) the same spot, so their thumbnail markers would otherwise stack on top of each other and only the top one would be clickable. To solve this, the Map page uses the **OverlappingMarkerSpiderfier** library (OMS, loaded from a CDN alongside Leaflet). When you click a cluster of overlapping or nearby markers, they fan out — or "spiderfy" — into a ring (or, for larger clusters, a spiral), with a thin leg line connecting each marker back to its true location, so every photo at that spot becomes individually visible and clickable.
+
+Behaviour wired into the page:
+
+- Clicking a marker (whether standalone or one that has fanned out) opens its photo popup; clicking a stacked group fans it out first.
+- The open popup is closed automatically while a group is fanning out, to avoid a popup covering the spread markers.
+- Because zooming re-positions everything, the page remembers which marker was fanned out and re-opens it shortly after a zoom finishes (a ~400 ms delay lets the zoom animation settle), so your place isn't lost when you zoom in or out.
+
+**Fields that tailor the spider function.** These are set when the spiderfier is created in `index.html` (in the `initMap()` function, in the `new OverlappingMarkerSpiderfier(map, { … })` options object). Adjust them to change how clusters detect overlap and how far the markers fan out:
+
+| Option | Current value | What it controls |
+|--------|---------------|------------------|
+| `keepSpiderfied` | `true` | Keeps the markers fanned out after you click one of them, instead of collapsing the group back immediately. Set to `false` to auto-collapse on selection. |
+| `nearbyDistance` | `40` | How close (in pixels) two markers must be to count as "overlapping" and therefore be grouped together. Larger values group markers that are farther apart; smaller values only group near-exact overlaps. |
+| `legWeight` | `2` | Thickness (in pixels) of the leg lines drawn from each fanned-out marker back to the cluster's real location. |
+| `circleFootSeparation` | `50` | Spacing between markers when a **small** cluster fans out into a **circle**. Larger values spread the ring wider. |
+| `spiralFootSeparation` | `56` | Spacing between markers when a **larger** cluster fans out into a **spiral**. Larger values increase the gap between successive markers along the spiral. |
+| `spiralLengthStart` | `22` | How far from the centre the spiral begins (its starting radius). |
+| `spiralLengthFactor` | `10` | How quickly the spiral grows outward as more markers are added — higher values produce a looser, more spread-out spiral. |
+
+> OMS automatically chooses a **circle** layout for small clusters and switches to a **spiral** once a cluster has more markers than the circle can comfortably hold, which is why there are separate `circleFoot…` and `spiral…` settings. The `~400 ms` re-spiderfy delay after zoom is a `setTimeout` value in the `zoomend` handler (just below the options object), not part of the options object itself — adjust it there if zoom feels too fast or slow before the cluster re-opens.
 
 > This public Map page is separate from the editing map inside the Content Manager (`admin-page.html`), and the two now offer different base-map sets: the public map provides Topographic / Satellite / Light, while the Content Manager provides Street / Satellite (Hybrid). They are configured independently in their respective files.
 
