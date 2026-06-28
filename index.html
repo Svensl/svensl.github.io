@@ -6,6 +6,7 @@
     <title>2SL Photography</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OverlappingMarkerSpiderfier-Leaflet/0.2.6/oms.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -959,7 +960,9 @@
                 map = L.map('map-container', {
                     center: [25, 10],
                     zoom: 2,
-                    layers: [esriTopo]
+                    layers: [esriTopo],
+                    wheelDebounceTime: 100,
+                    wheelPxPerZoomLevel: 180
                 });
 
                 L.control.layers({
@@ -978,6 +981,50 @@
                     });
                 }
 
+                // Create spiderfier for overlapping markers
+                var oms = new OverlappingMarkerSpiderfier(map, {
+                    keepSpiderfied: true,
+                    nearbyDistance: 40,
+                    legWeight: 2
+                });
+                // Only show popup when clicking a spiderfied or standalone marker
+                oms.addListener('click', function(marker) {
+                    L.popup()
+                        .setLatLng(marker.getLatLng())
+                        .setContent(marker._popupHtml)
+                        .openOn(map);
+                });
+
+                // Close popup when spiderfying
+                oms.addListener('spiderfy', function() {
+                    map.closePopup();
+                });
+                // Re-spiderfy after zoom
+                var spiderfiedMarker = null;
+                var isZooming = false;
+
+                oms.addListener('spiderfy', function(markers) {
+                    spiderfiedMarker = markers[0];
+                });
+
+                oms.addListener('unspiderfy', function() {
+                    if (!isZooming) {
+                        spiderfiedMarker = null;
+                    }
+                });
+
+                map.on('zoomstart', function() {
+                    isZooming = true;
+                });
+
+                map.on('zoomend', function() {
+                    if (isZooming && spiderfiedMarker) {
+                        setTimeout(function() {
+                            spiderfiedMarker.fireEvent('click');
+                        }, 400);
+                    }
+                    isZooming = false;
+                });
                 // Add markers
                 const markers = [];
                 gpsPhotos.forEach(item => {
@@ -999,7 +1046,8 @@
                         '<p>' + categoryLabel + '</p>' +
                         '<a onclick="closeSectionAndOpenLightbox(\'' + category + '\', ' + index + ')">View Photo</a>';
 
-                    marker.bindPopup(popupHtml);
+                    marker._popupHtml = popupHtml;
+                    oms.addMarker(marker);
                     markers.push(marker);
                 });
 
